@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:shipyardV4="http://jku.bise.at/shipyardV4" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_HqBCwIH2EeygeNSdWjNtbg" selectedViews="_sxyBwIIFEeygeNSdWjNtbg" version="14.5.1.202106111100">
+    <semanticResources>example1.shipyardV4</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_sxyBwIIFEeygeNSdWjNtbg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='MyViewpoint']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_uWEfAIIFEeygeNSdWjNtbg" name="ShipyardV4Diag" repPath="#_uWDQ4IIFEeygeNSdWjNtbg" changeId="3c261ea7-bce6-4f26-961b-798512a022c0">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']"/>
+        <target xmi:type="shipyardV4:ShipyardV4Root" href="example1.shipyardV4#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_uWDQ4IIFEeygeNSdWjNtbg">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_uWIJYIIFEeygeNSdWjNtbg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_uWIJYYIFEeygeNSdWjNtbg" type="Sirius" element="_uWDQ4IIFEeygeNSdWjNtbg" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_Q3QcsIJqEeygeNSdWjNtbg" type="2001" element="_Q23bIIJqEeygeNSdWjNtbg">
+          <children xmi:type="notation:Node" xmi:id="_Q3SR4IJqEeygeNSdWjNtbg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Q3SR4YJqEeygeNSdWjNtbg" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_gCNj8IJqEeygeNSdWjNtbg" type="3003" element="_gB4MwIJqEeygeNSdWjNtbg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_gCNj8YJqEeygeNSdWjNtbg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gCNj8oJqEeygeNSdWjNtbg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_Q3QcsYJqEeygeNSdWjNtbg" fontName="Segoe UI"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Q3QcsoJqEeygeNSdWjNtbg" x="90" y="60" width="136" height="91"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_uWIJYoIFEeygeNSdWjNtbg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_uWIJY4IFEeygeNSdWjNtbg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_uWIJZIIFEeygeNSdWjNtbg"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_Q23bIIJqEeygeNSdWjNtbg" name="Shipyard" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="shipyardV4:Shipyard" href="example1.shipyardV4#//@shipyardV4Root"/>
+      <semanticElements xmi:type="shipyardV4:Shipyard" href="example1.shipyardV4#//@shipyardV4Root"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_gB4MwIJqEeygeNSdWjNtbg" labelSize="12" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="platform:/resource/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@nodeMappings[name='Shipyard']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@nodeMappings[name='Shipyard']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_uWD38IIFEeygeNSdWjNtbg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer"/>
+    <target xmi:type="shipyardV4:ShipyardV4Root" href="example1.shipyardV4#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

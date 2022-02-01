@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/shipyardV4/src" modelPluginID="shipyardV4" modelName="ShipyardV4Opt"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="../../jsonmetaschemaMM/model/jsonMetaschemaMM.genmodel#//jsonMetaschemaMM"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>shipyardV4Opt.ecore</foreignModel>
+  <genPackages prefix="ShipyardV4" disposableProviderFactory="true" ecorePackage="shipyardV4Opt.ecore#/">
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//ShipyardV4Root">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//ShipyardV4Root/shipyardV4Root"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//Metadata">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//Metadata/Metadata"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//Selector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//Selector/Selector"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//Sequence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//Sequence/Sequence"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//Shipyard">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//Shipyard/Shipyard"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//ShipyardSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//ShipyardSpec/ShipyardSpec"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//Stage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//Stage/Stage"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//Task">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//Task/Task"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//Trigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//Trigger/Trigger"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//MetadataName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute shipyardV4Opt.ecore#//MetadataName/name"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//SelectorMatch">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//SelectorMatch/match"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//SequenceName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute shipyardV4Opt.ecore#//SequenceName/name"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//SequenceTriggeredOn">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//SequenceTriggeredOn/triggeredOn"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//SequenceTasks">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//SequenceTasks/tasks"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//ShipyardApiVersion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute shipyardV4Opt.ecore#//ShipyardApiVersion/apiVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//ShipyardKind">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute shipyardV4Opt.ecore#//ShipyardKind/kind"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//ShipyardMetadata">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//ShipyardMetadata/metadata"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//ShipyardSpec1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//ShipyardSpec1/spec"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//ShipyardSpecStages">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//ShipyardSpecStages/stages"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//StageName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute shipyardV4Opt.ecore#//StageName/name"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//StageSequences">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//StageSequences/sequences"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//TaskName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute shipyardV4Opt.ecore#//TaskName/name"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//TaskProperties">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//TaskProperties/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//TriggerEvent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute shipyardV4Opt.ecore#//TriggerEvent/event"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//TriggerSelector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//TriggerSelector/selector"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//SelectorMatchPatternProperties0">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute shipyardV4Opt.ecore#//SelectorMatchPatternProperties0/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute shipyardV4Opt.ecore#//SelectorMatchPatternProperties0/patternProperties0"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//TaskPropertiesAdditionalProperties">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute shipyardV4Opt.ecore#//TaskPropertiesAdditionalProperties/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//TaskPropertiesAdditionalProperties/additionalProperties"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//SequenceTriggeredOnItems">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//SequenceTriggeredOnItems/items"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//SequenceTasksItems">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//SequenceTasksItems/items"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//ShipyardSpecStagesItems">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//ShipyardSpecStagesItems/items"/>
+    </genClasses>
+    <genClasses ecoreClass="shipyardV4Opt.ecore#//StageSequencesItems">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference shipyardV4Opt.ecore#//StageSequencesItems/items"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="shipyardV4Opt.ecore#//MetadataPropertiesAbstract"/>
+    <genClasses image="false" ecoreClass="shipyardV4Opt.ecore#//SelectorPropertiesAbstract"/>
+    <genClasses image="false" ecoreClass="shipyardV4Opt.ecore#//SequencePropertiesAbstract"/>
+    <genClasses image="false" ecoreClass="shipyardV4Opt.ecore#//ShipyardPropertiesAbstract"/>
+    <genClasses image="false" ecoreClass="shipyardV4Opt.ecore#//ShipyardSpecPropertiesAbstract"/>
+    <genClasses image="false" ecoreClass="shipyardV4Opt.ecore#//StagePropertiesAbstract"/>
+    <genClasses image="false" ecoreClass="shipyardV4Opt.ecore#//TaskPropertiesAbstract"/>
+    <genClasses image="false" ecoreClass="shipyardV4Opt.ecore#//TriggerPropertiesAbstract"/>
+    <genClasses image="false" ecoreClass="shipyardV4Opt.ecore#//SelectorMatchPropertiesAbstract"/>
+    <genClasses image="false" ecoreClass="shipyardV4Opt.ecore#//TaskPropertiesPropertiesAbstract"/>
+  </genPackages>
+</genmodel:GenModel>

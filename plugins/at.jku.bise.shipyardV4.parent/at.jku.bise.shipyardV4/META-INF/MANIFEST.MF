@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: at.jku.bise.shipyardV4
+Bundle-ManifestVersion: 2
+Bundle-Name: at.jku.bise.shipyardV4
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: at.jku.bise.shipyardV4; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: shipyardV4,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ org.eclipse.ocl.xtext.completeocl;bundle-version="1.15.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: at.jku.bise.shipyardV4,
+ at.jku.bise.shipyardV4.parser.antlr,
+ at.jku.bise.shipyardV4.serializer,
+ at.jku.bise.shipyardV4.scoping,
+ at.jku.bise.shipyardV4.validation,
+ at.jku.bise.shipyardV4.parser.antlr.internal,
+ at.jku.bise.shipyardV4.formatting2,
+ at.jku.bise.shipyardV4.services,
+ at.jku.bise.shipyardV4.generator
+Import-Package: org.apache.log4j
