@@ -1,17 +1,23 @@
 package shipyardV4.design;
 
+import java.util.Collection;
+
 import org.eclipse.emf.ecore.EObject;
+
+import shipyardV4.ShipyardV4Root;
+import shipyardV4.Stage;
+import shipyardV4.design.api.ShipyardUtils;
 
 /**
  * The services class used by VSM.
  */
 public class Services {
     
-    /**
-    * See http://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.sirius.doc%2Fdoc%2Findex.html&cp=24 for documentation on how to write service methods.
-    */
-    public EObject myService(EObject self, String arg) {
-       // TODO Auto-generated code
-      return self;
-    }
+   public Collection<Stage> getStages(ShipyardV4Root shipyardRoot) {
+	   return ShipyardUtils.getStages(shipyardRoot);
+   }
+   
+   public String getStageName(Stage stage) {
+	   return ShipyardUtils.getStageName(stage);
+   }
 }
