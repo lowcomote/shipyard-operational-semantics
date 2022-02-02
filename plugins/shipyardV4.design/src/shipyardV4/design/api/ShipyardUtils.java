@@ -2,19 +2,27 @@ package shipyardV4.design.api;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 import shipyardV4.Sequence;
+import shipyardV4.SequenceName;
+import shipyardV4.SequenceTasks;
+import shipyardV4.SequenceTasksItems;
 import shipyardV4.ShipyardSpec1;
 import shipyardV4.ShipyardSpecStages;
 import shipyardV4.ShipyardV4Root;
 import shipyardV4.Stage;
 import shipyardV4.StageName;
 import shipyardV4.StageSequences;
+import shipyardV4.StageSequencesItems;
+import shipyardV4.Task;
+import shipyardV4.TaskName;
 
 public class ShipyardUtils {
 	
@@ -59,20 +67,66 @@ public class ShipyardUtils {
 	
 	//Get Sequence
 	public static Collection<Sequence> getSequencesfromStage(Stage stage) {
-		var stageSequences = stage.getStage()
+		var stageSequence = stage.getStage()
 								.stream()
 								.filter(StageSequences.class::isInstance)
 								.map(StageSequences.class::cast)
 								.findAny()
-								.map(stageSequence -> stageSequence.getSequences())
-								.map(null)							
-								.collect(Collectors.toCollection(BasicEList::new))
+								.orElseThrow(() -> new IllegalArgumentException("Expected StageSequences type object"));
 								;	
 		
-		
-		
-		
-		//return stageName.getName();
+		return stageSequence.getSequences()
+					.stream()
+					.map(item -> item.getItems())
+					.collect(Collectors.toCollection(BasicEList::new));		
+	}
+	
+	//Get StageName
+	public static String getSequenceName(Sequence sequence) {
+		var sequenceName= sequence.getSequence()
+						.stream()
+						.filter(SequenceName.class::isInstance)
+						.map(SequenceName.class::cast)
+						.findAny()
+						.orElseThrow(() -> new IllegalArgumentException("Expected SequenceName type object"));
+		return sequenceName.getName();
+	}
+	
+	//Get Tasks
+	public static Collection<Task> getTasks(Sequence sequence) {
+		var sequenceTask = sequence.getSequence()
+				.stream()
+				.filter(SequenceTasks.class::isInstance)
+				.map(SequenceTasks.class::cast)
+				.findAny()
+				.orElseThrow(() -> new IllegalArgumentException("Expected SequenceTasks type object"));
+				;	
+
+		return sequenceTask.getTasks()
+					.stream()
+					.map(item -> item.getItems())
+					.collect(Collectors.toCollection(BasicEList::new));	
+	}
+	
+	//Get StageName
+	public static String getTaskName(Task task) {
+		var taskName = task.getTask()
+						.stream()
+						.filter(TaskName.class::isInstance)
+						.map(TaskName.class::cast)
+						.findAny()
+						.orElseThrow(() -> new IllegalArgumentException("Expected TaskName type object"));
+		return taskName.getName();
+	}
+	
+	//Get next task
+	public static Task getNextTask(Task task) {
+		SequenceTasksItems sequenceTaskItems = (SequenceTasksItems) task.eContainer();
+		SequenceTasks sequenceTasks = (SequenceTasks) sequenceTaskItems.eContainer();
+		int index = sequenceTasks.getTasks().indexOf(sequenceTaskItems);
+		if (sequenceTasks.getTasks().size() > index + 1) {
+			return sequenceTasks.getTasks().get(index + 1).getItems();
+		}		
 		return null;
 	}
 }

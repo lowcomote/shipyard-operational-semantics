@@ -4,13 +4,29 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ShipyardV4Diag" domainClass="shipyardV4::ShipyardV4Root" enablePopupBars="true">
       <metamodel href="http://jku.bise.at/shipyardV4#/"/>
       <defaultLayer name="Default">
+        <edgeMappings name="TaskEdge" sourceMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@subNodeMappings[name='TaskNode']" targetMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@subNodeMappings[name='TaskNode']" targetFinderExpression="service:getNextTask()">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
         <containerMappings name="StageContainer" semanticCandidatesExpression="service:getStages()" domainClass="shipyardV4::Stage">
-          <subContainerMappings name="SequenceContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="shipyardV4::Sequence">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+          <subContainerMappings name="SequenceContainer" semanticCandidatesExpression="service:getSequencesfromStage()" domainClass="shipyardV4::Sequence">
+            <subNodeMappings name="TaskNode" semanticCandidatesExpression="service:getTasks()" domainClass="shipyardV4::Task">
+              <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getTaskName()" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="service:getSequenceName()">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.1"/>
             </style>
           </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="service:getStageName()">
