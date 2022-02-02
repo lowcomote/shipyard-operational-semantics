@@ -1,7 +1,9 @@
 package shipyardV4.design.api;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -9,11 +11,17 @@ import java.util.stream.Stream;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import shipyardV4.MetadataName;
 import shipyardV4.Sequence;
 import shipyardV4.SequenceName;
 import shipyardV4.SequenceTasks;
 import shipyardV4.SequenceTasksItems;
+import shipyardV4.SequenceTriggeredOn;
+import shipyardV4.ShipyardApiVersion;
+import shipyardV4.ShipyardKind;
+import shipyardV4.ShipyardMetadata;
 import shipyardV4.ShipyardSpec1;
 import shipyardV4.ShipyardSpecStages;
 import shipyardV4.ShipyardV4Root;
@@ -23,6 +31,10 @@ import shipyardV4.StageSequences;
 import shipyardV4.StageSequencesItems;
 import shipyardV4.Task;
 import shipyardV4.TaskName;
+import shipyardV4.TaskProperties;
+import shipyardV4.TaskPropertiesAdditionalProperties;
+import shipyardV4.Trigger;
+import shipyardV4.TriggerEvent;
 
 public class ShipyardUtils {
 	
@@ -128,5 +140,140 @@ public class ShipyardUtils {
 			return sequenceTasks.getTasks().get(index + 1).getItems();
 		}		
 		return null;
+	}
+	
+	//Shipyard get MetadataName
+	public static String getMetadataName(ShipyardV4Root shipyardV4Root) {
+		var metadataName = shipyardV4Root.getShipyardV4Root().getShipyard()
+							.stream()
+							.filter(ShipyardMetadata.class::isInstance)
+							.map(ShipyardMetadata.class::cast)
+							.findAny()
+							.orElseThrow(() -> new IllegalArgumentException("Expected ShipyardMetadata type object"))
+							.getMetadata().getMetadata()
+							.stream()
+							.filter(MetadataName.class::isInstance)
+							.map(MetadataName.class::cast)
+							.findAny()
+							.orElseThrow(() -> new IllegalArgumentException("Expected MetadataName type object"))
+							;
+		return metadataName.getName();		
+	}
+	
+	//Shipyard get Kind
+	public static String getKind(ShipyardV4Root shipyardV4Root) {
+		var kind = shipyardV4Root.getShipyardV4Root().getShipyard()
+				.stream()
+				.filter(ShipyardKind.class::isInstance)
+				.map(ShipyardKind.class::cast)
+				.findAny()
+				.orElseThrow(() -> new IllegalArgumentException("Expected ShipyardKind type object"));	
+		return kind.getKind();		
+	}
+	
+	//Shipyard get Version
+	public static String getVersion(ShipyardV4Root shipyardV4Root) {
+		var apiVersion = shipyardV4Root.getShipyardV4Root().getShipyard()
+				.stream()
+				.filter(ShipyardApiVersion.class::isInstance)
+				.map(ShipyardApiVersion.class::cast)
+				.findAny()
+				.orElseThrow(() -> new IllegalArgumentException("Expected ShipyardApiVersion type object"));	
+		return apiVersion.getApiVersion();	
+	}
+	
+	//Get Additional Properties
+	public static Collection<TaskPropertiesAdditionalProperties> getTaskPropertiesAdditionalProperties(Task task) {
+		return task.getTask()
+					.stream()
+					.filter(TaskProperties.class::isInstance)
+					.map(TaskProperties.class::cast)
+					.findAny()
+					.orElseThrow(() -> new IllegalArgumentException("Expected TaskProperties type object"))
+					.getProperties()
+					.stream()
+					.filter(TaskPropertiesAdditionalProperties.class::isInstance)
+					.map(TaskPropertiesAdditionalProperties.class::cast)
+					.collect(Collectors.toCollection(BasicEList::new))
+					;
+	}
+	
+	public static Collection<String> getEvents(Sequence sequence) {		
+		var sequenceTriggeredOn =  sequence.getSequence()
+										.stream()
+										.filter(SequenceTriggeredOn.class::isInstance)
+										.map(SequenceTriggeredOn.class::cast)
+										.findAny()
+										.orElse(null);
+		if (sequenceTriggeredOn != null) {
+			
+			System.out.println(
+					sequenceTriggeredOn.getTriggeredOn().stream()
+					.map(item -> item.getItems())
+					.collect(Collectors.toCollection(BasicEList::new))
+					.stream()
+					.flatMap(trigger -> Stream.of(trigger.getTrigger()))
+					.findAny()
+					.stream()
+					.filter(TriggerEvent.class::isInstance)
+					.map(TriggerEvent.class::cast)
+					.collect(Collectors.toCollection(BasicEList::new))
+					//.orElseThrow(() -> new IllegalArgumentException("Expected TriggerEvent type object"))
+					.toString()
+					
+					
+					);
+			
+			
+			
+			
+			return sequenceTriggeredOn.getTriggeredOn().stream()
+							.map(item -> item.getItems())
+							.collect(Collectors.toCollection(BasicEList::new))
+							.stream()
+							.map(trigger -> trigger.getTrigger())
+							.filter(TriggerEvent.class::isInstance)
+							.map(TriggerEvent.class::cast)
+							.collect(Collectors.toCollection(BasicEList::new))
+							.stream()
+							.map(event -> event.getEvent())
+							.collect(Collectors.toCollection(LinkedList::new))
+							;
+		}
+		return Collections.emptyList();									
+	}
+	
+	public static Collection<Sequence> getFiringSequences(ShipyardV4Root shipyardV4Root, Sequence sequence) {	
+		var events = getEvents(sequence);
+		var firingSequences = new BasicEList<Sequence>();
+		System.out.println("events: " + events.toString());
+		for (String event : events) {
+			String[] splitEvent = event.split(".");
+			String stageName = splitEvent[0];
+			Stage stage = getStageByName(shipyardV4Root, stageName);
+			if (stage != null) {
+				var sequenceName = splitEvent[1];
+				var firingSequence = getSequenceByName(stage, sequenceName);
+				firingSequences.add(firingSequence);
+			}
+		}		
+		return firingSequences;	
+	}
+	
+	public static Stage getStageByName(ShipyardV4Root shipyardV4Root, String stageName) {
+		var stages = getStages(shipyardV4Root);
+		return stages.stream()
+				.filter(stage -> getStageName(stage).equals(stageName))
+				.findAny()
+				.orElse(null);	
+	}
+	
+	public static Sequence getSequenceByName(Stage stage, String sequenceName) {
+		var sequences = getSequencesfromStage(stage);
+		return sequences.stream()
+				.filter(sequence -> getSequenceName(sequence).equals(sequenceName))
+				.findAny()
+				.orElse(null)
+				;
 	}
 }
