@@ -5,8 +5,10 @@ import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel;
 import fr.inria.diverse.k3.al.annotationprocessor.Main;
 import fr.inria.diverse.k3.al.annotationprocessor.Step;
 import java.util.List;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import shipyardV4.Sequence;
 import shipyardV4.ShipyardV4Root;
+import shipyardV4.design.api.ShipyardUtils;
 import shipyardv4.aspects.utils.ShipyardOperationalSemanticsUtils;
 
 @Aspect(className = ShipyardV4Root.class)
@@ -74,24 +76,6 @@ public class ShipyardV4RootAspect {
     };
   }
   
-  private static Sequence currentSequence(final ShipyardV4Root _self) {
-    final shipyardv4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardv4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
-    Object result = null;
-    // #DispatchPointCut_before# Sequence currentSequence()
-    if (_self instanceof shipyardV4.ShipyardV4Root){
-    	result = shipyardv4.aspects.ShipyardV4RootAspect._privk3_currentSequence(_self_, (shipyardV4.ShipyardV4Root)_self);
-    };
-    return (shipyardV4.Sequence)result;
-  }
-  
-  private static void currentSequence(final ShipyardV4Root _self, final Sequence currentSequence) {
-    final shipyardv4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardv4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
-    // #DispatchPointCut_before# void currentSequence(Sequence)
-    if (_self instanceof shipyardV4.ShipyardV4Root){
-    	shipyardv4.aspects.ShipyardV4RootAspect._privk3_currentSequence(_self_, (shipyardV4.ShipyardV4Root)_self,currentSequence);
-    };
-  }
-  
   protected static void _privk3_initializeModel(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self, final List<String> args) {
     ShipyardV4RootAspect.inputSequence(_self, args.get(0));
     boolean _isEmpty = ShipyardV4RootAspect.inputSequence(_self).isEmpty();
@@ -101,8 +85,15 @@ public class ShipyardV4RootAspect {
   }
   
   protected static void _privk3_main(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method step() is undefined for the type Sequence");
+    try {
+      Sequence currentSequence = ShipyardUtils.getSequenceByPath(_self, ShipyardV4RootAspect.inputSequence(_self));
+      if ((currentSequence == null)) {
+        throw new ShipyardRuntimeException("No Input Sequence");
+      }
+      SequenceAspect.step(currentSequence);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   protected static String _privk3_inputSequence(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self) {
@@ -139,43 +130,6 @@ public class ShipyardV4RootAspect {
     }
     if (!setterCalled) {
     	_self_.inputSequence = inputSequence;
-    }
-  }
-  
-  protected static Sequence _privk3_currentSequence(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self) {
-    try {
-    	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
-    		if (m.getName().equals("getCurrentSequence") &&
-    			m.getParameterTypes().length == 0) {
-    				Object ret = m.invoke(_self);
-    				if (ret != null) {
-    					return (shipyardV4.Sequence) ret;
-    				} else {
-    					return null;
-    				}
-    		}
-    	}
-    } catch (Exception e) {
-    	// Chut !
-    }
-    return _self_.currentSequence;
-  }
-  
-  protected static void _privk3_currentSequence(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self, final Sequence currentSequence) {
-    boolean setterCalled = false;
-    try {
-    	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
-    		if (m.getName().equals("setCurrentSequence")
-    				&& m.getParameterTypes().length == 1) {
-    			m.invoke(_self, currentSequence);
-    			setterCalled = true;
-    		}
-    	}
-    } catch (Exception e) {
-    	// Chut !
-    }
-    if (!setterCalled) {
-    	_self_.currentSequence = currentSequence;
     }
   }
 }

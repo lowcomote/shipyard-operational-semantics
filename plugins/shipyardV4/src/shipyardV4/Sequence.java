@@ -33,6 +33,6 @@ public interface Sequence extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<SequencePropertiesAbstract> getSequence();
+	EList<SequencePropertiesAbstract> getSequence();	
 
 } // Sequence
