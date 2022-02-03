@@ -12,8 +12,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="TriggerOnSequence" sourceMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']" targetMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']" targetFinderExpression="service:getFiringSequences(diagram)">
-          <style sizeComputationExpression="2">
+        <edgeMappings name="Trigger" sourceMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']" targetMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']" targetFinderExpression="service:getFiringSequence(diagram)" sourceFinderExpression="service:getSequenceByTrigger" domainClass="shipyardV4::Trigger" useDomainElement="true">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -46,13 +46,23 @@
           </style>
         </containerMappings>
       </defaultLayer>
+      <additionalLayers name="test">
+        <edgeMappings name="TriggerOnSequence" semanticElements="service:associate" sourceMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']" targetMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']" targetFinderExpression="service:getFiringSequences(diagram)">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </additionalLayers>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="shipyardV4.design.Services"/>
   </ownedViewpoints>
   <extensions xsi:type="properties:ViewExtensionDescription" name="Shipyard Properties">
     <metamodels href="http://jku.bise.at/shipyardV4#/"/>
     <categories name="Default Category">
-      <pages name="Default Page" labelExpression="Shipyard" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0 //@extensions.0/@categories.0/@groups.1"/>
+      <pages name="Default Page" labelExpression="Shipyard" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0 //@extensions.0/@categories.0/@groups.1 //@extensions.0/@categories.0/@groups.2"/>
       <groups name="Shipyard Group" labelExpression="Shipyard" domainClass="shipyardV4::ShipyardV4Root" semanticCandidateExpression="var:self" preconditionExpression="aql:self.oclisTypeOf(shipyardV4::ShipyardV4Root)">
         <controls xsi:type="properties:TextDescription" name="Name" labelExpression="Metadata Name:" valueExpression="service:getMetadataName()">
           <initialOperation>
@@ -78,6 +88,18 @@
           <ifs name="Value Condition" predicateExpression="aql:true">
             <widget xsi:type="properties:TextDescription" name="Value" labelExpression="value: " valueExpression="aql:taskPropertiesAdditionalProperty.additionalProperties.value.value"/>
           </ifs>
+        </controls>
+      </groups>
+      <groups name="Trigger Selector" labelExpression="Group" domainClass="shipyardV4::Trigger" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:TextDescription" name="Trigger Key" labelExpression="Key: " valueExpression="service:getKeySelectorMatchPatternProperties0ByTrigger()">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:TextDescription" name="Trigger Value" labelExpression="Value: " valueExpression="service:getValueSelectorMatchPatternProperties0ByTrigger">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+          </initialOperation>
         </controls>
       </groups>
     </categories>

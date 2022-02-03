@@ -14,6 +14,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import shipyardV4.MetadataName;
+import shipyardV4.Selector;
+import shipyardV4.SelectorMatch;
+import shipyardV4.SelectorMatchPatternProperties0;
 import shipyardV4.Sequence;
 import shipyardV4.SequenceName;
 import shipyardV4.SequenceTasks;
@@ -35,6 +38,7 @@ import shipyardV4.TaskProperties;
 import shipyardV4.TaskPropertiesAdditionalProperties;
 import shipyardV4.Trigger;
 import shipyardV4.TriggerEvent;
+import shipyardV4.TriggerSelector;
 
 public class ShipyardUtils {
 	
@@ -205,60 +209,36 @@ public class ShipyardUtils {
 										.map(SequenceTriggeredOn.class::cast)
 										.findAny()
 										.orElse(null);
-		if (sequenceTriggeredOn != null) {
-			
-			System.out.println(
-					sequenceTriggeredOn.getTriggeredOn().stream()
-					.map(item -> item.getItems())
-					.collect(Collectors.toCollection(BasicEList::new))
-					.stream()
-					.flatMap(trigger -> Stream.of(trigger.getTrigger()))
-					.findAny()
-					.stream()
-					.filter(TriggerEvent.class::isInstance)
-					.map(TriggerEvent.class::cast)
-					.collect(Collectors.toCollection(BasicEList::new))
-					//.orElseThrow(() -> new IllegalArgumentException("Expected TriggerEvent type object"))
-					.toString()
-					
-					
-					);
-			
-			
-			
-			
-			return sequenceTriggeredOn.getTriggeredOn().stream()
+		if (sequenceTriggeredOn != null) {			
+			return sequenceTriggeredOn.getTriggeredOn()
+					 		.stream()
 							.map(item -> item.getItems())
-							.collect(Collectors.toCollection(BasicEList::new))
-							.stream()
 							.map(trigger -> trigger.getTrigger())
+							.flatMap(Collection::stream)
 							.filter(TriggerEvent.class::isInstance)
 							.map(TriggerEvent.class::cast)
-							.collect(Collectors.toCollection(BasicEList::new))
-							.stream()
 							.map(event -> event.getEvent())
-							.collect(Collectors.toCollection(LinkedList::new))
-							;
+							.collect(Collectors.toList())
+							;	
 		}
 		return Collections.emptyList();									
 	}
 	
-	public static Collection<Sequence> getFiringSequences(ShipyardV4Root shipyardV4Root, Sequence sequence) {	
-		var events = getEvents(sequence);
-		var firingSequences = new BasicEList<Sequence>();
-		System.out.println("events: " + events.toString());
-		for (String event : events) {
-			String[] splitEvent = event.split(".");
-			String stageName = splitEvent[0];
-			Stage stage = getStageByName(shipyardV4Root, stageName);
-			if (stage != null) {
-				var sequenceName = splitEvent[1];
-				var firingSequence = getSequenceByName(stage, sequenceName);
-				firingSequences.add(firingSequence);
-			}
-		}		
-		return firingSequences;	
-	}
+//	public static Collection<Sequence> getFiringSequences(ShipyardV4Root shipyardV4Root, Sequence sequence) {	
+//		var events = getEvents(sequence);
+//		var firingSequences = new BasicEList<Sequence>();	
+//		for (String event : events) {
+//			String[] splitEvent = event.split("\\.");
+//			String stageName = splitEvent[0];
+//			Stage stage = getStageByName(shipyardV4Root, stageName);			
+//			if (stage != null) {
+//				var sequenceName = splitEvent[1];
+//				var firingSequence = getSequenceByName(stage, sequenceName);
+//				firingSequences.add(firingSequence);
+//			}
+//		}		
+//		return firingSequences;	
+//	}
 	
 	public static Stage getStageByName(ShipyardV4Root shipyardV4Root, String stageName) {
 		var stages = getStages(shipyardV4Root);
@@ -276,4 +256,52 @@ public class ShipyardUtils {
 				.orElse(null)
 				;
 	}
+	
+	public static Sequence getSequenceByTrigger(Trigger trigger) {
+		   return (Sequence) trigger.eContainer().eContainer().eContainer();
+	}
+	
+	public static Sequence getFiringSequence(ShipyardV4Root shipyardV4Root, Trigger trigger) {
+		var triggerEvent = trigger.getTrigger()
+						.stream()
+						.filter(TriggerEvent.class::isInstance)
+						.map(TriggerEvent.class::cast)
+						.findAny()
+						.orElseThrow(() -> new IllegalArgumentException("Expected TriggerEvent type object"))
+						;	
+		String[] splitEvent = triggerEvent.getEvent().split("\\.");
+		String stageName = splitEvent[0];
+		Stage stage = getStageByName(shipyardV4Root, stageName);			
+		if (stage != null) {
+			var sequenceName = splitEvent[1];
+			var firingSequence = getSequenceByName(stage, sequenceName);
+			return firingSequence;
+		}
+		return null;	
+	}
+	
+	public static SelectorMatchPatternProperties0 getSelectorMatchPatternProperties0ByTrigger(Trigger trigger) {
+		var triggerSelector =  trigger.getTrigger()
+									.stream()
+									.filter(TriggerSelector.class::isInstance)
+									.map(TriggerSelector.class::cast)
+									.findAny()
+									.orElse(null);
+		if (triggerSelector != null) {
+			return triggerSelector.getSelector()
+					.getSelector()
+					.stream()
+					.filter(SelectorMatch.class::isInstance)
+					.map(SelectorMatch.class::cast)
+					.findAny()
+					.orElseThrow(() -> new IllegalArgumentException("Expected SelectorMatch type object"))
+					.getMatch()
+					.stream()
+					.filter(SelectorMatchPatternProperties0.class::isInstance)
+					.map(SelectorMatchPatternProperties0.class::cast)
+					.findAny()
+					.orElseThrow(() -> new IllegalArgumentException("Expected SelectorMatchPatternProperties0 type object"));
+		}
+		return null;
+	}	
 }

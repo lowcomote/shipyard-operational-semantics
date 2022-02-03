@@ -2,13 +2,17 @@ package shipyardV4.design;
 
 import java.util.Collection;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 
+import shipyardV4.SelectorMatchPatternProperties0;
 import shipyardV4.Sequence;
 import shipyardV4.ShipyardV4Root;
 import shipyardV4.Stage;
 import shipyardV4.Task;
 import shipyardV4.TaskPropertiesAdditionalProperties;
+import shipyardV4.Trigger;
 import shipyardV4.design.api.ShipyardUtils;
 
 /**
@@ -64,7 +68,26 @@ public class Services {
 	   return ShipyardUtils.getTaskPropertiesAdditionalProperties(task);
    }
    
-   public Collection<Sequence> getFiringSequences(Sequence sequence, DSemanticDiagram diagram) {
-	   return ShipyardUtils.getFiringSequences((ShipyardV4Root) diagram.getTarget(), sequence);
+   public Sequence getFiringSequence(Trigger trigger, DSemanticDiagram diagram) {	   
+	   return ShipyardUtils.getFiringSequence((ShipyardV4Root) diagram.getTarget(), 
+			   trigger);
+   }
+   
+   public Sequence getSequenceByTrigger(Trigger trigger) {
+	   return ShipyardUtils.getSequenceByTrigger(trigger);
+   }
+   
+   public String getKeySelectorMatchPatternProperties0ByTrigger(Trigger trigger) {
+	   var selector = ShipyardUtils.getSelectorMatchPatternProperties0ByTrigger(trigger);
+	   if (selector != null)
+		   return selector.getKey();
+	   return null;
+   }
+   
+   public String getValueSelectorMatchPatternProperties0ByTrigger(Trigger trigger) {
+	   var selector = ShipyardUtils.getSelectorMatchPatternProperties0ByTrigger(trigger);
+	   if (selector != null)
+		   return selector.getPatternProperties0();
+	   return null;
    }
 }
