@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see shipyardV4.ShipyardV4Package#getTask()
- * @model
+ * @model annotation="aspect"
  * @generated
  */
 public interface Task extends EObject {

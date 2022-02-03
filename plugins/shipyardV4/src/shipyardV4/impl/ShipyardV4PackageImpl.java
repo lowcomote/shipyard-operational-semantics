@@ -1391,6 +1391,40 @@ public class ShipyardV4PackageImpl extends EPackageImpl implements ShipyardV4Pac
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// aspect
+		createAspectAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>aspect</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createAspectAnnotations() {
+		String source = "aspect";
+		addAnnotation
+		  (shipyardV4RootEClass,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (sequenceEClass,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (taskEClass,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (triggerEClass,
+		   source,
+		   new String[] {
+		   });
 	}
 
 } //ShipyardV4PackageImpl

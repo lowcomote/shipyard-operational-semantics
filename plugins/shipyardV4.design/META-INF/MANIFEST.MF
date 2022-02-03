@@ -16,3 +16,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
 Automatic-Module-Name: shipyardV4.design
+Export-Package: shipyardV4.design.api

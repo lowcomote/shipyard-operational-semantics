@@ -2,6 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="shipyardV4" nsURI="http://jku.bise.at/shipyardV4" nsPrefix="shipyardV4">
   <eClassifiers xsi:type="ecore:EClass" name="ShipyardV4Root">
+    <eAnnotations source="aspect"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="shipyardV4Root" lowerBound="1"
         eType="#//Shipyard" containment="true"/>
   </eClassifiers>
@@ -14,6 +15,7 @@
         eType="#//SelectorPropertiesAbstract" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Sequence">
+    <eAnnotations source="aspect"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Sequence" upperBound="-1"
         eType="#//SequencePropertiesAbstract" containment="true"/>
   </eClassifiers>
@@ -30,10 +32,12 @@
         eType="#//StagePropertiesAbstract" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task">
+    <eAnnotations source="aspect"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Task" upperBound="-1" eType="#//TaskPropertiesAbstract"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Trigger">
+    <eAnnotations source="aspect"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Trigger" upperBound="-1"
         eType="#//TriggerPropertiesAbstract" containment="true"/>
   </eClassifiers>

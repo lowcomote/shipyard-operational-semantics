@@ -304,4 +304,13 @@ public class ShipyardUtils {
 		}
 		return null;
 	}	
+	
+	public static Sequence getSequenceByPath(ShipyardV4Root shipyardV4Root,String pathSequence) {
+		String[] splitPath = pathSequence.split("\\.");
+		Stage stage = getStageByName(shipyardV4Root, splitPath[0]);
+		if (stage != null) {
+			return getSequenceByName(stage, splitPath[1]);
+		}
+		return null;
+	}
 }
