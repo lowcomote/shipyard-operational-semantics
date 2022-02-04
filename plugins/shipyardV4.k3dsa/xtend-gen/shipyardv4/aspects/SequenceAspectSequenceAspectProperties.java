@@ -1,4 +1,4 @@
-package shipyardv4.aspects;
+package shipyardV4.aspects;
 
 @SuppressWarnings("all")
 public class SequenceAspectSequenceAspectProperties {

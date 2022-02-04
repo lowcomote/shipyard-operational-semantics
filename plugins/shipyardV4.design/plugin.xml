@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="shipyardV4.design.Activator"
+    <component class="shipyardv4.design.Activator"
                id="shipyardV4.design"
 	       name="shipyardV4">
     </component>

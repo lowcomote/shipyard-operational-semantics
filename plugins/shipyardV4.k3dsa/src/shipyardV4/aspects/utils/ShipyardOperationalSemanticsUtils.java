@@ -1,4 +1,4 @@
-package shipyardv4.aspects.utils;
+package shipyardV4.aspects.utils;
 
 public class ShipyardOperationalSemanticsUtils {
 	

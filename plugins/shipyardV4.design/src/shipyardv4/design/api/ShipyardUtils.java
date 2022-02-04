@@ -1,4 +1,4 @@
-package shipyardV4.design.api;
+package shipyardv4.design.api;
 
 import java.util.ArrayList;
 import java.util.Collection;

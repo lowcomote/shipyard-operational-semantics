@@ -2,7 +2,8 @@
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="shipyardV4" version="12.0.0.2017041100">
   <ownedViewpoints name="ShipyardViewpoint">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ShipyardV4Diag" domainClass="shipyardV4::ShipyardV4Root" enablePopupBars="true">
-      <metamodel href="http://jku.bise.at/shipyardV4#/"/>
+      <metamodel href="../../shipyardV4/model/shipyardV4Opt.ecore#/"/>
+      <metamodel href="http://at.jku.bise/jsonMetaschemaMM#/"/>
       <defaultLayer name="Default">
         <edgeMappings name="TaskEdge" sourceMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@subNodeMappings[name='TaskNode']" targetMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@subNodeMappings[name='TaskNode']" targetFinderExpression="service:getNextTask()">
           <style sizeComputationExpression="2">
@@ -47,7 +48,7 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="shipyardV4.design.Services"/>
+    <ownedJavaExtensions qualifiedClassName="shipyardv4.design.Services"/>
   </ownedViewpoints>
   <extensions xsi:type="properties:ViewExtensionDescription" name="Shipyard Properties">
     <metamodels href="http://jku.bise.at/shipyardV4#/"/>

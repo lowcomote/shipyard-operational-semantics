@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: shipyardV4.design;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: shipyardV4.design.Activator
+Bundle-Activator: shipyardv4.design.Activator
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -16,4 +16,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
 Automatic-Module-Name: shipyardV4.design
-Export-Package: shipyardV4.design.api
+Export-Package: shipyardv4.design.api

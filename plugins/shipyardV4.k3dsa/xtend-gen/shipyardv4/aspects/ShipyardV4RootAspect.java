@@ -1,4 +1,4 @@
-package shipyardv4.aspects;
+package shipyardV4.aspects;
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel;
@@ -8,8 +8,8 @@ import java.util.List;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import shipyardV4.Sequence;
 import shipyardV4.ShipyardV4Root;
-import shipyardV4.design.api.ShipyardUtils;
-import shipyardv4.aspects.utils.ShipyardOperationalSemanticsUtils;
+import shipyardV4.aspects.utils.ShipyardOperationalSemanticsUtils;
+import shipyardv4.design.api.ShipyardUtils;
 
 @Aspect(className = ShipyardV4Root.class)
 @SuppressWarnings("all")
@@ -17,13 +17,13 @@ public class ShipyardV4RootAspect {
   @Step
   @InitializeModel
   public static void initializeModel(final ShipyardV4Root _self, final List<String> args) {
-    final shipyardv4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardv4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
+    final shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
     // #DispatchPointCut_before# void initializeModel(List<String>)
     if (_self instanceof shipyardV4.ShipyardV4Root){
     	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
     		@Override
     		public void execute() {
-    			shipyardv4.aspects.ShipyardV4RootAspect._privk3_initializeModel(_self_, (shipyardV4.ShipyardV4Root)_self,args);
+    			shipyardV4.aspects.ShipyardV4RootAspect._privk3_initializeModel(_self_, (shipyardV4.ShipyardV4Root)_self,args);
     		}
     	};
     	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager stepManager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry.getInstance().findStepManager(_self);
@@ -39,13 +39,13 @@ public class ShipyardV4RootAspect {
   @Step
   @Main
   public static void main(final ShipyardV4Root _self) {
-    final shipyardv4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardv4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
+    final shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
     // #DispatchPointCut_before# void main()
     if (_self instanceof shipyardV4.ShipyardV4Root){
     	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
     		@Override
     		public void execute() {
-    			shipyardv4.aspects.ShipyardV4RootAspect._privk3_main(_self_, (shipyardV4.ShipyardV4Root)_self);
+    			shipyardV4.aspects.ShipyardV4RootAspect._privk3_main(_self_, (shipyardV4.ShipyardV4Root)_self);
     		}
     	};
     	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager stepManager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry.getInstance().findStepManager(_self);
@@ -59,20 +59,20 @@ public class ShipyardV4RootAspect {
   }
   
   private static String inputSequence(final ShipyardV4Root _self) {
-    final shipyardv4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardv4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
+    final shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
     Object result = null;
     // #DispatchPointCut_before# String inputSequence()
     if (_self instanceof shipyardV4.ShipyardV4Root){
-    	result = shipyardv4.aspects.ShipyardV4RootAspect._privk3_inputSequence(_self_, (shipyardV4.ShipyardV4Root)_self);
+    	result = shipyardV4.aspects.ShipyardV4RootAspect._privk3_inputSequence(_self_, (shipyardV4.ShipyardV4Root)_self);
     };
     return (java.lang.String)result;
   }
   
   private static void inputSequence(final ShipyardV4Root _self, final String inputSequence) {
-    final shipyardv4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardv4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
+    final shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
     // #DispatchPointCut_before# void inputSequence(String)
     if (_self instanceof shipyardV4.ShipyardV4Root){
-    	shipyardv4.aspects.ShipyardV4RootAspect._privk3_inputSequence(_self_, (shipyardV4.ShipyardV4Root)_self,inputSequence);
+    	shipyardV4.aspects.ShipyardV4RootAspect._privk3_inputSequence(_self_, (shipyardV4.ShipyardV4Root)_self,inputSequence);
     };
   }
   
@@ -88,7 +88,7 @@ public class ShipyardV4RootAspect {
     try {
       Sequence currentSequence = ShipyardUtils.getSequenceByPath(_self, ShipyardV4RootAspect.inputSequence(_self));
       if ((currentSequence == null)) {
-        throw new ShipyardRuntimeException("No Input Sequence");
+        throw new ShipyardRuntimeException("Not Input Sequence found");
       }
       SequenceAspect.step(currentSequence);
     } catch (Throwable _e) {

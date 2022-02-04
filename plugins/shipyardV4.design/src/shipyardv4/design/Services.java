@@ -1,4 +1,4 @@
-package shipyardV4.design;
+package shipyardv4.design;
 
 import java.util.Collection;
 
@@ -13,7 +13,7 @@ import shipyardV4.Stage;
 import shipyardV4.Task;
 import shipyardV4.TaskPropertiesAdditionalProperties;
 import shipyardV4.Trigger;
-import shipyardV4.design.api.ShipyardUtils;
+import shipyardv4.design.api.ShipyardUtils;
 
 /**
  * The services class used by VSM.

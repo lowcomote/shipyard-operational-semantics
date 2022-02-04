@@ -1,4 +1,4 @@
-package shipyardv4.aspects
+package shipyardV4.aspects
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import shipyardV4.ShipyardV4Root
@@ -43,20 +43,20 @@ import shipyardV4.TriggerPropertiesAbstract
 import shipyardV4.SelectorMatchPropertiesAbstract
 import shipyardV4.TaskPropertiesPropertiesAbstract
 
-import static extension shipyardv4.aspects.ShipyardV4RootAspect.*
+import static extension shipyardV4.aspects.ShipyardV4RootAspect.*
 //import static extension shipyardv4.aspects.MetadataAspect.*
 //import static extension shipyardv4.aspects.SelectorAspect.*
-import static extension shipyardv4.aspects.SequenceAspect.*
+import static extension shipyardV4.aspects.SequenceAspect.*
 //import static extension shipyardv4.aspects.ShipyardAspect.*
 //import static extension shipyardv4.aspects.ShipyardSpecAspect.*
 //import static extension shipyardv4.aspects.StageAspect.*
-import static extension shipyardv4.aspects.TaskAspect.*
-import static extension shipyardv4.aspects.TriggerAspect.*
+import static extension shipyardV4.aspects.TaskAspect.*
+import static extension shipyardV4.aspects.TriggerAspect.*
 import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
 import fr.inria.diverse.k3.al.annotationprocessor.Step
-import shipyardv4.aspects.utils.ShipyardOperationalSemanticsUtils
+import shipyardV4.aspects.utils.ShipyardOperationalSemanticsUtils
 import java.util.List
-import shipyardV4.design.api.ShipyardUtils
+import shipyardv4.design.api.ShipyardUtils
 import fr.inria.diverse.k3.al.annotationprocessor.Main
 
 //import static extension shipyardv4.aspects.MetadataNameAspect.*
@@ -112,7 +112,7 @@ class ShipyardV4RootAspect {
 	def void main() {
 		var currentSequence = ShipyardUtils.getSequenceByPath(_self, _self.inputSequence);
 		if (currentSequence === null) {
-			throw new ShipyardRuntimeException("No Input Sequence");
+			throw new ShipyardRuntimeException("Not Input Sequence found");
 		}
 		currentSequence.step;
 	}
@@ -123,13 +123,21 @@ class ShipyardV4RootAspect {
 class SequenceAspect {
 	@Step												
 	def void step() {
-		println("adsa")
+		//1.Search Start Trigger
+		//2.Execute all tasks
+		for(Task task: ShipyardUtils.getTasks(_self))
+			task.fireTask;
+		//3. Search Finish Trigger
+		println("Step Sequence: " + _self.toString);
 	}
 }
 
 @Aspect(className=Task)
 class TaskAspect {
-
+	@Step												
+	def void fireTask() {
+		println("Fire: " + _self.toString);
+	}
 }
 
 @Aspect(className=Trigger)
@@ -139,7 +147,7 @@ class TriggerAspect {
 
 class ShipyardRuntimeException extends Exception {
 	new(String message) {
-		super(message)
+		super(message);
 	}				
 }
 

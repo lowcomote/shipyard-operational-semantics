@@ -11,17 +11,3 @@
 /.TriggerAspect.java._trace
 /.TriggerAspectTriggerAspectContext.java._trace
 /.TriggerAspectTriggerAspectProperties.java._trace
-/.shipyardV4Aspects.xtendbin
-/SequenceAspect.java
-/SequenceAspectSequenceAspectContext.java
-/SequenceAspectSequenceAspectProperties.java
-/ShipyardRuntimeException.java
-/ShipyardV4RootAspect.java
-/ShipyardV4RootAspectShipyardV4RootAspectContext.java
-/ShipyardV4RootAspectShipyardV4RootAspectProperties.java
-/TaskAspect.java
-/TaskAspectTaskAspectContext.java
-/TaskAspectTaskAspectProperties.java
-/TriggerAspect.java
-/TriggerAspectTriggerAspectContext.java
-/TriggerAspectTriggerAspectProperties.java
