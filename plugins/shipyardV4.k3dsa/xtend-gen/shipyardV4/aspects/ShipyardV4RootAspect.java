@@ -112,7 +112,7 @@ public class ShipyardV4RootAspect {
       if ((currentSequence == null)) {
         throw new ShipyardRuntimeException("Not Input Sequence found");
       }
-      SequenceAspect.step(currentSequence, ShipyardV4RootAspect.eventStringTriggerMap(_self));
+      SequenceAspect.step(currentSequence);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

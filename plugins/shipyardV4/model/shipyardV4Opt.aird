@@ -7,7 +7,7 @@
     <semanticResources>platform:/resource/jsonmetaschemaMM/model/jsonMetaschemaMM.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_q4ZbcIctEeyO0-AUG3Q4Vw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_svjxYIctEeyO0-AUG3Q4Vw" name="shipyardV4 class diagram" repPath="#_svPoUIctEeyO0-AUG3Q4Vw" changeId="ee580a3b-dc60-452a-9a3d-c41be3d5eabc">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_svjxYIctEeyO0-AUG3Q4Vw" name="shipyardV4 class diagram" repPath="#_svPoUIctEeyO0-AUG3Q4Vw" changeId="aa4b7745-a3db-440d-88aa-46729c453f40">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="shipyardV4Opt.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -1671,6 +1671,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_tQQDo4ctEeyO0-AUG3Q4Vw" description="_tQQDoIctEeyO0-AUG3Q4Vw" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_tQQDpYctEeyO0-AUG3Q4Vw" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_tQQDpIctEeyO0-AUG3Q4Vw" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
@@ -1827,6 +1828,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_tQQD-octEeyO0-AUG3Q4Vw" description="_tQQDoIctEeyO0-AUG3Q4Vw" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_tQQD_IctEeyO0-AUG3Q4Vw" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_tQQD-4ctEeyO0-AUG3Q4Vw" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
@@ -1840,6 +1842,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_tQQEAYctEeyO0-AUG3Q4Vw" description="_tQQDoIctEeyO0-AUG3Q4Vw" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_tQQEA4ctEeyO0-AUG3Q4Vw" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_tQQEAoctEeyO0-AUG3Q4Vw" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
@@ -1892,6 +1895,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_tQQEHYctEeyO0-AUG3Q4Vw" description="_tQQDoIctEeyO0-AUG3Q4Vw" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_tQQEH4ctEeyO0-AUG3Q4Vw" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_tQQEHoctEeyO0-AUG3Q4Vw" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
@@ -1905,6 +1909,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_tQQEJIctEeyO0-AUG3Q4Vw" description="_tQQDoIctEeyO0-AUG3Q4Vw" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_tQQEJoctEeyO0-AUG3Q4Vw" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_tQQEJYctEeyO0-AUG3Q4Vw" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
@@ -1918,6 +1923,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_tQQEK4ctEeyO0-AUG3Q4Vw" description="_tQQDoIctEeyO0-AUG3Q4Vw" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_tQQELYctEeyO0-AUG3Q4Vw" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_tQQELIctEeyO0-AUG3Q4Vw" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
@@ -1931,6 +1937,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_tQQEMoctEeyO0-AUG3Q4Vw" description="_tQQDoIctEeyO0-AUG3Q4Vw" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_tQQENIctEeyO0-AUG3Q4Vw" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_tQQEM4ctEeyO0-AUG3Q4Vw" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
@@ -1944,6 +1951,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_tQQEOYctEeyO0-AUG3Q4Vw" description="_tQQDoIctEeyO0-AUG3Q4Vw" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_tQQEO4ctEeyO0-AUG3Q4Vw" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_tQQEOoctEeyO0-AUG3Q4Vw" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>

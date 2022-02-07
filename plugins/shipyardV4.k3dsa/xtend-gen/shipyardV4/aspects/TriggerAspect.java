@@ -4,6 +4,7 @@ import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import fr.inria.diverse.k3.al.annotationprocessor.Step;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import shipyardV4.Trigger;
+import shipyardv4.design.api.ShipyardUtils;
 
 @Aspect(className = Trigger.class)
 @SuppressWarnings("all")
@@ -33,5 +34,6 @@ public class TriggerAspect {
     String _string = _self.toString();
     String _plus = ("Fire: " + _string);
     InputOutput.<String>println(_plus);
+    SequenceAspect.step(ShipyardUtils.getSequenceByTrigger(_self));
   }
 }
