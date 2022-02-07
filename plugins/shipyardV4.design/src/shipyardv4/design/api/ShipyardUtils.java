@@ -3,8 +3,13 @@ package shipyardv4.design.api;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -224,6 +229,8 @@ public class ShipyardUtils {
 		return Collections.emptyList();									
 	}
 	
+	
+	
 //	public static Collection<Sequence> getFiringSequences(ShipyardV4Root shipyardV4Root, Sequence sequence) {	
 //		var events = getEvents(sequence);
 //		var firingSequences = new BasicEList<Sequence>();	
@@ -312,5 +319,106 @@ public class ShipyardUtils {
 			return getSequenceByName(stage, splitPath[1]);
 		}
 		return null;
+	}
+	
+	
+	
+	//////////
+	
+	public static Map<String,Collection<Trigger>> createEventStringTriggerMap(ShipyardV4Root shipyardRoot){
+		Map<String,Collection<Trigger>> eventStringTriggerMap = new HashMap<String,Collection<Trigger>>();
+		Collection<Sequence> allSequences = getAllSequences(shipyardRoot);
+		for (Sequence sequence : allSequences) {
+			 Collection<Trigger> triggers = getTriggersBySequence(sequence);
+			 for (Trigger trigger : triggers) {
+				String event = getEventStringByTrigger(trigger);
+				if(!eventStringTriggerMap.containsKey(event)) {
+					eventStringTriggerMap.put(event, new ArrayList<Trigger>());
+				}
+				eventStringTriggerMap.get(event).add(trigger);
+			}
+		}
+		return eventStringTriggerMap;
+	}
+	
+	
+	public static Collection<Trigger> getTriggersBySequence(Sequence sequence){
+		var sequenceTriggeredOn =  sequence.getSequence()
+				.stream()
+				.filter(SequenceTriggeredOn.class::isInstance)
+				.map(SequenceTriggeredOn.class::cast)
+				.findAny()
+				.orElse(null);
+		if (sequenceTriggeredOn != null) {			
+			return sequenceTriggeredOn.getTriggeredOn()
+					 		.stream()
+							.map(item -> item.getItems())
+							.collect(Collectors.toList());
+							
+		}
+		return Collections.emptyList();	
+	}
+	
+	public static String getEventStringByTrigger (Trigger trigger) {
+		TriggerEvent triggerEvent =trigger.getTrigger().stream()
+				.filter(TriggerEvent.class::isInstance)
+				.map(TriggerEvent.class::cast)
+				.findAny().get();
+		
+		return triggerEvent.getEvent();
+	}
+	
+	
+	public static String  getSequencePathName(Sequence sequence) {
+		Stage stage = (Stage) sequence.eContainer().eContainer().eContainer();
+		String sequencePathName = getStageName(stage)+"."+getSequenceName(sequence);
+		return sequencePathName;
+	}
+	
+	
+	public static String getFinishedSequenceEvent(Sequence sequence) {
+		   return getSequencePathName(sequence)+"."+"finished";
+	}
+	
+	public static Map<String,Set<Sequence>> createEventStringSequenceMap(ShipyardV4Root shipyardRoot){
+		Map<String,Set<Sequence>> eventStringSequenceMap =  new HashMap<String,Set<Sequence>>();
+		
+		Collection<Stage> stages=getStages(shipyardRoot);
+		for (Stage stage : stages) {
+			String stageName = getStageName(stage);
+			Collection<Sequence> sequences = getSequencesfromStage(stage);
+			for (Sequence sequence : sequences) {
+				String sequenceName=getSequenceName(sequence);
+				String sequencePathName =stageName+"."+sequenceName;
+				if(!eventStringSequenceMap.containsKey(sequencePathName)) {
+					eventStringSequenceMap.put(sequencePathName, new HashSet<Sequence>());
+				}
+				eventStringSequenceMap.get(sequencePathName).add(sequence);
+			}
+			
+			
+		}
+		
+		return eventStringSequenceMap;
+	}
+	
+	public static Set<String> getAllEvents(ShipyardV4Root shipyardRoot) {
+
+		Set<String> allEvents = new HashSet<>();
+		Collection<Sequence> allSequences = getAllSequences( shipyardRoot);
+		
+		for (Sequence sequence : allSequences) {
+			allEvents.addAll(getEvents(sequence));
+		}
+		return allEvents;
+	}
+	
+	public static Collection<Sequence> getAllSequences(ShipyardV4Root shipyardRoot) {
+		Collection<Sequence> allSequences = new ArrayList<Sequence>();
+		Collection<Stage> stages = getStages( shipyardRoot);
+		for (Stage stage : stages) {
+			allSequences.addAll(getSequencesfromStage(stage));
+		}
+		return allSequences;
 	}
 }

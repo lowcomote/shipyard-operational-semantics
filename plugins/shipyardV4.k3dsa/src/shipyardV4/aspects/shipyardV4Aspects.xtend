@@ -58,6 +58,11 @@ import shipyardV4.aspects.utils.ShipyardOperationalSemanticsUtils
 import java.util.List
 import shipyardv4.design.api.ShipyardUtils
 import fr.inria.diverse.k3.al.annotationprocessor.Main
+import java.util.Map
+import java.util.HashMap
+import java.util.Set
+import java.util.Collection
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 //import static extension shipyardv4.aspects.MetadataNameAspect.*
 //import static extension shipyardv4.aspects.SelectorMatchAspect.*
@@ -96,6 +101,7 @@ import fr.inria.diverse.k3.al.annotationprocessor.Main
 class ShipyardV4RootAspect {
 	
 	private String inputSequence;
+	private Map<String,Collection<Trigger>> eventStringTriggerMap;
 	
 	@Step 												
 	@InitializeModel									
@@ -105,6 +111,8 @@ class ShipyardV4RootAspect {
 		if(_self.inputSequence.isEmpty) {
 			_self.inputSequence = ShipyardOperationalSemanticsUtils.DEFAULT_INPUT_SEQUENCE;
 		}		
+		// find all events String
+		_self.eventStringTriggerMap = ShipyardUtils.createEventStringTriggerMap(_self);
 	}
 	
 	@Step	
@@ -114,7 +122,7 @@ class ShipyardV4RootAspect {
 		if (currentSequence === null) {
 			throw new ShipyardRuntimeException("Not Input Sequence found");
 		}
-		currentSequence.step;
+		currentSequence.step(_self.eventStringTriggerMap);
 	}
 	
 }
@@ -122,12 +130,23 @@ class ShipyardV4RootAspect {
 @Aspect(className=Sequence)
 class SequenceAspect {
 	@Step												
-	def void step() {
-		//1.Search Start Trigger
-		//2.Execute all tasks
-		for(Task task: ShipyardUtils.getTasks(_self))
+	def void step(Map<String,Collection<Trigger>> eventStringTriggerMap) {
+		
+		/**
+		 * Execute all tasks in the sequence
+		 */
+		for(Task task: ShipyardUtils.getTasks(_self)){
 			task.fireTask;
-		//3. Search Finish Trigger
+		}
+		
+		((ShipyardV4Root)EcoreUtil.getRootContainer(_self)).eventStringTriggerMap
+		
+		//for (Trigger trigger : eventStringTriggerMap.get(ShipyardUtils.getFinishedSequenceEvent(_self))){
+//		for (Trigger trigger : ((ShipyardV4Root)EcoreUtil.getRootContainer(_self)).eventStringTriggerMap){
+//			trigger.fireTrigger();
+//		}
+		
+
 		println("Step Sequence: " + _self.toString);
 	}
 }
@@ -142,7 +161,10 @@ class TaskAspect {
 
 @Aspect(className=Trigger)
 class TriggerAspect {
-
+	@Step												
+	def void fireTrigger() {
+		println("Fire: " + _self.toString);
+	}
 }
 
 class ShipyardRuntimeException extends Exception {

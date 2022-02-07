@@ -1,6 +1,7 @@
 package shipyardv4.design;
 
 import java.util.Collection;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -22,6 +23,7 @@ public class Services {
 	
    public static String STAGE_TITLE = "Stage: ";
    public static String SEQUENCE_TITLE = "Seq: ";
+   
     
    public Collection<Stage> getStages(ShipyardV4Root shipyardRoot) {
 	   return ShipyardUtils.getStages(shipyardRoot);
@@ -90,4 +92,13 @@ public class Services {
 		   return selector.getPatternProperties0();
 	   return null;
    }
+   
+   
+   ///////////////////////
+   
+//   public Map<String,Collection<Trigger>> createEventStringTriggerMap(ShipyardV4Root shipyardRoot){
+//	   return ShipyardUtils.createEventStringTriggerMap(shipyardRoot);
+//   }
+   
+  
 }
