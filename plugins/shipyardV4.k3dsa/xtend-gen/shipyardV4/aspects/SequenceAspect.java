@@ -4,14 +4,8 @@ import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import fr.inria.diverse.k3.al.annotationprocessor.Step;
 import java.util.Collection;
 import java.util.Map;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import shipyardV4.Sequence;
-import shipyardV4.ShipyardV4Root;
-import shipyardV4.Task;
 import shipyardV4.Trigger;
-import shipyardv4.design.api.ShipyardUtils;
 
 @Aspect(className = Sequence.class)
 @SuppressWarnings("all")
@@ -38,16 +32,8 @@ public class SequenceAspect {
   }
   
   protected static void _privk3_step(final SequenceAspectSequenceAspectProperties _self_, final Sequence _self, final Map<String, Collection<Trigger>> eventStringTriggerMap) {
-    Collection<Task> _tasks = ShipyardUtils.getTasks(_self);
-    for (final Task task : _tasks) {
-      TaskAspect.fireTask(task);
-    }
-    EObject shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
-    if ((shipyardV4RootObject instanceof ShipyardV4Root)) {
-      ShipyardV4RootAspect.eventStringTriggerMap(((ShipyardV4Root)shipyardV4RootObject));
-    }
-    String _string = _self.toString();
-    String _plus = ("Step Sequence: " + _string);
-    InputOutput.<String>println(_plus);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field ShipyardUtils is undefined"
+      + "\ngetTasks cannot be resolved");
   }
 }
