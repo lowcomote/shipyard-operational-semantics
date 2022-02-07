@@ -6,16 +6,16 @@
       <metamodel href="http://at.jku.bise/jsonMetaschemaMM#/"/>
       <defaultLayer name="Default">
         <edgeMappings name="TaskEdge" sourceMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@subNodeMappings[name='TaskNode']" targetMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@subNodeMappings[name='TaskNode']" targetFinderExpression="service:getNextTask()">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <style sizeComputationExpression="4">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             <centerLabelStyleDescription labelSize="12">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
         <edgeMappings name="Trigger" sourceMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']" targetMapping="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']" targetFinderExpression="service:getFiringSequence(diagram)" sourceFinderExpression="service:getSequenceByTrigger" domainClass="shipyardV4::Trigger" useDomainElement="true">
-          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="4">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             <centerLabelStyleDescription labelSize="12">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
@@ -26,23 +26,22 @@
             <subNodeMappings name="TaskNode" semanticCandidatesExpression="service:getTasks()" domainClass="shipyardV4::Task">
               <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getTaskName()" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="service:getSequenceName()">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="3" labelSize="14" showIcon="false" labelExpression="service:getSequenceName()" backgroundColor="//@userColorsPalettes[name='ShipyardV4Diag%20Palette']/@entries[name='Intermediate%20Blue']" foregroundColor="//@userColorsPalettes[name='ShipyardV4Diag%20Palette']/@entries[name='Intermediate%20Blue']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
               <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.1"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="service:getStageName()">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="service:getStageName()" backgroundColor="//@userColorsPalettes[name='ShipyardV4Diag%20Palette']/@entries[name='Medium-Dark-Blue']" foregroundColor="//@userColorsPalettes[name='ShipyardV4Diag%20Palette']/@entries[name='Medium-Dark-Blue']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.1"/>
           </style>
         </containerMappings>
@@ -82,12 +81,15 @@
           </vsmElementCustomizations>
         </customization>
       </additionalLayers>
+      <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="shipyardv4.design.Services"/>
     <ownedJavaExtensions qualifiedClassName="shipyardv4.design.services.Shipyardv4diagDebugServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="ShipyardV4Diag Palette">
     <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="0" name="current instruction"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="30" blue="80" name="Medium-Dark-Blue"/>
+    <entries xsi:type="description:UserFixedColor" red="84" green="78" blue="166" name="Intermediate Blue"/>
   </userColorsPalettes>
   <extensions xsi:type="properties:ViewExtensionDescription" name="Shipyard Properties">
     <metamodels href="http://jku.bise.at/shipyardV4#/"/>

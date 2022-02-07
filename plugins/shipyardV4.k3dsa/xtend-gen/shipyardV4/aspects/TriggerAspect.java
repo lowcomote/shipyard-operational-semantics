@@ -2,9 +2,7 @@ package shipyardV4.aspects;
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import fr.inria.diverse.k3.al.annotationprocessor.Step;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import shipyardV4.Trigger;
-import shipyardv4.design.api.ShipyardUtils;
 
 @Aspect(className = Trigger.class)
 @SuppressWarnings("all")
@@ -31,9 +29,9 @@ public class TriggerAspect {
   }
   
   protected static void _privk3_fireTrigger(final TriggerAspectTriggerAspectProperties _self_, final Trigger _self) {
-    String _string = _self.toString();
-    String _plus = ("Fire: " + _string);
-    InputOutput.<String>println(_plus);
-    SequenceAspect.step(ShipyardUtils.getSequenceByTrigger(_self));
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field ShipyardUtils is undefined"
+      + "\ngetSequenceByTrigger cannot be resolved"
+      + "\nstep cannot be resolved");
   }
 }

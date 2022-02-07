@@ -7,12 +7,8 @@ import fr.inria.diverse.k3.al.annotationprocessor.Step;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import org.eclipse.xtext.xbase.lib.Exceptions;
-import shipyardV4.Sequence;
 import shipyardV4.ShipyardV4Root;
 import shipyardV4.Trigger;
-import shipyardV4.aspects.utils.ShipyardOperationalSemanticsUtils;
-import shipyardv4.design.api.ShipyardUtils;
 
 @Aspect(className = ShipyardV4Root.class)
 @SuppressWarnings("all")
@@ -98,24 +94,17 @@ public class ShipyardV4RootAspect {
   }
   
   protected static void _privk3_initializeModel(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self, final List<String> args) {
-    ShipyardV4RootAspect.inputSequence(_self, args.get(0));
-    boolean _isEmpty = ShipyardV4RootAspect.inputSequence(_self).isEmpty();
-    if (_isEmpty) {
-      ShipyardV4RootAspect.inputSequence(_self, ShipyardOperationalSemanticsUtils.DEFAULT_INPUT_SEQUENCE);
-    }
-    ShipyardV4RootAspect.eventStringTriggerMap(_self, ShipyardUtils.createEventStringTriggerMap(_self));
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field ShipyardUtils is undefined"
+      + "\ncreateEventStringTriggerMap cannot be resolved");
   }
   
   protected static void _privk3_main(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self) {
-    try {
-      Sequence currentSequence = ShipyardUtils.getSequenceByPath(_self, ShipyardV4RootAspect.inputSequence(_self));
-      if ((currentSequence == null)) {
-        throw new ShipyardRuntimeException("Not Input Sequence found");
-      }
-      SequenceAspect.step(currentSequence);
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field ShipyardUtils is undefined"
+      + "\ngetSequenceByPath cannot be resolved"
+      + "\n=== cannot be resolved"
+      + "\nstep cannot be resolved");
   }
   
   protected static String _privk3_inputSequence(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self) {
