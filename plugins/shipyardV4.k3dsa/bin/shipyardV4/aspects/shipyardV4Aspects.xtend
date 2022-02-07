@@ -122,7 +122,7 @@ class ShipyardV4RootAspect {
 		if (currentSequence === null) {
 			throw new ShipyardRuntimeException("Not Input Sequence found");
 		}
-		currentSequence.step(_self.eventStringTriggerMap);
+		currentSequence.step();
 	}	
 	
 	
@@ -131,8 +131,8 @@ class ShipyardV4RootAspect {
 @Aspect(className=Sequence)
 class SequenceAspect {
 	@Step												
-	def void step(Map<String,Collection<Trigger>> eventStringTriggerMap) {
-		
+	def void step() {
+		println("Step Sequence: " + _self.toString);
 		/**
 		 * Execute all tasks in the sequence
 		 */
@@ -140,25 +140,20 @@ class SequenceAspect {
 			task.fireTask;
 		}
 		
+		var String sequenceFinishedEvent =ShipyardUtils.getFinishedSequenceEvent(_self);
+		
 	    var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
 	    if (shipyardV4RootObject instanceof ShipyardV4Root) {
-	    	shipyardV4RootObject.eventStringTriggerMap
-	    }
-	    
-	    
-	    
-	    		
-		//((ShipyardV4Root)EcoreUtil.getRootContainer(_self));
-		
-		//.eventStringTriggerMap
-		
-		//for (Trigger trigger : eventStringTriggerMap.get(ShipyardUtils.getFinishedSequenceEvent(_self))){
-//		for (Trigger trigger : ((ShipyardV4Root)EcoreUtil.getRootContainer(_self)).eventStringTriggerMap){
-//			trigger.fireTrigger();
-//		}
-		
+	    	var  triggers = shipyardV4RootObject.eventStringTriggerMap.get(sequenceFinishedEvent);
+	    	if(triggers !== null){
+			    for (Trigger trigger : triggers){
+			    	trigger.fireTrigger();
+			    }
+		    
+		    }
+		}
 
-		println("Step Sequence: " + _self.toString);
+		
 	}
 }
 
@@ -175,6 +170,7 @@ class TriggerAspect {
 	@Step												
 	def void fireTrigger() {
 		println("Fire: " + _self.toString);
+		ShipyardUtils.getSequenceByTrigger(_self).step()
 	}
 }
 

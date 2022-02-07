@@ -47,9 +47,48 @@
           </style>
         </containerMappings>
       </defaultLayer>
+      <additionalLayers name="Debug" activeByDefault="true">
+        <toolSections name="Debug">
+          <ownedTools xsi:type="tool:PopupMenu" name="Gemoc">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Debug" icon="/org.eclipse.gemoc.executionframework.extensions.sirius/icons/debug_exc.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Debug" icon="/org.eclipse.gemoc.executionframework.extensions.sirius/icons/debug_exc.gif" id="org.eclipse.gemoc.execution.sequential.javaengine.ui.debug.sirius.action.gemocDebugAs"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Toggle breakpoint" icon="/org.eclipse.gemoc.executionframework.extensions.sirius/icons/debug_exc.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Toggle Gemoc breakpoint" icon="/org.eclipse.gemoc.executionframework.extensions.sirius/icons/breakpoint.gif" id="org.eclipse.gemoc.execution.sequential.javaengine.ui.debug.sirius.action.GemocSequentialToggleBreakpointAction"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Toggle conditional breakpoint" icon="/org.eclipse.gemoc.executionframework.extensions.sirius/icons/debug_exc.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Toggle Gemoc conditional breakpoint" icon="/org.eclipse.gemoc.executionframework.extensions.sirius/icons/breakpoint.gif" id="org.eclipse.gemoc.execution.sequential.javaengine.ui.debug.sirius.action.GemocSequentialToggleConditionalBreakpointAction"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Enabled breakpoint" position="WEST" preconditionExpression="service:self.hasEnabledBreakpoint" imageExpression="/org.eclipse.gemoc.executionframework.extensions.sirius/icons/breakpoint_enabled.gif" mappings="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='TaskEdge'] //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger'] //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer'] //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer'] //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@subNodeMappings[name='TaskNode']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Disabled breakpoint" position="WEST" preconditionExpression="service:self.hasDisabledBreakpoint" imageExpression="/org.eclipse.gemoc.executionframework.extensions.sirius/icons/breakpoint_disabled.gif" mappings="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='TaskEdge'] //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger'] //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer'] //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer'] //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@subNodeMappings[name='TaskNode']"/>
+        </decorationDescriptionsSet>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isCurrentInstruction">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor" value="//@userColorsPalettes[name='ShipyardV4Diag%20Palette']/@entries[name='current%20instruction']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor" value="//@userColorsPalettes[name='ShipyardV4Diag%20Palette']/@entries[name='current%20instruction']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor" value="//@userColorsPalettes[name='ShipyardV4Diag%20Palette']/@entries[name='current%20instruction']"/>
+          </vsmElementCustomizations>
+        </customization>
+      </additionalLayers>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="shipyardv4.design.Services"/>
+    <ownedJavaExtensions qualifiedClassName="shipyardv4.design.services.Shipyardv4diagDebugServices"/>
   </ownedViewpoints>
+  <userColorsPalettes name="ShipyardV4Diag Palette">
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="0" name="current instruction"/>
+  </userColorsPalettes>
   <extensions xsi:type="properties:ViewExtensionDescription" name="Shipyard Properties">
     <metamodels href="http://jku.bise.at/shipyardV4#/"/>
     <categories name="Default Category">
