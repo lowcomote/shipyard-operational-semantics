@@ -3,7 +3,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractGemocDebuggerServices;
+
+import shipyardV4.Sequence;
 
 public class Shipyardv4diagDebugServices extends AbstractGemocDebuggerServices {
 
@@ -20,8 +24,21 @@ public class Shipyardv4diagDebugServices extends AbstractGemocDebuggerServices {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 	
 		res.add(new StringCouple("ShipyardV4Diag", "Debug"));
+		
+		res.add(new StringCouple("ShipyardV4Diag", "Animation"));
 
 		return res;
+	}
+	
+	public boolean isCurrentState(EObject o){     
+		if(o instanceof Sequence){
+			//TODO we do not know the sequence that is currently executing
+			//(SequenceAs)EcoreUtil.getRootContainer(o);
+			//return ; 
+		} else {
+			return false;
+		}
+		return false;
 	}
 	
 	@Override

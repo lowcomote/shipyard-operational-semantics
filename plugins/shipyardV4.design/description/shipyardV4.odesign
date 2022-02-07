@@ -81,6 +81,17 @@
           </vsmElementCustomizations>
         </customization>
       </additionalLayers>
+      <additionalLayers name="Animation">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Current Element" preconditionExpression="service:self.isCurrentElement" imageExpression="\shipyardV4.design\icons\cursor-3-24.png" mappings="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer'] //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer'] //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@subNodeMappings[name='TaskNode']"/>
+        </decorationDescriptionsSet>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']/@style" referenceName="strokeColor" value="//@userColorsPalettes[name='ShipyardV4Diag%20Palette']/@entries[name='hasBeenAnimated']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@style //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@style //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@subNodeMappings[name='TaskNode']/@style" referenceName="borderColor" value="//@userColorsPalettes[name='ShipyardV4Diag%20Palette']/@entries[name='hasBeenAnimated']"/>
+          </vsmElementCustomizations>
+        </customization>
+      </additionalLayers>
       <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="shipyardv4.design.Services"/>
@@ -90,6 +101,7 @@
     <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="0" name="current instruction"/>
     <entries xsi:type="description:UserFixedColor" red="0" green="30" blue="80" name="Medium-Dark-Blue"/>
     <entries xsi:type="description:UserFixedColor" red="84" green="78" blue="166" name="Intermediate Blue"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="20" blue="147" name="hasBeenAnimated"/>
   </userColorsPalettes>
   <extensions xsi:type="properties:ViewExtensionDescription" name="Shipyard Properties">
     <metamodels href="http://jku.bise.at/shipyardV4#/"/>
