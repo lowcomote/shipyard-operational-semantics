@@ -100,8 +100,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 @Aspect(className=ShipyardV4Root)
 class ShipyardV4RootAspect {
 	
-	private String inputSequence;
-	private Map<String,Collection<Trigger>> eventStringTriggerMap;
+	public String inputSequence;
+	public Map<String,Collection<Trigger>> eventStringTriggerMap;
 	
 	@Step 												
 	@InitializeModel									
@@ -123,7 +123,8 @@ class ShipyardV4RootAspect {
 			throw new ShipyardRuntimeException("Not Input Sequence found");
 		}
 		currentSequence.step(_self.eventStringTriggerMap);
-	}
+	}	
+	
 	
 }
 
@@ -139,7 +140,17 @@ class SequenceAspect {
 			task.fireTask;
 		}
 		
-		((ShipyardV4Root)EcoreUtil.getRootContainer(_self)).eventStringTriggerMap
+	    var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
+	    if (shipyardV4RootObject instanceof ShipyardV4Root) {
+	    	shipyardV4RootObject.eventStringTriggerMap
+	    }
+	    
+	    
+	    
+	    		
+		//((ShipyardV4Root)EcoreUtil.getRootContainer(_self));
+		
+		//.eventStringTriggerMap
 		
 		//for (Trigger trigger : eventStringTriggerMap.get(ShipyardUtils.getFinishedSequenceEvent(_self))){
 //		for (Trigger trigger : ((ShipyardV4Root)EcoreUtil.getRootContainer(_self)).eventStringTriggerMap){

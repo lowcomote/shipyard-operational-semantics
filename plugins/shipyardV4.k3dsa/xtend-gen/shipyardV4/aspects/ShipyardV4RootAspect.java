@@ -7,12 +7,15 @@ import fr.inria.diverse.k3.al.annotationprocessor.Step;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import shipyardV4.Sequence;
 import shipyardV4.ShipyardV4Root;
 import shipyardV4.Trigger;
 import shipyardV4.aspects.utils.ShipyardOperationalSemanticsUtils;
 import shipyardv4.design.api.ShipyardUtils;
 
-/* @Aspect(className = ShipyardV4Root.class) */@SuppressWarnings("all")
+@Aspect(className = ShipyardV4Root.class)
+@SuppressWarnings("all")
 public class ShipyardV4RootAspect {
   @Step
   @InitializeModel
@@ -58,7 +61,7 @@ public class ShipyardV4RootAspect {
     };
   }
   
-  private static String inputSequence(final ShipyardV4Root _self) {
+  public static String inputSequence(final ShipyardV4Root _self) {
     final shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
     Object result = null;
     // #DispatchPointCut_before# String inputSequence()
@@ -68,7 +71,7 @@ public class ShipyardV4RootAspect {
     return (java.lang.String)result;
   }
   
-  private static void inputSequence(final ShipyardV4Root _self, final String inputSequence) {
+  public static void inputSequence(final ShipyardV4Root _self, final String inputSequence) {
     final shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
     // #DispatchPointCut_before# void inputSequence(String)
     if (_self instanceof shipyardV4.ShipyardV4Root){
@@ -76,7 +79,7 @@ public class ShipyardV4RootAspect {
     };
   }
   
-  private static Map<String, Collection<Trigger>> eventStringTriggerMap(final ShipyardV4Root _self) {
+  public static Map<String, Collection<Trigger>> eventStringTriggerMap(final ShipyardV4Root _self) {
     final shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
     Object result = null;
     // #DispatchPointCut_before# Map<String, Collection<Trigger>> eventStringTriggerMap()
@@ -86,7 +89,7 @@ public class ShipyardV4RootAspect {
     return (java.util.Map<java.lang.String, java.util.Collection<shipyardV4.Trigger>>)result;
   }
   
-  private static void eventStringTriggerMap(final ShipyardV4Root _self, final Map<String, Collection<Trigger>> eventStringTriggerMap) {
+  public static void eventStringTriggerMap(final ShipyardV4Root _self, final Map<String, Collection<Trigger>> eventStringTriggerMap) {
     final shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
     // #DispatchPointCut_before# void eventStringTriggerMap(Map<String, Collection<Trigger>>)
     if (_self instanceof shipyardV4.ShipyardV4Root){
@@ -104,8 +107,15 @@ public class ShipyardV4RootAspect {
   }
   
   protected static void _privk3_main(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method step(Map<String, Collection<Trigger>>) is undefined for the type Sequence");
+    try {
+      Sequence currentSequence = ShipyardUtils.getSequenceByPath(_self, ShipyardV4RootAspect.inputSequence(_self));
+      if ((currentSequence == null)) {
+        throw new ShipyardRuntimeException("Not Input Sequence found");
+      }
+      SequenceAspect.step(currentSequence, ShipyardV4RootAspect.eventStringTriggerMap(_self));
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   protected static String _privk3_inputSequence(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self) {
