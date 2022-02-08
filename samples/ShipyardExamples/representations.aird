@@ -2,32 +2,9 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:shipyardV4="http://jku.bise.at/shipyardV4" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_0VbMEIjZEeyJJMUthJJRGw" selectedViews="_0vVg4IjZEeyJJMUthJJRGw" version="14.5.1.202106111100">
     <semanticResources>example1.shipyardV4</semanticResources>
-<<<<<<< HEAD
-    <semanticResources>gemoc-gen/execution/execution-20220204_194942/example1.shipyardV4</semanticResources>
-    <semanticResources>gemoc-gen/execution/execution-20220205_115331/example1.shipyardV4</semanticResources>
-    <semanticResources>gemoc-gen/execution/execution-20220205_115403/example1.shipyardV4</semanticResources>
-    <semanticResources>gemoc-gen/execution/execution-20220207_154907/example1.shipyardV4</semanticResources>
-    <semanticResources>gemoc-gen/execution/execution-20220207_192518/example1.shipyardV4</semanticResources>
-    <ownedViews xmi:type="viewpoint:DView" uid="_sxyBwIIFEeygeNSdWjNtbg">
-      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='MyViewpoint']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_uWEfAIIFEeygeNSdWjNtbg" name="ShipyardV4Diag" repPath="#_uWDQ4IIFEeygeNSdWjNtbg" changeId="3c261ea7-bce6-4f26-961b-798512a022c0">
-        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']"/>
-        <target xmi:type="shipyardV4:ShipyardV4Root" href="example1.shipyardV4#/"/>
-      </ownedRepresentationDescriptors>
-    </ownedViews>
-    <ownedViews xmi:type="viewpoint:DView" uid="_K4kYIIQUEeyJHeaiV1aFAg">
-      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_L5fpoIQUEeyJHeaiV1aFAg" name="new ShipyardV4Diag" repPath="#_L5aKEIQUEeyJHeaiV1aFAg" changeId="4d005ba9-8cf7-4ef3-898d-6bd08ed0c193">
-        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']"/>
-        <target xmi:type="shipyardV4:ShipyardV4Root" href="example1.shipyardV4#/"/>
-      </ownedRepresentationDescriptors>
-    </ownedViews>
-    <ownedViews xmi:type="viewpoint:DView" uid="_W6ZEIIXpEey3_5X3-ed3cA">
-=======
     <semanticResources>gemoc-gen/execution/execution-20220208_132318/example1.shipyardV4</semanticResources>
     <semanticResources>gemoc-gen/execution/execution-20220208_134405/example1.shipyardV4</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_0vVg4IjZEeyJJMUthJJRGw">
->>>>>>> branch 'master' of git@github.com:alessandrocolantoni/shipyard-operational-semantics.git
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_1lr6EIjZEeyJJMUthJJRGw" name="new ShipyardV4Diag" repPath="#_1lqr8IjZEeyJJMUthJJRGw" changeId="7af52a59-d8ba-4f81-a7c0-dce519f9b3e2">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']"/>
