@@ -5,6 +5,8 @@
     <semanticResources>gemoc-gen/execution/execution-20220204_194942/example1.shipyardV4</semanticResources>
     <semanticResources>gemoc-gen/execution/execution-20220205_115331/example1.shipyardV4</semanticResources>
     <semanticResources>gemoc-gen/execution/execution-20220205_115403/example1.shipyardV4</semanticResources>
+    <semanticResources>gemoc-gen/execution/execution-20220207_154907/example1.shipyardV4</semanticResources>
+    <semanticResources>gemoc-gen/execution/execution-20220207_192518/example1.shipyardV4</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_sxyBwIIFEeygeNSdWjNtbg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='MyViewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_uWEfAIIFEeygeNSdWjNtbg" name="ShipyardV4Diag" repPath="#_uWDQ4IIFEeygeNSdWjNtbg" changeId="3c261ea7-bce6-4f26-961b-798512a022c0">

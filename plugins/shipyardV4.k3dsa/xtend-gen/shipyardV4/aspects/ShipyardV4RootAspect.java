@@ -5,8 +5,10 @@ import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel;
 import fr.inria.diverse.k3.al.annotationprocessor.Main;
 import fr.inria.diverse.k3.al.annotationprocessor.Step;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import shipyardV4.Sequence;
 import shipyardV4.ShipyardV4Root;
@@ -97,11 +99,38 @@ public class ShipyardV4RootAspect {
     };
   }
   
+  public static Set<String> finishedEvents(final ShipyardV4Root _self) {
+    final shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
+    Object result = null;
+    // #DispatchPointCut_before# Set<String> finishedEvents()
+    if (_self instanceof shipyardV4.ShipyardV4Root){
+    	result = shipyardV4.aspects.ShipyardV4RootAspect._privk3_finishedEvents(_self_, (shipyardV4.ShipyardV4Root)_self);
+    };
+    return (java.util.Set<java.lang.String>)result;
+  }
+  
+  public static void finishedEvents(final ShipyardV4Root _self, final Set<String> finishedEvents) {
+    final shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectProperties _self_ = shipyardV4.aspects.ShipyardV4RootAspectShipyardV4RootAspectContext.getSelf(_self);
+    // #DispatchPointCut_before# void finishedEvents(Set<String>)
+    if (_self instanceof shipyardV4.ShipyardV4Root){
+    	shipyardV4.aspects.ShipyardV4RootAspect._privk3_finishedEvents(_self_, (shipyardV4.ShipyardV4Root)_self,finishedEvents);
+    };
+  }
+  
   protected static void _privk3_initializeModel(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self, final List<String> args) {
-    ShipyardV4RootAspect.inputSequence(_self, args.get(0));
-    boolean _isEmpty = ShipyardV4RootAspect.inputSequence(_self).isEmpty();
-    if (_isEmpty) {
+    String arg0 = args.get(0);
+    if ((arg0.isEmpty() || ShipyardOperationalSemanticsUtils.isFinishedEvent(arg0))) {
       ShipyardV4RootAspect.inputSequence(_self, ShipyardOperationalSemanticsUtils.DEFAULT_INPUT_SEQUENCE);
+    } else {
+      ShipyardV4RootAspect.inputSequence(_self, arg0);
+    }
+    HashSet<String> _hashSet = new HashSet<String>();
+    ShipyardV4RootAspect.finishedEvents(_self, _hashSet);
+    for (final String arg : args) {
+      boolean _isFinishedEvent = ShipyardOperationalSemanticsUtils.isFinishedEvent(arg);
+      if (_isFinishedEvent) {
+        ShipyardV4RootAspect.finishedEvents(_self).add(arg);
+      }
     }
     ShipyardV4RootAspect.eventStringTriggerMap(_self, ShipyardUtils.createEventStringTriggerMap(_self));
   }
@@ -189,6 +218,43 @@ public class ShipyardV4RootAspect {
     }
     if (!setterCalled) {
     	_self_.eventStringTriggerMap = eventStringTriggerMap;
+    }
+  }
+  
+  protected static Set<String> _privk3_finishedEvents(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self) {
+    try {
+    	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
+    		if (m.getName().equals("getFinishedEvents") &&
+    			m.getParameterTypes().length == 0) {
+    				Object ret = m.invoke(_self);
+    				if (ret != null) {
+    					return (java.util.Set) ret;
+    				} else {
+    					return null;
+    				}
+    		}
+    	}
+    } catch (Exception e) {
+    	// Chut !
+    }
+    return _self_.finishedEvents;
+  }
+  
+  protected static void _privk3_finishedEvents(final ShipyardV4RootAspectShipyardV4RootAspectProperties _self_, final ShipyardV4Root _self, final Set<String> finishedEvents) {
+    boolean setterCalled = false;
+    try {
+    	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
+    		if (m.getName().equals("setFinishedEvents")
+    				&& m.getParameterTypes().length == 1) {
+    			m.invoke(_self, finishedEvents);
+    			setterCalled = true;
+    		}
+    	}
+    } catch (Exception e) {
+    	// Chut !
+    }
+    if (!setterCalled) {
+    	_self_.finishedEvents = finishedEvents;
     }
   }
 }
