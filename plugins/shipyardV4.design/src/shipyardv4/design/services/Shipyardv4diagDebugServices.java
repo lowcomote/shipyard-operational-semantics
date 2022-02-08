@@ -6,6 +6,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractGemocDebuggerServices;
+import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractGemocAnimatorServices.StringCouple;
 
 import shipyardV4.Sequence;
 
@@ -28,17 +29,6 @@ public class Shipyardv4diagDebugServices extends AbstractGemocDebuggerServices {
 		res.add(new StringCouple("ShipyardV4Diag", "Animation"));
 
 		return res;
-	}
-	
-	public boolean isCurrentState(EObject o){     
-		if(o instanceof Sequence){
-			//TODO we do not know the sequence that is currently executing
-			//(SequenceAs)EcoreUtil.getRootContainer(o);
-			//return ; 
-		} else {
-			return false;
-		}
-		return false;
 	}
 	
 	@Override

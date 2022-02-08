@@ -83,7 +83,7 @@
       </additionalLayers>
       <additionalLayers name="Animation">
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Current Element" preconditionExpression="service:self.isCurrentElement" imageExpression="\shipyardV4.design\icons\cursor-3-24.png" mappings="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer'] //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer'] //@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@subNodeMappings[name='TaskNode']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Current Element" position="SOUTH_EAST" preconditionExpression="service:self.isCurrentTask()" imageExpression="\shipyardV4.design\icons\cursor-3-24.png" mappings="//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@containerMappings[name='StageContainer']/@subContainerMappings[name='SequenceContainer']/@subNodeMappings[name='TaskNode']"/>
         </decorationDescriptionsSet>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
@@ -96,6 +96,7 @@
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="shipyardv4.design.Services"/>
     <ownedJavaExtensions qualifiedClassName="shipyardv4.design.services.Shipyardv4diagDebugServices"/>
+    <ownedJavaExtensions qualifiedClassName="shipyardv4.design.services.Shipyardv4diagAnimatorServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="ShipyardV4Diag Palette">
     <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="0" name="current instruction"/>
