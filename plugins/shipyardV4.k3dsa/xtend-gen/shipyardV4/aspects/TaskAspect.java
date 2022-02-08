@@ -2,7 +2,10 @@ package shipyardV4.aspects;
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import fr.inria.diverse.k3.al.annotationprocessor.Step;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import shipyardV4.ShipyardV4Root;
 import shipyardV4.Task;
 
 @Aspect(className = Task.class)
@@ -33,5 +36,9 @@ public class TaskAspect {
     String _string = _self.toString();
     String _plus = ("Fire: " + _string);
     InputOutput.<String>println(_plus);
+    EObject shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
+    if ((shipyardV4RootObject instanceof ShipyardV4Root)) {
+      ShipyardV4RootAspect.currentTask(((ShipyardV4Root)shipyardV4RootObject), _self);
+    }
   }
 }

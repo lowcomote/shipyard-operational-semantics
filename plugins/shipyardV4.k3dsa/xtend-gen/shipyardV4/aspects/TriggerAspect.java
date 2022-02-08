@@ -2,7 +2,11 @@ package shipyardV4.aspects;
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import fr.inria.diverse.k3.al.annotationprocessor.Step;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import shipyardV4.SelectorMatchPatternProperties0;
+import shipyardV4.ShipyardV4Root;
 import shipyardV4.Trigger;
 import shipyardv4.design.api.ShipyardUtils;
 
@@ -34,6 +38,20 @@ public class TriggerAspect {
     String _string = _self.toString();
     String _plus = ("Fire: " + _string);
     InputOutput.<String>println(_plus);
-    SequenceAspect.step(ShipyardUtils.getSequenceByTrigger(_self));
+    SelectorMatchPatternProperties0 selectorMatchPatternProperties0 = ShipyardUtils.getSelectorMatchPatternProperties0ByTrigger(_self);
+    if ((selectorMatchPatternProperties0 != null)) {
+      String event = ShipyardUtils.getEventStringByTrigger(_self);
+      String _string_1 = selectorMatchPatternProperties0.getPatternProperties0().toString();
+      String resultEvent = ((event + ".") + _string_1);
+      EObject shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
+      if ((shipyardV4RootObject instanceof ShipyardV4Root)) {
+        boolean _contains = ShipyardV4RootAspect.finishedEvents(((ShipyardV4Root)shipyardV4RootObject)).contains(resultEvent);
+        if (_contains) {
+          SequenceAspect.step(ShipyardUtils.getSequenceByTrigger(_self));
+        }
+      }
+    } else {
+      SequenceAspect.step(ShipyardUtils.getSequenceByTrigger(_self));
+    }
   }
 }
