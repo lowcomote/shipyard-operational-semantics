@@ -102,7 +102,7 @@ class ShipyardV4RootAspect {
 	
 	public String inputSequence;
 	public Map<String,Collection<Trigger>> eventStringTriggerMap;
-	
+			
 	@Step 												
 	@InitializeModel									
 	def void initializeModel(List<String> args){
@@ -124,7 +124,6 @@ class ShipyardV4RootAspect {
 		}
 		currentSequence.step();
 	}	
-	
 	
 }
 
