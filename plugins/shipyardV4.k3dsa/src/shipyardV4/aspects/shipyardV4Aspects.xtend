@@ -105,6 +105,9 @@ class ShipyardV4RootAspect {
 	public String inputSequence;
 	public Map<String,Collection<Trigger>> eventStringTriggerMap;
 	public Set<String> finishedEvents;
+	public Task currentTask = null;
+	
+	
 	
 	@Step 												
 	@InitializeModel									
@@ -183,6 +186,10 @@ class TaskAspect {
 	@Step												
 	def void fireTask() {
 		println("Fire: " + _self.toString);
+		var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
+	    if (shipyardV4RootObject instanceof ShipyardV4Root) {
+	    	shipyardV4RootObject.currentTask=_self;
+		}
 	}
 }
 
