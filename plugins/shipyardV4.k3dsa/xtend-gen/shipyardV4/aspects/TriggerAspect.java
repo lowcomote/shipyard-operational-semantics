@@ -5,10 +5,10 @@ import fr.inria.diverse.k3.al.annotationprocessor.Step;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import shipyard.common.utils.ShipyardUtils;
 import shipyardV4.SelectorMatchPatternProperties0;
 import shipyardV4.ShipyardV4Root;
 import shipyardV4.Trigger;
-import shipyardv4.design.api.ShipyardUtils;
 
 @Aspect(className = Trigger.class)
 @SuppressWarnings("all")

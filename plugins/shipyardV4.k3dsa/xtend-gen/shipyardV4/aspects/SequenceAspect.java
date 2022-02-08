@@ -6,11 +6,11 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import shipyard.common.utils.ShipyardUtils;
 import shipyardV4.Sequence;
 import shipyardV4.ShipyardV4Root;
 import shipyardV4.Task;
 import shipyardV4.Trigger;
-import shipyardv4.design.api.ShipyardUtils;
 
 @Aspect(className = Sequence.class)
 @SuppressWarnings("all")
@@ -42,7 +42,13 @@ public class SequenceAspect {
     InputOutput.<String>println(_plus);
     Collection<Task> _tasks = ShipyardUtils.getTasks(_self);
     for (final Task task : _tasks) {
-      TaskAspect.fireTask(task);
+      {
+        EObject shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
+        if ((shipyardV4RootObject instanceof ShipyardV4Root)) {
+          ShipyardV4RootAspect.currentTask(((ShipyardV4Root)shipyardV4RootObject), task);
+          TaskAspect.fireTask(task);
+        }
+      }
     }
     String sequenceFinishedEvent = ShipyardUtils.getFinishedSequenceEvent(_self);
     EObject shipyardV4RootObject = EcoreUtil.getRootContainer(_self);

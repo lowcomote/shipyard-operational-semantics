@@ -7,10 +7,6 @@ import shipyardV4.aspects.TaskAspectTaskAspectContext;
 public class ShipyardOperationalSemanticsUtils {
 	
 	public static final String DEFAULT_INPUT_SEQUENCE = "dev.delivery";
-<<<<<<< HEAD
-	public static final String FINISHED = "finished";	
-
-=======
 	public static final String FINISHED = "finished";
 	public static final String RESULT_PASS ="pass";
 	public static final String RESULT_FAILED ="failed";
@@ -29,5 +25,4 @@ public class ShipyardOperationalSemanticsUtils {
 		return isFinishedEvent;
 	}
 	
->>>>>>> bd124dfe6c283719e4ae77ecaa7ddecb1498af97
 }

@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 
+import shipyard.common.utils.ShipyardUtils;
 import shipyardV4.SelectorMatchPatternProperties0;
 import shipyardV4.Sequence;
 import shipyardV4.ShipyardV4Root;
@@ -14,7 +15,6 @@ import shipyardV4.Stage;
 import shipyardV4.Task;
 import shipyardV4.TaskPropertiesAdditionalProperties;
 import shipyardV4.Trigger;
-import shipyardv4.design.api.ShipyardUtils;
 
 /**
  * The services class used by VSM.

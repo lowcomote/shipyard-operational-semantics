@@ -56,13 +56,15 @@ import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
 import fr.inria.diverse.k3.al.annotationprocessor.Step
 import shipyardV4.aspects.utils.ShipyardOperationalSemanticsUtils
 import java.util.List
-import shipyardv4.design.api.ShipyardUtils
 import fr.inria.diverse.k3.al.annotationprocessor.Main
 import java.util.Map
 import java.util.HashMap
 import java.util.Set
 import java.util.Collection
 import org.eclipse.emf.ecore.util.EcoreUtil
+import java.util.ArrayList
+import java.util.HashSet
+import shipyard.common.utils.ShipyardUtils
 
 //import static extension shipyardv4.aspects.MetadataNameAspect.*
 //import static extension shipyardv4.aspects.SelectorMatchAspect.*
@@ -102,16 +104,36 @@ class ShipyardV4RootAspect {
 	
 	public String inputSequence;
 	public Map<String,Collection<Trigger>> eventStringTriggerMap;
-			
+	public Set<String> finishedEvents;
+	public Task currentTask = null;	
+	
 	@Step 												
 	@InitializeModel									
 	def void initializeModel(List<String> args){
-		_self.inputSequence = args.get(0);	
-		//Default Input Sequence
-		if(_self.inputSequence.isEmpty) {
+		var arg0 = args.get(0);
+		if(arg0.isEmpty || ShipyardOperationalSemanticsUtils.isFinishedEvent(arg0)){
 			_self.inputSequence = ShipyardOperationalSemanticsUtils.DEFAULT_INPUT_SEQUENCE;
-		}		
-		// find all events String
+		}else{
+			_self.inputSequence = arg0;	
+		}
+		
+		_self.finishedEvents=new HashSet<String>();
+		
+		for (arg : args) {
+			if(ShipyardOperationalSemanticsUtils.isFinishedEvent(arg)){
+				_self.finishedEvents.add(arg);
+			}
+		}
+		
+		
+		
+		//_self.inputSequence = args.get(0);	
+		/**
+		 * Default Input Sequence
+		 */
+//		if(_self.inputSequence.isEmpty) {
+//			_self.inputSequence = ShipyardOperationalSemanticsUtils.DEFAULT_INPUT_SEQUENCE;
+//		}		
 		_self.eventStringTriggerMap = ShipyardUtils.createEventStringTriggerMap(_self);
 	}
 	
@@ -136,7 +158,11 @@ class SequenceAspect {
 		 * Execute all tasks in the sequence
 		 */
 		for(Task task: ShipyardUtils.getTasks(_self)){
-			task.fireTask;
+			var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
+		    if (shipyardV4RootObject instanceof ShipyardV4Root) {
+		    	shipyardV4RootObject.currentTask=task;
+		    	task.fireTask;
+			}			
 		}
 		
 		var String sequenceFinishedEvent =ShipyardUtils.getFinishedSequenceEvent(_self);
@@ -161,6 +187,10 @@ class TaskAspect {
 	@Step												
 	def void fireTask() {
 		println("Fire: " + _self.toString);
+		//var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
+	    //if (shipyardV4RootObject instanceof ShipyardV4Root) {
+	    	//shipyardV4RootObject.currentTask=_self;
+		//}
 	}
 }
 
@@ -169,7 +199,25 @@ class TriggerAspect {
 	@Step												
 	def void fireTrigger() {
 		println("Fire: " + _self.toString);
-		ShipyardUtils.getSequenceByTrigger(_self).step()
+		var  selectorMatchPatternProperties0 = ShipyardUtils.getSelectorMatchPatternProperties0ByTrigger(_self);
+		if(selectorMatchPatternProperties0!==null){
+			var event = ShipyardUtils.getEventStringByTrigger(_self);
+			var resultEvent= event+"."+selectorMatchPatternProperties0.patternProperties0.toString;
+			var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
+	    	if (shipyardV4RootObject instanceof ShipyardV4Root) {
+	    		if(shipyardV4RootObject.finishedEvents.contains(resultEvent)){
+	    			ShipyardUtils.getSequenceByTrigger(_self).step();
+	    		}
+	    	}
+			
+		}else{
+			ShipyardUtils.getSequenceByTrigger(_self).step()
+		}
+		
+		/**
+		 * TODO check selector
+		 */
+		//ShipyardUtils.getSequenceByTrigger(_self).step()
 	}
 }
 

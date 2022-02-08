@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import shipyard.common.utils.ShipyardUtils;
 import shipyardV4.Sequence;
 import shipyardV4.ShipyardV4Root;
 import shipyardV4.Task;
 import shipyardV4.Trigger;
 import shipyardV4.aspects.utils.ShipyardOperationalSemanticsUtils;
-import shipyardv4.design.api.ShipyardUtils;
 
 @Aspect(className = ShipyardV4Root.class)
 @SuppressWarnings("all")
