@@ -6,27 +6,14 @@
 
 <plugin>
 
+
+
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated ShipyardExecConfig -->
       <package
             uri="http://jku.bise.at/shipyardV4/ShipyardExecConfig"
-            class="shipyardv4.execution.configuration.ShipyardExecConfig.ShipyardExecConfigPackage"
-            genModel="model/ShipyardExecConfig.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated ShipyardExecConfig -->
-      <package
-            uri="http://jku.bise.at/shipyardV4"
-            class="shipyardV4.ShipyardV4Package"
-            genModel="model/ShipyardExecConfig.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated ShipyardExecConfig -->
-      <package
-            uri="http://at.jku.bise/jsonMetaschemaMM"
-            class="jsonMetaschemaMM.JsonMetaschemaMMPackage"
+            class="ShipyardExecConfig.ShipyardExecConfigPackage"
             genModel="model/ShipyardExecConfig.genmodel"/>
    </extension>
 
