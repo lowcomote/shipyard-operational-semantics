@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ShipyardExecConfig" nsURI="http://jku.bise.at/shipyardV4/ShipyardExecConfig"
+    nsPrefix="shipconf">
+  <eClassifiers xsi:type="ecore:EClass" name="ShipyardExecutionSuite" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shipyardV4Root" eType="ecore:EClass http://jku.bise.at/shipyardV4#//ShipyardV4Root"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executionConfigurations"
+        upperBound="-1" eType="#//ExecutionConfiguration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionConfiguration" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialSequence" eType="ecore:EClass http://jku.bise.at/shipyardV4#//Sequence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceFinishedResult"
+        eType="#//SequenceFinishedResult" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="taskFinishedResult" eType="#//TaskFinishedResult"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceFinishedResult">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="passedSequences" upperBound="-1"
+        eType="ecore:EClass http://jku.bise.at/shipyardV4#//Sequence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="warningSequences" upperBound="-1"
+        eType="ecore:EClass http://jku.bise.at/shipyardV4#//Sequence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="failedSequence" upperBound="-1"
+        eType="ecore:EClass http://jku.bise.at/shipyardV4#//Sequence"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskFinishedResult">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="passedTasks" upperBound="-1"
+        eType="ecore:EClass http://jku.bise.at/shipyardV4#//Task"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="warningTasks" upperBound="-1"
+        eType="ecore:EClass http://jku.bise.at/shipyardV4#//Task"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="failedTasks" upperBound="-1"
+        eType="ecore:EClass http://jku.bise.at/shipyardV4#//Task"/>
+  </eClassifiers>
+</ecore:EPackage>
