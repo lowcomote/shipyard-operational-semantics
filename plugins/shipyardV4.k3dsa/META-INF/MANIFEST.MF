@@ -11,7 +11,7 @@ Require-Bundle: fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version
  org.eclipse.emf.ecore;bundle-version="2.8.0";visibility:=reexport,
  org.eclipse.emf.common;bundle-version="2.8.0";visibility:=reexport,
  shipyardV4;bundle-version="0.0.0";visibility:=private,
- shipyardV4.design;bundle-version="1.0.0"
+ shipyard.common.utils;bundle-version="1.0.0"
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: shipyardV4.aspects

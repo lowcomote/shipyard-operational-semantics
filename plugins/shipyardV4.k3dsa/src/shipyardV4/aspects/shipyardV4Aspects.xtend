@@ -56,7 +56,6 @@ import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
 import fr.inria.diverse.k3.al.annotationprocessor.Step
 import shipyardV4.aspects.utils.ShipyardOperationalSemanticsUtils
 import java.util.List
-import shipyardv4.design.api.ShipyardUtils
 import fr.inria.diverse.k3.al.annotationprocessor.Main
 import java.util.Map
 import java.util.HashMap
@@ -65,6 +64,7 @@ import java.util.Collection
 import org.eclipse.emf.ecore.util.EcoreUtil
 import java.util.ArrayList
 import java.util.HashSet
+import shipyard.common.utils.ShipyardUtils
 
 //import static extension shipyardv4.aspects.MetadataNameAspect.*
 //import static extension shipyardv4.aspects.SelectorMatchAspect.*
@@ -105,9 +105,7 @@ class ShipyardV4RootAspect {
 	public String inputSequence;
 	public Map<String,Collection<Trigger>> eventStringTriggerMap;
 	public Set<String> finishedEvents;
-	public Task currentTask = null;
-	
-	
+	public Task currentTask = null;	
 	
 	@Step 												
 	@InitializeModel									
@@ -149,7 +147,6 @@ class ShipyardV4RootAspect {
 		currentSequence.step();
 	}	
 	
-	
 }
 
 @Aspect(className=Sequence)
@@ -161,7 +158,11 @@ class SequenceAspect {
 		 * Execute all tasks in the sequence
 		 */
 		for(Task task: ShipyardUtils.getTasks(_self)){
-			task.fireTask;
+			var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
+		    if (shipyardV4RootObject instanceof ShipyardV4Root) {
+		    	shipyardV4RootObject.currentTask=task;
+		    	task.fireTask;
+			}			
 		}
 		
 		var String sequenceFinishedEvent =ShipyardUtils.getFinishedSequenceEvent(_self);
@@ -186,10 +187,10 @@ class TaskAspect {
 	@Step												
 	def void fireTask() {
 		println("Fire: " + _self.toString);
-		var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
-	    if (shipyardV4RootObject instanceof ShipyardV4Root) {
-	    	shipyardV4RootObject.currentTask=_self;
-		}
+		//var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
+	    //if (shipyardV4RootObject instanceof ShipyardV4Root) {
+	    	//shipyardV4RootObject.currentTask=_self;
+		//}
 	}
 }
 
