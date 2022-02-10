@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated shipyardV4Opt -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="shipyardV4.presentation.ShipyardV4ModelWizardID"
+            name="%_UI_ShipyardV4ModelWizard_label"
+            class="shipyardV4.presentation.ShipyardV4ModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ShipyardV4ModelFile.gif">
+         <description>%_UI_ShipyardV4ModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated shipyardV4Opt -->
+      <editor
+            id="shipyardV4.presentation.ShipyardV4EditorID"
+            name="%_UI_ShipyardV4Editor_label"
+            icon="icons/full/obj16/ShipyardV4ModelFile.gif"
+            extensions="shipyardv4"
+            class="shipyardV4.presentation.ShipyardV4Editor"
+            contributorClass="shipyardV4.presentation.ShipyardV4ActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

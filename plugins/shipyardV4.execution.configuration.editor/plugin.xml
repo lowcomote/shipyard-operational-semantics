@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated ShipyardExecConfig -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="ShipyardExecConfig.presentation.ShipyardExecConfigModelWizardID"
+            name="%_UI_ShipyardExecConfigModelWizard_label"
+            class="ShipyardExecConfig.presentation.ShipyardExecConfigModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ShipyardExecConfigModelFile.gif">
+         <description>%_UI_ShipyardExecConfigModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated ShipyardExecConfig -->
+      <editor
+            id="ShipyardExecConfig.presentation.ShipyardExecConfigEditorID"
+            name="%_UI_ShipyardExecConfigEditor_label"
+            icon="icons/full/obj16/ShipyardExecConfigModelFile.gif"
+            extensions="shipyardexecconfig"
+            class="ShipyardExecConfig.presentation.ShipyardExecConfigEditor"
+            contributorClass="ShipyardExecConfig.presentation.ShipyardExecConfigActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
