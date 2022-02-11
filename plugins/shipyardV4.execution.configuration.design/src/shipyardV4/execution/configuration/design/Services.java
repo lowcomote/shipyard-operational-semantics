@@ -10,7 +10,6 @@ import ShipyardExecConfig.SequenceFinishedResult;
 import ShipyardExecConfig.ShipyardExecutionSuite;
 import shipyard.common.utils.ShipyardUtils;
 import shipyardV4.Sequence;
-import shipyardV4.execution.configuration.design.utils.ShipyardExecutionConfigurationUtils;
 
 /**
  * The services class used by VSM.
