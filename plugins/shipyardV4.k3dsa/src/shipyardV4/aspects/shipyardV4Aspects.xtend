@@ -65,6 +65,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 import java.util.ArrayList
 import java.util.HashSet
 import shipyard.common.utils.ShipyardUtils
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.emf.ecore.resource.Resource
+import ShipyardExecConfig.ShipyardExecutionSuite
+import ShipyardExecConfig.ExecutionConfiguration
+import shipyard.common.utils.ShipyardExecutionConfigurationUtils
 
 //import static extension shipyardv4.aspects.MetadataNameAspect.*
 //import static extension shipyardv4.aspects.SelectorMatchAspect.*
@@ -104,12 +111,49 @@ class ShipyardV4RootAspect {
 	
 	public String inputSequence;
 	public Map<String,Collection<Trigger>> eventStringTriggerMap;
-	public Set<String> finishedEvents;
-	public Task currentTask = null;	
+	//public Set<String> finishedEvents;
+	public Task currentTask = null;
+
+	public ExecutionConfiguration executionConfiguration;
+	
+	//public ShipyardExecutionSuite shipyardExecutionSuite = null;
 	
 	@Step 												
 	@InitializeModel									
 	def void initializeModel(List<String> args){
+		var	URI shipyardexecconfigURI= _self.eResource.URI.trimFileExtension.appendFileExtension("shipyardexecconfig");
+		
+		var ResourceSet reset= _self.eResource.resourceSet;
+		var Resource resource = reset.getResource(shipyardexecconfigURI, true);
+		var ShipyardExecutionSuite shipyardExecutionSuite = resource.contents.get(0) as ShipyardExecutionSuite;
+		if (! _self.equals(shipyardExecutionSuite.shipyardV4Root)){
+			throw new ShipyardRuntimeException("Shipyard Root is expected to be equal to the shipyardV4Root of the Shipyard Execution Suite ")
+		}
+		
+		//var ShipyardExecutionSuite shipyardExecutionSuite = resource.contents.get(0) as ShipyardExecutionSuite;
+		
+		_self.eventStringTriggerMap = ShipyardUtils.createEventStringTriggerMap(_self);
+		
+		/**
+		 * Execution Configuration set up
+		 */
+		_self.executionConfiguration=null
+		_self.inputSequence = ShipyardOperationalSemanticsUtils.DEFAULT_INPUT_SEQUENCE;
+		if(!args.get(0).isEmpty){
+			_self.executionConfiguration = ShipyardExecutionConfigurationUtils.getExecutionConfiguration(shipyardExecutionSuite, args.get(0));
+			if(_self.executionConfiguration!==null){
+				var Sequence initialSequence =  _self.executionConfiguration.initialSequence;
+				if(initialSequence !== null){
+					_self.inputSequence=ShipyardUtils.getSequencePathName(initialSequence);
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		/***************
 		var arg0 = args.get(0);
 		if(arg0.isEmpty || ShipyardOperationalSemanticsUtils.isFinishedEvent(arg0)){
 			_self.inputSequence = ShipyardOperationalSemanticsUtils.DEFAULT_INPUT_SEQUENCE;
@@ -124,17 +168,11 @@ class ShipyardV4RootAspect {
 				_self.finishedEvents.add(arg);
 			}
 		}
+		 *****************/
 		
 		
+				
 		
-		//_self.inputSequence = args.get(0);	
-		/**
-		 * Default Input Sequence
-		 */
-//		if(_self.inputSequence.isEmpty) {
-//			_self.inputSequence = ShipyardOperationalSemanticsUtils.DEFAULT_INPUT_SEQUENCE;
-//		}		
-		_self.eventStringTriggerMap = ShipyardUtils.createEventStringTriggerMap(_self);
 	}
 	
 	@Step	
@@ -157,26 +195,37 @@ class SequenceAspect {
 		/**
 		 * Execute all tasks in the sequence
 		 */
+		var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
 		for(Task task: ShipyardUtils.getTasks(_self)){
-			var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
-		    if (shipyardV4RootObject instanceof ShipyardV4Root) {
-		    	shipyardV4RootObject.currentTask=task;
-		    	task.fireTask;
-			}			
+//			var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
+		    shipyardV4Root.currentTask=task;
+		    task.fireTask;
+//		    if (shipyardV4RootObject instanceof ShipyardV4Root) {
+//		    	shipyardV4RootObject.currentTask=task;
+//		    	task.fireTask;
+//			}			
 		}
 		
 		var String sequenceFinishedEvent =ShipyardUtils.getFinishedSequenceEvent(_self);
 		
-	    var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
-	    if (shipyardV4RootObject instanceof ShipyardV4Root) {
-	    	var  triggers = shipyardV4RootObject.eventStringTriggerMap.get(sequenceFinishedEvent);
-	    	if(triggers !== null){
-			    for (Trigger trigger : triggers){
-			    	trigger.fireTrigger();
-			    }
-		    
+		var  triggers = shipyardV4Root.eventStringTriggerMap.get(sequenceFinishedEvent);
+    	if(triggers !== null){
+		    for (Trigger trigger : triggers){
+		    	trigger.fireTrigger();
 		    }
-		}
+	    
+	    }
+		
+//	    var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
+//	    if (shipyardV4RootObject instanceof ShipyardV4Root) {
+//	    	var  triggers = shipyardV4RootObject.eventStringTriggerMap.get(sequenceFinishedEvent);
+//	    	if(triggers !== null){
+//			    for (Trigger trigger : triggers){
+//			    	trigger.fireTrigger();
+//			    }
+//		    
+//		    }
+//		}
 
 		
 	}
@@ -201,23 +250,42 @@ class TriggerAspect {
 		println("Fire: " + _self.toString);
 		var  selectorMatchPatternProperties0 = ShipyardUtils.getSelectorMatchPatternProperties0ByTrigger(_self);
 		if(selectorMatchPatternProperties0!==null){
+			var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
 			var event = ShipyardUtils.getEventStringByTrigger(_self);
-			var resultEvent= event+"."+selectorMatchPatternProperties0.patternProperties0.toString;
-			var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
-	    	if (shipyardV4RootObject instanceof ShipyardV4Root) {
-	    		if(shipyardV4RootObject.finishedEvents.contains(resultEvent)){
-	    			ShipyardUtils.getSequenceByTrigger(_self).step();
-	    		}
-	    	}
+			var finishedSequencePathName = event.substring(0, event.lastIndexOf(".") );
+			var Sequence finishedSequence = ShipyardUtils.getSequenceByPath(shipyardV4Root, finishedSequencePathName);
+			var result = selectorMatchPatternProperties0.patternProperties0.toString;
+			if(ShipyardOperationalSemanticsUtils.RESULT_PASS.equals(result)){
+				if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.passedSequences.contains(finishedSequence)){
+					ShipyardUtils.getSequenceByTrigger(_self).step();
+				}
+			}else if(ShipyardOperationalSemanticsUtils.RESULT_FAILED.equals(result)){
+				if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.failedSequence.contains(finishedSequence)){
+					ShipyardUtils.getSequenceByTrigger(_self).step();
+				}
+			}else if(ShipyardOperationalSemanticsUtils.RESULT_WARNING.equals(result)){
+				if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.warningSequences.contains(finishedSequence)){
+					ShipyardUtils.getSequenceByTrigger(_self).step();
+				}
+				
+			}
+			
+			/**
+			 * TODO Process triggers on tasks
+			 */
+//			var resultEvent= event+"."+selectorMatchPatternProperties0.patternProperties0.toString;
+//			var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
+//	    	if (shipyardV4RootObject instanceof ShipyardV4Root) {
+//	    		if(shipyardV4RootObject.finishedEvents.contains(resultEvent)){
+//	    			ShipyardUtils.getSequenceByTrigger(_self).step();
+//	    		}
+//	    	}
 			
 		}else{
 			ShipyardUtils.getSequenceByTrigger(_self).step()
 		}
 		
-		/**
-		 * TODO check selector
-		 */
-		//ShipyardUtils.getSequenceByTrigger(_self).step()
+
 	}
 }
 

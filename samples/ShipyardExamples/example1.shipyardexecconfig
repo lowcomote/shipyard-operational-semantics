@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shipconf:ShipyardExecutionSuite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:shipconf="http://jku.bise.at/shipyardV4/ShipyardExecConfig" name="Example 1 Execution">
+  <shipyardV4Root href="example1.shipyardV4#/"/>
+  <executionConfigurations name="Default"/>
+  <executionConfigurations name="Well_flow">
+    <initialSequence href="example1.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.0/@items/@Stage.1/@sequences.0/@items"/>
+  </executionConfigurations>
+  <executionConfigurations name="Rollback">
+    <initialSequence href="example1.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.0/@items/@Stage.1/@sequences.0/@items"/>
+    <sequenceFinishedResult>
+      <failedSequence href="example1.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.0/@items"/>
+    </sequenceFinishedResult>
+  </executionConfigurations>
+  <executionConfigurations name="Remediation">
+    <initialSequence href="example1.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.2/@items"/>
+  </executionConfigurations>
+</shipconf:ShipyardExecutionSuite>
