@@ -73,6 +73,7 @@ import ShipyardExecConfig.ShipyardExecutionSuite
 import ShipyardExecConfig.ExecutionConfiguration
 import shipyard.common.utils.ShipyardExecutionConfigurationUtils
 
+
 //import static extension shipyardv4.aspects.MetadataNameAspect.*
 //import static extension shipyardv4.aspects.SelectorMatchAspect.*
 //import static extension shipyardv4.aspects.SequenceNameAspect.*
@@ -115,7 +116,7 @@ class ShipyardV4RootAspect {
 	public Task currentTask = null;
 
 	public ExecutionConfiguration executionConfiguration;
-	
+	public Collection<Task> executedTasks = new ArrayList<Task>()
 	//public ShipyardExecutionSuite shipyardExecutionSuite = null;
 	
 	@Step 												
@@ -183,29 +184,88 @@ class ShipyardV4RootAspect {
 			throw new ShipyardRuntimeException("Not Input Sequence found");
 		}
 		currentSequence.step();
+		
+		if(_self.executionConfiguration!==null && _self.executionConfiguration.expectedExecution!==null){
+			var validation = true;
+			if(_self.executionConfiguration.expectedExecution.expectedTasks.size !== _self.executedTasks.size){
+				validation=false;
+				println("Expected number of tasks not the same as the executed number of tasks: " + _self.toString);
+				println("Expected number of tasks:  " + _self.executionConfiguration.expectedExecution.expectedTasks.size);
+				println("Executed number of tasks:  " + _self.executedTasks.size);
+			}else{
+				var numberOfTasks = _self.executedTasks.size;
+				for (var int i=0; i<numberOfTasks; i++){
+					if(!_self.executionConfiguration.expectedExecution.expectedTasks.get(i).equals(_self.executedTasks.get(i))){
+						validation=false;
+						println("Task " + i + " not correct");
+						println("Expected Task " + i + ": "+ _self.executionConfiguration.expectedExecution.expectedTasks.get(i).toString);
+						println("Executed Task " + i + ": "+_self.executedTasks.get(i).toString);
+					}
+				}
+			}
+			
+		}
 	}	
 	
 }
 
 @Aspect(className=Sequence)
 class SequenceAspect {
+	public String result=ShipyardOperationalSemanticsUtils.RESULT_PASS;
 	@Step												
 	def void step() {
 		println("Step Sequence: " + _self.toString);
+		var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
+		var continue = true;
 		/**
 		 * Execute all tasks in the sequence
 		 */
-		var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
 		for(Task task: ShipyardUtils.getTasks(_self)){
-//			var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
-		    shipyardV4Root.currentTask=task;
-		    task.fireTask;
-//		    if (shipyardV4RootObject instanceof ShipyardV4Root) {
-//		    	shipyardV4RootObject.currentTask=task;
-//		    	task.fireTask;
-//			}			
+			/**
+			 * Once a task failed, all the following ones inside the sequence will be skipped
+			 */
+			if(continue){
+			    shipyardV4Root.currentTask=task;
+			    task.fireTask;
+			    if(task.result.equals(ShipyardOperationalSemanticsUtils.RESULT_FAILED)){
+			    	_self.result=ShipyardOperationalSemanticsUtils.RESULT_FAILED;
+			    	continue=false;
+			    }else if (task.result.equals(ShipyardOperationalSemanticsUtils.RESULT_WARNING) 
+			    	&&  _self.result.equals(ShipyardOperationalSemanticsUtils.RESULT_PASS)){
+			    		_self.result=ShipyardOperationalSemanticsUtils.RESULT_WARNING;
+			    	}
+			    
+		    }
 		}
-		
+
+		/**
+	     * Check executed Sequence result
+	     */
+		if(shipyardV4Root.executionConfiguration!==null){
+			if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.failedSequence.contains(_self)){
+				_self.result=ShipyardOperationalSemanticsUtils.RESULT_FAILED;
+			}else if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.warningSequences.contains(_self)
+				&&  _self.result.equals(ShipyardOperationalSemanticsUtils.RESULT_PASS)
+			){
+				_self.result=ShipyardOperationalSemanticsUtils.RESULT_WARNING;
+			}
+//			else {
+//				/**
+//				 * PASS or Nothing
+//				 */
+//				_self.result=ShipyardOperationalSemanticsUtils.RESULT_PASS;
+//			}
+		}
+//		else{
+//			/**
+//			 * TODO check if for default it is RESULT_PASS
+//			 */
+//			_self.result=ShipyardOperationalSemanticsUtils.RESULT_PASS;
+//		}
+
+		/**
+		 * 
+		 */
 		var String sequenceFinishedEvent =ShipyardUtils.getFinishedSequenceEvent(_self);
 		
 		var  triggers = shipyardV4Root.eventStringTriggerMap.get(sequenceFinishedEvent);
@@ -215,17 +275,9 @@ class SequenceAspect {
 		    }
 	    
 	    }
-		
-//	    var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
-//	    if (shipyardV4RootObject instanceof ShipyardV4Root) {
-//	    	var  triggers = shipyardV4RootObject.eventStringTriggerMap.get(sequenceFinishedEvent);
-//	    	if(triggers !== null){
-//			    for (Trigger trigger : triggers){
-//			    	trigger.fireTrigger();
-//			    }
-//		    
-//		    }
-//		}
+	    
+	    
+
 
 		
 	}
@@ -233,13 +285,31 @@ class SequenceAspect {
 
 @Aspect(className=Task)
 class TaskAspect {
+	public String result;
 	@Step												
 	def void fireTask() {
 		println("Fire: " + _self.toString);
-		//var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
-	    //if (shipyardV4RootObject instanceof ShipyardV4Root) {
-	    	//shipyardV4RootObject.currentTask=_self;
-		//}
+		var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
+		shipyardV4Root.executedTasks.add(_self)
+		if(shipyardV4Root.executionConfiguration!==null && shipyardV4Root.executionConfiguration.taskFinishedResult !==null){
+			if(shipyardV4Root.executionConfiguration.taskFinishedResult.failedTasks.contains(_self)){
+				_self.result=ShipyardOperationalSemanticsUtils.RESULT_FAILED;
+			}else if(shipyardV4Root.executionConfiguration.taskFinishedResult.warningTasks.contains(_self)){
+				_self.result=ShipyardOperationalSemanticsUtils.RESULT_WARNING;
+			}else {
+				/**
+				 * PASS or Nothing
+				 */
+				_self.result=ShipyardOperationalSemanticsUtils.RESULT_PASS;
+			}
+		}else{
+			/**
+			 * TODO check if for default it is RESULT_PASS
+			 */
+			_self.result=ShipyardOperationalSemanticsUtils.RESULT_PASS;
+		}
+		
+		
 	}
 }
 
@@ -248,42 +318,70 @@ class TriggerAspect {
 	@Step												
 	def void fireTrigger() {
 		println("Fire: " + _self.toString);
-		var  selectorMatchPatternProperties0 = ShipyardUtils.getSelectorMatchPatternProperties0ByTrigger(_self);
-		if(selectorMatchPatternProperties0!==null){
-			var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
-			var event = ShipyardUtils.getEventStringByTrigger(_self);
-			var finishedSequencePathName = event.substring(0, event.lastIndexOf(".") );
-			var Sequence finishedSequence = ShipyardUtils.getSequenceByPath(shipyardV4Root, finishedSequencePathName);
-			var result = selectorMatchPatternProperties0.patternProperties0.toString;
-			if(ShipyardOperationalSemanticsUtils.RESULT_PASS.equals(result)){
-				if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.passedSequences.contains(finishedSequence)){
-					ShipyardUtils.getSequenceByTrigger(_self).step();
+		var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
+		var event = ShipyardUtils.getEventStringByTrigger(_self);
+		var finishedSequencePathName = event.substring(0, event.lastIndexOf(".") );
+		var Sequence finishedSequence = ShipyardUtils.getSequenceByPath(shipyardV4Root, finishedSequencePathName);
+		var selectorMatchPatternProperties0 = ShipyardUtils.getSelectorMatchPatternProperties0ByTrigger(_self);
+		var String result = null;
+		var Task finishedTask = null;
+		if (selectorMatchPatternProperties0!==null){ // Condition on trigger specified
+			 result = selectorMatchPatternProperties0.patternProperties0.toString;
+			 var key =selectorMatchPatternProperties0.key;
+			 var String[] splittedKey = key.split("\\.");
+			 if (splittedKey.length>1){// is triggered by a task
+			 	finishedTask = ShipyardUtils.getTaskWithName(finishedSequence, splittedKey.get(0));
+			 	if((result.equals(finishedTask.result))){
+					ShipyardUtils.getSequenceByTrigger(_self).step()
 				}
-			}else if(ShipyardOperationalSemanticsUtils.RESULT_FAILED.equals(result)){
-				if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.failedSequence.contains(finishedSequence)){
-					ShipyardUtils.getSequenceByTrigger(_self).step();
+			 }else{// is triggered by a sequence
+			 	if((result.equals(finishedSequence.result))){
+					ShipyardUtils.getSequenceByTrigger(_self).step()
 				}
-			}else if(ShipyardOperationalSemanticsUtils.RESULT_WARNING.equals(result)){
-				if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.warningSequences.contains(finishedSequence)){
-					ShipyardUtils.getSequenceByTrigger(_self).step();
-				}
-				
+			 }
+		}else{// Condition on trigger not specified
+			if(finishedSequence.result.equals(ShipyardOperationalSemanticsUtils.RESULT_PASS)){
+				ShipyardUtils.getSequenceByTrigger(_self).step()
 			}
-			
-			/**
-			 * TODO Process triggers on tasks
-			 */
-//			var resultEvent= event+"."+selectorMatchPatternProperties0.patternProperties0.toString;
-//			var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
-//	    	if (shipyardV4RootObject instanceof ShipyardV4Root) {
-//	    		if(shipyardV4RootObject.finishedEvents.contains(resultEvent)){
-//	    			ShipyardUtils.getSequenceByTrigger(_self).step();
-//	    		}
-//	    	}
-			
-		}else{
-			ShipyardUtils.getSequenceByTrigger(_self).step()
 		}
+		
+//		if((result.equals(null) && finishedSequence.result.equals(ShipyardOperationalSemanticsUtils.RESULT_PASS))||
+//			(!result.equals(null) && result.equals(finishedSequence.result))
+//		){
+//			ShipyardUtils.getSequenceByTrigger(_self).step()
+//		}
+		 
+		
+		
+//		if(selectorMatchPatternProperties0!==null){
+//			var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
+//			var event = ShipyardUtils.getEventStringByTrigger(_self);
+//			var finishedSequencePathName = event.substring(0, event.lastIndexOf(".") );
+//			var Sequence finishedSequence = ShipyardUtils.getSequenceByPath(shipyardV4Root, finishedSequencePathName);
+//			var result = selectorMatchPatternProperties0.patternProperties0.toString;
+//			if(ShipyardOperationalSemanticsUtils.RESULT_PASS.equals(result)){
+//				if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.passedSequences.contains(finishedSequence)){
+//					ShipyardUtils.getSequenceByTrigger(_self).step();
+//				}
+//			}else if(ShipyardOperationalSemanticsUtils.RESULT_FAILED.equals(result)){
+//				if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.failedSequence.contains(finishedSequence)){
+//					ShipyardUtils.getSequenceByTrigger(_self).step();
+//				}
+//			}else if(ShipyardOperationalSemanticsUtils.RESULT_WARNING.equals(result)){
+//				if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.warningSequences.contains(finishedSequence)){
+//					ShipyardUtils.getSequenceByTrigger(_self).step();
+//				}
+//				
+//			}
+//			
+//			/**
+//			 * TODO Process triggers on tasks
+//			 */
+//
+//			
+//		}else{
+//			ShipyardUtils.getSequenceByTrigger(_self).step()
+//		}
 		
 
 	}

@@ -3,6 +3,7 @@
 package ShipyardExecConfig.impl;
 
 import ShipyardExecConfig.ExecutionConfiguration;
+import ShipyardExecConfig.ExpectedExecution;
 import ShipyardExecConfig.SequenceFinishedResult;
 import ShipyardExecConfig.ShipyardExecConfigPackage;
 import ShipyardExecConfig.TaskFinishedResult;
@@ -28,6 +29,7 @@ import shipyardV4.Sequence;
  *   <li>{@link ShipyardExecConfig.impl.ExecutionConfigurationImpl#getInitialSequence <em>Initial Sequence</em>}</li>
  *   <li>{@link ShipyardExecConfig.impl.ExecutionConfigurationImpl#getSequenceFinishedResult <em>Sequence Finished Result</em>}</li>
  *   <li>{@link ShipyardExecConfig.impl.ExecutionConfigurationImpl#getTaskFinishedResult <em>Task Finished Result</em>}</li>
+ *   <li>{@link ShipyardExecConfig.impl.ExecutionConfigurationImpl#getExpectedExecution <em>Expected Execution</em>}</li>
  * </ul>
  *
  * @generated
@@ -62,6 +64,16 @@ public class ExecutionConfigurationImpl extends NamedElementImpl implements Exec
 	 * @ordered
 	 */
 	protected TaskFinishedResult taskFinishedResult;
+
+	/**
+	 * The cached value of the '{@link #getExpectedExecution() <em>Expected Execution</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExpectedExecution()
+	 * @generated
+	 * @ordered
+	 */
+	protected ExpectedExecution expectedExecution;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -211,6 +223,49 @@ public class ExecutionConfigurationImpl extends NamedElementImpl implements Exec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ExpectedExecution getExpectedExecution() {
+		return expectedExecution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExpectedExecution(ExpectedExecution newExpectedExecution, NotificationChain msgs) {
+		ExpectedExecution oldExpectedExecution = expectedExecution;
+		expectedExecution = newExpectedExecution;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__EXPECTED_EXECUTION, oldExpectedExecution, newExpectedExecution);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExpectedExecution(ExpectedExecution newExpectedExecution) {
+		if (newExpectedExecution != expectedExecution) {
+			NotificationChain msgs = null;
+			if (expectedExecution != null)
+				msgs = ((InternalEObject)expectedExecution).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__EXPECTED_EXECUTION, null, msgs);
+			if (newExpectedExecution != null)
+				msgs = ((InternalEObject)newExpectedExecution).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__EXPECTED_EXECUTION, null, msgs);
+			msgs = basicSetExpectedExecution(newExpectedExecution, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__EXPECTED_EXECUTION, newExpectedExecution, newExpectedExecution));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -218,6 +273,8 @@ public class ExecutionConfigurationImpl extends NamedElementImpl implements Exec
 				return basicSetSequenceFinishedResult(null, msgs);
 			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__TASK_FINISHED_RESULT:
 				return basicSetTaskFinishedResult(null, msgs);
+			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__EXPECTED_EXECUTION:
+				return basicSetExpectedExecution(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -237,6 +294,8 @@ public class ExecutionConfigurationImpl extends NamedElementImpl implements Exec
 				return getSequenceFinishedResult();
 			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__TASK_FINISHED_RESULT:
 				return getTaskFinishedResult();
+			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__EXPECTED_EXECUTION:
+				return getExpectedExecution();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -257,6 +316,9 @@ public class ExecutionConfigurationImpl extends NamedElementImpl implements Exec
 				return;
 			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__TASK_FINISHED_RESULT:
 				setTaskFinishedResult((TaskFinishedResult)newValue);
+				return;
+			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__EXPECTED_EXECUTION:
+				setExpectedExecution((ExpectedExecution)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -279,6 +341,9 @@ public class ExecutionConfigurationImpl extends NamedElementImpl implements Exec
 			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__TASK_FINISHED_RESULT:
 				setTaskFinishedResult((TaskFinishedResult)null);
 				return;
+			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__EXPECTED_EXECUTION:
+				setExpectedExecution((ExpectedExecution)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -297,6 +362,8 @@ public class ExecutionConfigurationImpl extends NamedElementImpl implements Exec
 				return sequenceFinishedResult != null;
 			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__TASK_FINISHED_RESULT:
 				return taskFinishedResult != null;
+			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__EXPECTED_EXECUTION:
+				return expectedExecution != null;
 		}
 		return super.eIsSet(featureID);
 	}

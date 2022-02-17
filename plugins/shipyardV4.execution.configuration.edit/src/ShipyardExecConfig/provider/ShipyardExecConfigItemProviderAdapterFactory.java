@@ -164,6 +164,29 @@ public class ShipyardExecConfigItemProviderAdapterFactory extends ShipyardExecCo
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link ShipyardExecConfig.ExpectedExecution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExpectedExecutionItemProvider expectedExecutionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ShipyardExecConfig.ExpectedExecution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createExpectedExecutionAdapter() {
+		if (expectedExecutionItemProvider == null) {
+			expectedExecutionItemProvider = new ExpectedExecutionItemProvider(this);
+		}
+
+		return expectedExecutionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -266,6 +289,7 @@ public class ShipyardExecConfigItemProviderAdapterFactory extends ShipyardExecCo
 		if (executionConfigurationItemProvider != null) executionConfigurationItemProvider.dispose();
 		if (sequenceFinishedResultItemProvider != null) sequenceFinishedResultItemProvider.dispose();
 		if (taskFinishedResultItemProvider != null) taskFinishedResultItemProvider.dispose();
+		if (expectedExecutionItemProvider != null) expectedExecutionItemProvider.dispose();
 	}
 
 }

@@ -88,6 +88,7 @@ public class ExecutionConfigurationItemProvider extends NamedElementItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ShipyardExecConfigPackage.Literals.EXECUTION_CONFIGURATION__SEQUENCE_FINISHED_RESULT);
 			childrenFeatures.add(ShipyardExecConfigPackage.Literals.EXECUTION_CONFIGURATION__TASK_FINISHED_RESULT);
+			childrenFeatures.add(ShipyardExecConfigPackage.Literals.EXECUTION_CONFIGURATION__EXPECTED_EXECUTION);
 		}
 		return childrenFeatures;
 	}
@@ -145,6 +146,7 @@ public class ExecutionConfigurationItemProvider extends NamedElementItemProvider
 		switch (notification.getFeatureID(ExecutionConfiguration.class)) {
 			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__SEQUENCE_FINISHED_RESULT:
 			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__TASK_FINISHED_RESULT:
+			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION__EXPECTED_EXECUTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -171,6 +173,11 @@ public class ExecutionConfigurationItemProvider extends NamedElementItemProvider
 			(createChildParameter
 				(ShipyardExecConfigPackage.Literals.EXECUTION_CONFIGURATION__TASK_FINISHED_RESULT,
 				 ShipyardExecConfigFactory.eINSTANCE.createTaskFinishedResult()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ShipyardExecConfigPackage.Literals.EXECUTION_CONFIGURATION__EXPECTED_EXECUTION,
+				 ShipyardExecConfigFactory.eINSTANCE.createExpectedExecution()));
 	}
 
 }

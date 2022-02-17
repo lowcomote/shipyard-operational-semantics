@@ -16,6 +16,7 @@ import shipyardV4.Sequence;
  *   <li>{@link ShipyardExecConfig.ExecutionConfiguration#getInitialSequence <em>Initial Sequence</em>}</li>
  *   <li>{@link ShipyardExecConfig.ExecutionConfiguration#getSequenceFinishedResult <em>Sequence Finished Result</em>}</li>
  *   <li>{@link ShipyardExecConfig.ExecutionConfiguration#getTaskFinishedResult <em>Task Finished Result</em>}</li>
+ *   <li>{@link ShipyardExecConfig.ExecutionConfiguration#getExpectedExecution <em>Expected Execution</em>}</li>
  * </ul>
  *
  * @see ShipyardExecConfig.ShipyardExecConfigPackage#getExecutionConfiguration()
@@ -88,5 +89,27 @@ public interface ExecutionConfiguration extends NamedElement {
 	 * @generated
 	 */
 	void setTaskFinishedResult(TaskFinishedResult value);
+
+	/**
+	 * Returns the value of the '<em><b>Expected Execution</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Expected Execution</em>' containment reference.
+	 * @see #setExpectedExecution(ExpectedExecution)
+	 * @see ShipyardExecConfig.ShipyardExecConfigPackage#getExecutionConfiguration_ExpectedExecution()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ExpectedExecution getExpectedExecution();
+
+	/**
+	 * Sets the value of the '{@link ShipyardExecConfig.ExecutionConfiguration#getExpectedExecution <em>Expected Execution</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Expected Execution</em>' containment reference.
+	 * @see #getExpectedExecution()
+	 * @generated
+	 */
+	void setExpectedExecution(ExpectedExecution value);
 
 } // ExecutionConfiguration

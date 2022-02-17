@@ -140,6 +140,13 @@ public class ShipyardUtils {
 		return taskName.getName();
 	}
 	
+	public static Task getTaskWithName(Sequence sequence, String name) {
+		return getTasks(sequence).stream().
+			filter(task -> name.equals(getTaskName(task)))
+			.findFirst()
+			.orElseThrow(() -> new IllegalArgumentException("Expected task with name: "+name));
+	}
+	
 	//Get next task
 	public static Task getNextTask(Task task) {
 		SequenceTasksItems sequenceTaskItems = (SequenceTasksItems) task.eContainer();
