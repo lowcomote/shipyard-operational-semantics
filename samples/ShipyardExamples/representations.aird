@@ -3,6 +3,9 @@
   <viewpoint:DAnalysis uid="_fSYtIJMLEeyxDfX6WJSnOg" selectedViews="_gZk-sJMLEeyxDfX6WJSnOg" version="14.5.1.202106111100">
     <semanticResources>example1.shipyardV4</semanticResources>
     <semanticResources>example1.shipyardexecconfig</semanticResources>
+    <semanticResources>gemoc-gen/execution/execution-20220221_144620/example1.shipyardV4</semanticResources>
+    <semanticResources>gemoc-gen/execution/execution-20220221_152208/example1.shipyardV4</semanticResources>
+    <semanticResources>gemoc-gen/execution/execution-20220221_155821/example1.shipyardV4</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_gZk-sJMLEeyxDfX6WJSnOg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_heBeQJMLEeyxDfX6WJSnOg" name="new ShipyardV4Diag" repPath="#_hdwYgJMLEeyxDfX6WJSnOg" changeId="7bbd844f-6137-43d2-9e62-1c9139485a3f">
