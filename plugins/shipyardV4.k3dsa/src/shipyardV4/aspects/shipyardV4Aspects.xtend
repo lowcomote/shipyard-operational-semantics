@@ -124,11 +124,16 @@ class ShipyardV4RootAspect {
 		var	URI shipyardexecconfigURI= _self.eResource.URI.trimFileExtension.appendFileExtension("shipyardexecconfig");
 		
 		var ResourceSet reset= _self.eResource.resourceSet;
-		var Resource resource = reset.getResource(shipyardexecconfigURI, true);
-		shipyardExecutionSuite = resource.contents.get(0) as ShipyardExecutionSuite;
-		if (! _self.equals(shipyardExecutionSuite.shipyardV4Root)){
-			throw new ShipyardRuntimeException("Shipyard Root is expected to be equal to the shipyardV4Root of the Shipyard Execution Suite ")
+		try {
+			var Resource resource = reset.getResource(shipyardexecconfigURI, true);
+			shipyardExecutionSuite = resource.contents.get(0) as ShipyardExecutionSuite;
+			if (! _self.equals(shipyardExecutionSuite.shipyardV4Root)){
+				throw new ShipyardRuntimeException("Shipyard Root is expected to be equal to the shipyardV4Root of the Shipyard Execution Suite ")
+			}
+		} catch (Exception exception) {
+			println("shipyardexecconfig does not exist " );
 		}
+		
 		
 		//var ShipyardExecutionSuite shipyardExecutionSuite = resource.contents.get(0) as ShipyardExecutionSuite;
 		
