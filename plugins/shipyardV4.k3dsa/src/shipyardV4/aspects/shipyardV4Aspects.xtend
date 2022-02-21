@@ -151,6 +151,8 @@ class ShipyardV4RootAspect {
 				if(initialSequence !== null){
 					_self.inputSequence=ShipyardUtils.getSequencePathName(initialSequence);
 				}
+			}else{
+				throw new ShipyardRuntimeException("ExecutionConfiguration "+ args.get(0) +"does not exist" );
 			}
 		}
 		
