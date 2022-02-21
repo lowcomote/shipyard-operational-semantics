@@ -5,7 +5,7 @@
       <metamodel href="http://jku.bise.at/shipyardV4/ShipyardExecConfig#/"/>
       <metamodel href="http://jku.bise.at/shipyardV4#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="ExecutionConfigurationContainer" domainClass="ShipyardExecConfig::ExecutionConfiguration">
+        <containerMappings name="ExecutionConfigurationContainer" semanticCandidatesExpression="feature:executionConfigurations" domainClass="ShipyardExecConfig::ExecutionConfiguration">
           <subNodeMappings name="InitialSequence" semanticCandidatesExpression="aql:self.initialSequence" domainClass="shipyardV4::Sequence">
             <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getInitialSequencePathName()" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

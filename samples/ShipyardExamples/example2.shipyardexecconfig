@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<shipconf:ShipyardExecutionSuite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:shipconf="http://jku.bise.at/shipyardV4/ShipyardExecConfig">
-  <shipyardV4Root href="example2.shipyardV4#/"/>
-</shipconf:ShipyardExecutionSuite>

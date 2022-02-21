@@ -15,4 +15,5 @@ Require-Bundle: fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version
  shipyardV4.execution.configuration;bundle-version="0.1.0"
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Export-Package: shipyardV4.aspects
+Export-Package: shipyardV4.aspects,
+ shipyardV4.aspects.utils
