@@ -116,16 +116,16 @@ class ShipyardV4RootAspect {
 
 	public ExecutionConfiguration executionConfiguration;
 	//public Collection<Task> executedTasks = new ArrayList<Task>()
-	//public ShipyardExecutionSuite shipyardExecutionSuite = null;
 	
 	@Step 												
 	@InitializeModel									
 	def void initializeModel(List<String> args){
+		var ShipyardExecutionSuite shipyardExecutionSuite = null;
 		var	URI shipyardexecconfigURI= _self.eResource.URI.trimFileExtension.appendFileExtension("shipyardexecconfig");
 		
 		var ResourceSet reset= _self.eResource.resourceSet;
 		var Resource resource = reset.getResource(shipyardexecconfigURI, true);
-		var ShipyardExecutionSuite shipyardExecutionSuite = resource.contents.get(0) as ShipyardExecutionSuite;
+		shipyardExecutionSuite = resource.contents.get(0) as ShipyardExecutionSuite;
 		if (! _self.equals(shipyardExecutionSuite.shipyardV4Root)){
 			throw new ShipyardRuntimeException("Shipyard Root is expected to be equal to the shipyardV4Root of the Shipyard Execution Suite ")
 		}
@@ -139,7 +139,7 @@ class ShipyardV4RootAspect {
 		 */
 		_self.executionConfiguration=null
 		_self.inputSequence = ShipyardOperationalSemanticsUtils.DEFAULT_INPUT_SEQUENCE;
-		if(!args.get(0).isEmpty){
+		if(shipyardExecutionSuite!==null && !args.get(0).isEmpty){
 			_self.executionConfiguration = ShipyardExecutionConfigurationUtils.getExecutionConfiguration(shipyardExecutionSuite, args.get(0));
 			if(_self.executionConfiguration!==null){
 				var Sequence initialSequence =  _self.executionConfiguration.initialSequence;
@@ -148,30 +148,6 @@ class ShipyardV4RootAspect {
 				}
 			}
 		}
-		
-		
-		
-		
-		
-		/***************
-		var arg0 = args.get(0);
-		if(arg0.isEmpty || ShipyardOperationalSemanticsUtils.isFinishedEvent(arg0)){
-			_self.inputSequence = ShipyardOperationalSemanticsUtils.DEFAULT_INPUT_SEQUENCE;
-		}else{
-			_self.inputSequence = arg0;	
-		}
-		
-		_self.finishedEvents=new HashSet<String>();
-		
-		for (arg : args) {
-			if(ShipyardOperationalSemanticsUtils.isFinishedEvent(arg)){
-				_self.finishedEvents.add(arg);
-			}
-		}
-		 *****************/
-		
-		
-				
 		
 	}
 	
@@ -228,23 +204,24 @@ class SequenceAspect {
 		for(Task task: ShipyardUtils.getTasks(_self)){
 			/**
 			 * Once a task failed, all the following ones inside the sequence will be skipped
+			 * TODO use https://stackoverflow.com/questions/39727226/how-to-break-foreach-loop-in-xtend
 			 */
 			if(continue){
 			    shipyardV4Root.currentTask=task;
 			    task.fireTask;
-//			    if(ShipyardOperationalSemanticsUtils.RESULT_FAILED.equals(task.result)){
-//			    	_self.result=ShipyardOperationalSemanticsUtils.RESULT_FAILED;
-//			    	continue=false;
-//			    }else if (ShipyardOperationalSemanticsUtils.RESULT_WARNING.equals(task.result)) {
-//			    		_self.result=ShipyardOperationalSemanticsUtils.RESULT_WARNING;
-//			    }
+			    if(ShipyardOperationalSemanticsUtils.RESULT_FAILED.equals(task.result)){
+			    	_self.result=ShipyardOperationalSemanticsUtils.RESULT_FAILED;
+			    	continue=false;
+			    }else if (ShipyardOperationalSemanticsUtils.RESULT_WARNING.equals(task.result)) {
+			    		_self.result=ShipyardOperationalSemanticsUtils.RESULT_WARNING;
+			    }
 			    
 		    }
 		}
 
 		/**
 	     * Check executed Sequence result
-	     
+	     */
 		if(shipyardV4Root.executionConfiguration!==null){
 			if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.failedSequence.contains(_self)){
 				_self.result=ShipyardOperationalSemanticsUtils.RESULT_FAILED;
@@ -257,7 +234,7 @@ class SequenceAspect {
 		}else{ // case No execution environment on input
 			_self.result=ShipyardOperationalSemanticsUtils.RESULT_PASS;
 		}
-		*/
+		
 
 		/**
 		 * Process Triggers
@@ -280,7 +257,7 @@ class TaskAspect {
 	@Step												
 	def void fireTask() {
 		println("Fire: " + _self.toString);
-		/*
+		
 		var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
 //		shipyardV4Root.executedTasks.add(_self)
 		if(shipyardV4Root.executionConfiguration!==null && shipyardV4Root.executionConfiguration.taskFinishedResult !==null){
@@ -294,7 +271,7 @@ class TaskAspect {
 		}else{
 			_self.result=ShipyardOperationalSemanticsUtils.RESULT_PASS;
 		}
-		*/
+		 
 		
 	}
 }
@@ -304,6 +281,7 @@ class TriggerAspect {
 	@Step												
 	def void fireTrigger() {
 		println("Fire: " + _self.toString);
+		/***************************
 		var  selectorMatchPatternProperties0 = ShipyardUtils.getSelectorMatchPatternProperties0ByTrigger(_self);
 		if(selectorMatchPatternProperties0!==null){
 			var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
@@ -326,21 +304,14 @@ class TriggerAspect {
 				
 			}
 			
-			/**
-			 * TODO Process triggers on tasks
-			 */
-//			var resultEvent= event+"."+selectorMatchPatternProperties0.patternProperties0.toString;
-//			var shipyardV4RootObject = EcoreUtil.getRootContainer(_self);
-//	    	if (shipyardV4RootObject instanceof ShipyardV4Root) {
-//	    		if(shipyardV4RootObject.finishedEvents.contains(resultEvent)){
-//	    			ShipyardUtils.getSequenceByTrigger(_self).step();
-//	    		}
-//	    	}
+
 			
 		}else{
 			ShipyardUtils.getSequenceByTrigger(_self).step()
 		}
-		/***************************
+		
+		 * **********************/
+		
 		var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
 		var event = ShipyardUtils.getEventStringByTrigger(_self);
 		var finishedSequencePathName = event.substring(0, event.lastIndexOf(".") );
@@ -357,17 +328,15 @@ class TriggerAspect {
 			 	if((result.equals(finishedTask.result))){
 					ShipyardUtils.getSequenceByTrigger(_self).step()
 				}
-			 }else{// is triggered by a sequence
-			 	if((result.equals(finishedSequence.result))){
-					ShipyardUtils.getSequenceByTrigger(_self).step()
-				}
+			 }else if((result.equals(finishedSequence.result))){// is triggered by a sequence
+				ShipyardUtils.getSequenceByTrigger(_self).step()
 			 }
 		}else{// Condition on trigger not specified
 			if(finishedSequence.result.equals(ShipyardOperationalSemanticsUtils.RESULT_PASS)){
 				ShipyardUtils.getSequenceByTrigger(_self).step()
 			}
 		}
-		**********************/
+		
 //		if((result.equals(null) && finishedSequence.result.equals(ShipyardOperationalSemanticsUtils.RESULT_PASS))||
 //			(!result.equals(null) && result.equals(finishedSequence.result))
 //		){
