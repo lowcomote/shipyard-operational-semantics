@@ -1,4 +1,4 @@
--- OCL contraints for /C:/Users/aless/git/shipyard-operational-semantics/plugins/shipyardV4/shipyardV4
+-- OCL contraints for /D:/GIthub/2022/shipyard-operational-semantics/plugins/shipyardV4/shipyardV4
 import 'http://jku.bise.at/shipyardV4'
 
 package shipyardV4

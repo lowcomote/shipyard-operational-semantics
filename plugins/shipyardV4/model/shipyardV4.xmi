@@ -388,7 +388,7 @@
     </links>
     <links>
       <sourceElements name="refSchemaDefinition" defaultFor="/">
-        <object href="../shipyardV4.jschema#//@schema/@keywordDefinition.2/@keySchemaPairs.2/@value/@keywordDefinition.1/@keySchemaPairs.1/@value/@keywordDefinition.0/@anyOf/@anyOf1/@keywordDefinition.1"/>
+        <object href="../shipyardV4.jschema#//@schema/@keywordDefinition.2/@keySchemaPairs.2/@value/@keywordDefinition.1/@keySchemaPairs.1/@value/@keywordDefinition.0/@itemsAnyOf1/@keywordDefinition.1"/>
       </sourceElements>
       <targetElements name="eReference">
         <object href="shipyardV4Opt.ecore#//SequenceTriggeredOnItems/items"/>
@@ -396,7 +396,7 @@
     </links>
     <links>
       <sourceElements name="refSchemaDefinition" defaultFor="/">
-        <object href="../shipyardV4.jschema#//@schema/@keywordDefinition.2/@keySchemaPairs.2/@value/@keywordDefinition.1/@keySchemaPairs.2/@value/@keywordDefinition.0/@anyOf/@anyOf1/@keywordDefinition.1"/>
+        <object href="../shipyardV4.jschema#//@schema/@keywordDefinition.2/@keySchemaPairs.2/@value/@keywordDefinition.1/@keySchemaPairs.2/@value/@keywordDefinition.0/@itemsAnyOf1/@keywordDefinition.1"/>
       </sourceElements>
       <targetElements name="eReference">
         <object href="shipyardV4Opt.ecore#//SequenceTasksItems/items"/>
@@ -420,7 +420,7 @@
     </links>
     <links>
       <sourceElements name="refSchemaDefinition" defaultFor="/">
-        <object href="../shipyardV4.jschema#//@schema/@keywordDefinition.2/@keySchemaPairs.4/@value/@keywordDefinition.1/@keySchemaPairs.0/@value/@keywordDefinition.0/@anyOf/@anyOf1/@keywordDefinition.1"/>
+        <object href="../shipyardV4.jschema#//@schema/@keywordDefinition.2/@keySchemaPairs.4/@value/@keywordDefinition.1/@keySchemaPairs.0/@value/@keywordDefinition.0/@itemsAnyOf1/@keywordDefinition.1"/>
       </sourceElements>
       <targetElements name="eReference">
         <object href="shipyardV4Opt.ecore#//ShipyardSpecStagesItems/items"/>
@@ -428,7 +428,7 @@
     </links>
     <links>
       <sourceElements name="refSchemaDefinition" defaultFor="/">
-        <object href="../shipyardV4.jschema#//@schema/@keywordDefinition.2/@keySchemaPairs.5/@value/@keywordDefinition.1/@keySchemaPairs.1/@value/@keywordDefinition.0/@anyOf/@anyOf1/@keywordDefinition.1"/>
+        <object href="../shipyardV4.jschema#//@schema/@keywordDefinition.2/@keySchemaPairs.5/@value/@keywordDefinition.1/@keySchemaPairs.1/@value/@keywordDefinition.0/@itemsAnyOf1/@keywordDefinition.1"/>
       </sourceElements>
       <targetElements name="eReference">
         <object href="shipyardV4Opt.ecore#//StageSequencesItems/items"/>
