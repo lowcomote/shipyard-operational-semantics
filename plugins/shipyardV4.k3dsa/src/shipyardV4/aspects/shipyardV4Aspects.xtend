@@ -204,12 +204,11 @@ class SequenceAspect {
 		var continue = true;
 		/**
 		 * Execute all tasks in the sequence
-		 * TODO use a while
+		 * TODO use https://stackoverflow.com/questions/39727226/how-to-break-foreach-loop-in-xtend
 		 */
 		for(Task task: ShipyardUtils.getTasks(_self)){
 			/**
 			 * Once a task failed, all the following ones inside the sequence will be skipped
-			 * TODO use https://stackoverflow.com/questions/39727226/how-to-break-foreach-loop-in-xtend
 			 */
 			if(continue){
 			    shipyardV4Root.currentTask=task;
@@ -227,7 +226,7 @@ class SequenceAspect {
 		/**
 	     * Check executed Sequence result
 	     */
-		if(shipyardV4Root.executionConfiguration!==null){
+		if(shipyardV4Root.executionConfiguration!==null && shipyardV4Root.executionConfiguration.sequenceFinishedResult!==null){
 			if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.failedSequence.contains(_self)){
 				_self.result=ShipyardOperationalSemanticsUtils.RESULT_FAILED;
 			}else if(shipyardV4Root.executionConfiguration.sequenceFinishedResult.warningSequences.contains(_self)
