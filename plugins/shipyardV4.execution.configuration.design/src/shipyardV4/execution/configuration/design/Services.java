@@ -63,5 +63,13 @@ public class Services {
     	}
     }
     
+    public TaskFinishedResult isNotWarningTasksEmpty(TaskFinishedResult taskFinishedResult) {
+    	if (null == taskFinishedResult.getWarningTasks() || taskFinishedResult.getWarningTasks().isEmpty()) {
+    		return null;
+    	}else{
+    		return taskFinishedResult;
+    	}
+    }
+    
 
 }

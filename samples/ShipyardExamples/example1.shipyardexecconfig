@@ -14,4 +14,10 @@
   <executionConfigurations name="Remediation">
     <initialSequence href="example1.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.2/@items"/>
   </executionConfigurations>
+  <executionConfigurations name="HardeningEvaluationWarning">
+    <initialSequence href="example1.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.0/@items/@Stage.1/@sequences.0/@items"/>
+    <taskFinishedResult>
+      <warningTasks href="example1.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.1/@items/@Stage.1/@sequences.0/@items/@Sequence.2/@tasks.2/@items"/>
+    </taskFinishedResult>
+  </executionConfigurations>
 </shipconf:ShipyardExecutionSuite>

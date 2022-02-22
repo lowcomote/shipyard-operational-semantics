@@ -23,7 +23,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_uYaQQJM7Eeyvpv2Dzj2zyg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_W9joAJM-Eeyvpv2Dzj2zyg" name="example1ExecutionConfigurationDiag" repPath="#_W9iZ4JM-Eeyvpv2Dzj2zyg" changeId="7db099f6-b632-4288-96d5-90d48f06e3ff">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_W9joAJM-Eeyvpv2Dzj2zyg" name="example1ExecutionConfigurationDiag" repPath="#_W9iZ4JM-Eeyvpv2Dzj2zyg" changeId="3c82eb2e-4106-4973-bb5b-727545f09740">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']"/>
         <target xmi:type="shipconf:ShipyardExecutionSuite" href="example1.shipyardexecconfig#/"/>
       </ownedRepresentationDescriptors>
@@ -871,7 +871,56 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_W-li0ZM-Eeyvpv2Dzj2zyg"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_W-lizJM-Eeyvpv2Dzj2zyg" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W-lizZM-Eeyvpv2Dzj2zyg" x="690" y="105" width="348" height="138"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W-lizZM-Eeyvpv2Dzj2zyg" x="675" y="45" width="348" height="138"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_Ybqj9pQNEeywQeQSoQIJfg" type="2002" element="_Ybqj5JQNEeywQeQSoQIJfg">
+          <children xmi:type="notation:Node" xmi:id="_Yb50QJQNEeywQeQSoQIJfg" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_Yb6bUJQNEeywQeQSoQIJfg" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_Yb7CYJQNEeywQeQSoQIJfg" type="3007" element="_Ybqj55QNEeywQeQSoQIJfg">
+              <children xmi:type="notation:Node" xmi:id="_Yb7pcJQNEeywQeQSoQIJfg" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_Yb7pcZQNEeywQeQSoQIJfg" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_Yb8QgJQNEeywQeQSoQIJfg" type="3003" element="_Ybqj6JQNEeywQeQSoQIJfg">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_Yb8QgZQNEeywQeQSoQIJfg" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yb8QgpQNEeywQeQSoQIJfg"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_Yb7CYZQNEeywQeQSoQIJfg" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yb7CYpQNEeywQeQSoQIJfg" x="10" y="54" width="271" height="30"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_kS9h0JQNEeywQeQSoQIJfg" type="3008" element="_kS6ejJQNEeywQeQSoQIJfg">
+              <children xmi:type="notation:Node" xmi:id="_kS9h05QNEeywQeQSoQIJfg" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_kS9h1JQNEeywQeQSoQIJfg" type="7002">
+                <children xmi:type="notation:Node" xmi:id="_NqsiMJQSEeywQeQSoQIJfg" type="3008" element="_Nqg8GJQSEeywQeQSoQIJfg">
+                  <children xmi:type="notation:Node" xmi:id="_NqtJQJQSEeywQeQSoQIJfg" type="5005"/>
+                  <children xmi:type="notation:Node" xmi:id="_NqtJQZQSEeywQeQSoQIJfg" type="7002">
+                    <children xmi:type="notation:Node" xmi:id="_p5U7lZQSEeywQeQSoQIJfg" type="3007" element="_p5U7OpQSEeywQeQSoQIJfg">
+                      <children xmi:type="notation:Node" xmi:id="_p5U7mJQSEeywQeQSoQIJfg" type="5003">
+                        <layoutConstraint xmi:type="notation:Location" xmi:id="_p5U7mZQSEeywQeQSoQIJfg" y="5"/>
+                      </children>
+                      <children xmi:type="notation:Node" xmi:id="_p5U7mpQSEeywQeQSoQIJfg" type="3003" element="_p5U7O5QSEeywQeQSoQIJfg">
+                        <styles xmi:type="notation:ShapeStyle" xmi:id="_p5U7m5QSEeywQeQSoQIJfg" fontName="Segoe UI"/>
+                        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p5U7nJQSEeywQeQSoQIJfg"/>
+                      </children>
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_p5U7lpQSEeywQeQSoQIJfg" fontName="Segoe UI" fontHeight="12"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p5U7l5QSEeywQeQSoQIJfg" x="10" y="39" width="301" height="30"/>
+                    </children>
+                    <styles xmi:type="notation:SortingStyle" xmi:id="_NqtJQpQSEeywQeQSoQIJfg"/>
+                    <styles xmi:type="notation:FilteringStyle" xmi:id="_NqtJQ5QSEeywQeQSoQIJfg"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_NqsiMZQSEeywQeQSoQIJfg" fontName="Segoe UI" fontHeight="12"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NqsiMpQSEeywQeQSoQIJfg" x="18" y="43" width="341" height="123"/>
+                </children>
+                <styles xmi:type="notation:SortingStyle" xmi:id="_kS9h1ZQNEeywQeQSoQIJfg"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_kS9h1pQNEeywQeQSoQIJfg"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_kS9h0ZQNEeywQeQSoQIJfg" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kS9h0pQNEeywQeQSoQIJfg" x="10" y="114" width="401" height="183"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_Yb6bUZQNEeywQeQSoQIJfg"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_Yb6bUpQNEeywQeQSoQIJfg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_Ybqj95QNEeywQeQSoQIJfg" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ybqj-JQNEeywQeQSoQIJfg" x="682" y="195" width="461" height="333"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_W9sx8pM-Eeyvpv2Dzj2zyg"/>
       </data>
@@ -981,6 +1030,61 @@
           <description xmi:type="style:SquareDescription" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']/@defaultLayer/@containerMappings[name='ExecutionConfigurationContainer']/@subNodeMappings[name='InitialSequence']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']/@defaultLayer/@containerMappings[name='ExecutionConfigurationContainer']/@subNodeMappings[name='InitialSequence']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Ybqj5JQNEeywQeQSoQIJfg" name="HardeningEvaluationWarning">
+      <target xmi:type="shipconf:ExecutionConfiguration" href="example1.shipyardexecconfig#//@executionConfigurations.4"/>
+      <semanticElements xmi:type="shipconf:ExecutionConfiguration" href="example1.shipyardexecconfig#//@executionConfigurations.4"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Ybqj5ZQNEeywQeQSoQIJfg" labelSize="12" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']/@defaultLayer/@containerMappings[name='ExecutionConfigurationContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']/@defaultLayer/@containerMappings[name='ExecutionConfigurationContainer']"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_Ybqj55QNEeywQeQSoQIJfg" name="Init Seq: dev.delivery" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="shipyardV4:Sequence" href="example1.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.0/@items/@Stage.1/@sequences.0/@items"/>
+        <semanticElements xmi:type="shipyardV4:Sequence" href="example1.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.0/@items/@Stage.1/@sequences.0/@items"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" uid="_Ybqj6JQNEeywQeQSoQIJfg" labelSize="12" showIcon="false" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']/@defaultLayer/@containerMappings[name='ExecutionConfigurationContainer']/@subNodeMappings[name='InitialSequence']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']/@defaultLayer/@containerMappings[name='ExecutionConfigurationContainer']/@subNodeMappings[name='InitialSequence']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_kS6ejJQNEeywQeQSoQIJfg" name="Task Result">
+        <target xmi:type="shipconf:TaskFinishedResult" href="example1.shipyardexecconfig#//@executionConfigurations.4/@taskFinishedResult"/>
+        <semanticElements xmi:type="shipconf:TaskFinishedResult" href="example1.shipyardexecconfig#//@executionConfigurations.4/@taskFinishedResult"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_kS6ejZQNEeywQeQSoQIJfg" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']/@defaultLayer/@containerMappings[name='ExecutionConfigurationContainer']/@subContainerMappings[name='TaskFinishedResultContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']/@defaultLayer/@containerMappings[name='ExecutionConfigurationContainer']/@subContainerMappings[name='TaskFinishedResultContainer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Nqg8GJQSEeywQeQSoQIJfg" name="Tasks Warning">
+          <target xmi:type="shipconf:TaskFinishedResult" href="example1.shipyardexecconfig#//@executionConfigurations.4/@taskFinishedResult"/>
+          <semanticElements xmi:type="shipconf:TaskFinishedResult" href="example1.shipyardexecconfig#//@executionConfigurations.4/@taskFinishedResult"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Nqg8GZQSEeywQeQSoQIJfg" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']/@defaultLayer/@containerMappings[name='ExecutionConfigurationContainer']/@subContainerMappings[name='TaskFinishedResultContainer']/@subContainerMappings[name='TasksWarningContainer']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']/@defaultLayer/@containerMappings[name='ExecutionConfigurationContainer']/@subContainerMappings[name='TaskFinishedResultContainer']/@subContainerMappings[name='TasksWarningContainer']"/>
+          <ownedDiagramElements xmi:type="diagram:DNode" uid="_p5U7OpQSEeywQeQSoQIJfg" name="hardening.delivery.evaluation" width="3" height="3" resizeKind="NSEW">
+            <target xmi:type="shipyardV4:Task" href="example1.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.1/@items/@Stage.1/@sequences.0/@items/@Sequence.2/@tasks.2/@items"/>
+            <semanticElements xmi:type="shipyardV4:Task" href="example1.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.1/@items/@Stage.1/@sequences.0/@items/@Sequence.2/@tasks.2/@items"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Square" uid="_p5U7O5QSEeywQeQSoQIJfg" labelSize="12" showIcon="false" labelPosition="node">
+              <description xmi:type="style:SquareDescription" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']/@defaultLayer/@containerMappings[name='ExecutionConfigurationContainer']/@subContainerMappings[name='TaskFinishedResultContainer']/@subContainerMappings[name='TasksWarningContainer']/@subNodeMappings[name='Warning%20Tasks']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']/@defaultLayer/@containerMappings[name='ExecutionConfigurationContainer']/@subContainerMappings[name='TaskFinishedResultContainer']/@subContainerMappings[name='TasksWarningContainer']/@subNodeMappings[name='Warning%20Tasks']"/>
+          </ownedDiagramElements>
+        </ownedDiagramElements>
       </ownedDiagramElements>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="platform:/resource/shipyardV4.execution.configuration.design/description/configuration.odesign#//@ownedViewpoints[name='ShipyardV4ExecutionConfigurationViewpoint']/@ownedRepresentations[name='ShipyardV4ExecutionConfigurationDiag']"/>
