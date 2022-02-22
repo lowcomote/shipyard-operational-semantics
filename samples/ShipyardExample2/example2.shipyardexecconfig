@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shipconf:ShipyardExecutionSuite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:shipconf="http://jku.bise.at/shipyardV4/ShipyardExecConfig">
+  <shipyardV4Root href="example2.shipyardV4#/"/>
+  <executionConfigurations name="Production Rollback">
+    <initialSequence href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.0/@items/@Stage.1/@sequences.0/@items"/>
+    <sequenceFinishedResult>
+      <failedSequence href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.0/@items"/>
+    </sequenceFinishedResult>
+  </executionConfigurations>
+  <executionConfigurations name="Well Flow delivery-direct">
+    <initialSequence href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.0/@items/@Stage.1/@sequences.1/@items"/>
+  </executionConfigurations>
+  <executionConfigurations name="Well Flow delivery">
+    <initialSequence href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.0/@items/@Stage.1/@sequences.0/@items"/>
+  </executionConfigurations>
+  <executionConfigurations name="Staging Rollback">
+    <initialSequence href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.0/@items/@Stage.1/@sequences.0/@items"/>
+    <sequenceFinishedResult>
+      <failedSequence href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.1/@items/@Stage.1/@sequences.0/@items"/>
+    </sequenceFinishedResult>
+  </executionConfigurations>
+  <executionConfigurations name="Remediation Passed">
+    <initialSequence href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.3/@items"/>
+  </executionConfigurations>
+  <executionConfigurations name="Remediation Failed">
+    <initialSequence href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.3/@items"/>
+    <taskFinishedResult>
+      <failedTasks href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.2/@items/@Sequence.2/@tasks.1/@items"/>
+    </taskFinishedResult>
+  </executionConfigurations>
+</shipconf:ShipyardExecutionSuite>

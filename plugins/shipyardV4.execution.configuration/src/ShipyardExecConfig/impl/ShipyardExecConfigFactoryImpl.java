@@ -60,6 +60,7 @@ public class ShipyardExecConfigFactoryImpl extends EFactoryImpl implements Shipy
 			case ShipyardExecConfigPackage.EXECUTION_CONFIGURATION: return createExecutionConfiguration();
 			case ShipyardExecConfigPackage.SEQUENCE_FINISHED_RESULT: return createSequenceFinishedResult();
 			case ShipyardExecConfigPackage.TASK_FINISHED_RESULT: return createTaskFinishedResult();
+			case ShipyardExecConfigPackage.EXPECTED_EXECUTION: return createExpectedExecution();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +104,16 @@ public class ShipyardExecConfigFactoryImpl extends EFactoryImpl implements Shipy
 	public TaskFinishedResult createTaskFinishedResult() {
 		TaskFinishedResultImpl taskFinishedResult = new TaskFinishedResultImpl();
 		return taskFinishedResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExpectedExecution createExpectedExecution() {
+		ExpectedExecutionImpl expectedExecution = new ExpectedExecutionImpl();
+		return expectedExecution;
 	}
 
 	/**

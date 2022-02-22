@@ -8,8 +8,10 @@ import org.eclipse.emf.ecore.EObject;
 import ShipyardExecConfig.ExecutionConfiguration;
 import ShipyardExecConfig.SequenceFinishedResult;
 import ShipyardExecConfig.ShipyardExecutionSuite;
+import ShipyardExecConfig.TaskFinishedResult;
 import shipyard.common.utils.ShipyardUtils;
 import shipyardV4.Sequence;
+import shipyardV4.Task;
 
 /**
  * The services class used by VSM.
@@ -41,6 +43,10 @@ public class Services {
     	return ShipyardUtils.getSequencePathName(sequence);
     }
     
+    public String getTaskPathName(Task task) {
+    	return ShipyardUtils.getTaskPathName(task);
+    }
+    
     public SequenceFinishedResult isNotFailedSequencesEmpty(SequenceFinishedResult sequenceFinishedResult) {
     	if (null == sequenceFinishedResult.getFailedSequence() || sequenceFinishedResult.getFailedSequence().isEmpty()) {
     		return null;
@@ -49,8 +55,13 @@ public class Services {
     	}
     }
     
-//    public Collection<Sequence> getFailedSequences(SequenceFinishedResult sequenceFinishedResult)
-//    public Collection<Sequence> getInitialSequences(ShipyardExecutionSuite shipyardExecutionSuite){
-//		return ShipyardExecutionConfigurationUtils.getInitialSequences(shipyardExecutionSuite);
-//	}
+    public TaskFinishedResult isNotFailedTasksEmpty(TaskFinishedResult taskFinishedResult) {
+    	if (null == taskFinishedResult.getFailedTasks() || taskFinishedResult.getFailedTasks().isEmpty()) {
+    		return null;
+    	}else{
+    		return taskFinishedResult;
+    	}
+    }
+    
+
 }

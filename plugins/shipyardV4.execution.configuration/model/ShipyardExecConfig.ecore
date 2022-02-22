@@ -16,6 +16,8 @@
         eType="#//SequenceFinishedResult" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="taskFinishedResult" eType="#//TaskFinishedResult"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expectedExecution" eType="#//ExpectedExecution"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SequenceFinishedResult">
     <eStructuralFeatures xsi:type="ecore:EReference" name="passedSequences" upperBound="-1"
@@ -31,6 +33,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="warningTasks" upperBound="-1"
         eType="ecore:EClass ../../shipyardV4/model/shipyardV4Opt.ecore#//Task"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="failedTasks" upperBound="-1"
+        eType="ecore:EClass ../../shipyardV4/model/shipyardV4Opt.ecore#//Task"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpectedExecution">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expectedTasks" upperBound="-1"
         eType="ecore:EClass ../../shipyardV4/model/shipyardV4Opt.ecore#//Task"/>
   </eClassifiers>
 </ecore:EPackage>

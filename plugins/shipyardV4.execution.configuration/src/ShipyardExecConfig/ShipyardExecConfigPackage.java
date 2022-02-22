@@ -195,13 +195,22 @@ public interface ShipyardExecConfigPackage extends EPackage {
 	int EXECUTION_CONFIGURATION__TASK_FINISHED_RESULT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Expected Execution</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_CONFIGURATION__EXPECTED_EXECUTION = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Execution Configuration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_CONFIGURATION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int EXECUTION_CONFIGURATION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Execution Configuration</em>' class.
@@ -324,6 +333,44 @@ public interface ShipyardExecConfigPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link ShipyardExecConfig.impl.ExpectedExecutionImpl <em>Expected Execution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ShipyardExecConfig.impl.ExpectedExecutionImpl
+	 * @see ShipyardExecConfig.impl.ShipyardExecConfigPackageImpl#getExpectedExecution()
+	 * @generated
+	 */
+	int EXPECTED_EXECUTION = 5;
+
+	/**
+	 * The feature id for the '<em><b>Expected Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPECTED_EXECUTION__EXPECTED_TASKS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Expected Execution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPECTED_EXECUTION_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Expected Execution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPECTED_EXECUTION_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link ShipyardExecConfig.ShipyardExecutionSuite <em>Shipyard Execution Suite</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -420,6 +467,17 @@ public interface ShipyardExecConfigPackage extends EPackage {
 	EReference getExecutionConfiguration_TaskFinishedResult();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link ShipyardExecConfig.ExecutionConfiguration#getExpectedExecution <em>Expected Execution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Expected Execution</em>'.
+	 * @see ShipyardExecConfig.ExecutionConfiguration#getExpectedExecution()
+	 * @see #getExecutionConfiguration()
+	 * @generated
+	 */
+	EReference getExecutionConfiguration_ExpectedExecution();
+
+	/**
 	 * Returns the meta object for class '{@link ShipyardExecConfig.SequenceFinishedResult <em>Sequence Finished Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -504,6 +562,27 @@ public interface ShipyardExecConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTaskFinishedResult_FailedTasks();
+
+	/**
+	 * Returns the meta object for class '{@link ShipyardExecConfig.ExpectedExecution <em>Expected Execution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Expected Execution</em>'.
+	 * @see ShipyardExecConfig.ExpectedExecution
+	 * @generated
+	 */
+	EClass getExpectedExecution();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ShipyardExecConfig.ExpectedExecution#getExpectedTasks <em>Expected Tasks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Expected Tasks</em>'.
+	 * @see ShipyardExecConfig.ExpectedExecution#getExpectedTasks()
+	 * @see #getExpectedExecution()
+	 * @generated
+	 */
+	EReference getExpectedExecution_ExpectedTasks();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -607,6 +686,14 @@ public interface ShipyardExecConfigPackage extends EPackage {
 		EReference EXECUTION_CONFIGURATION__TASK_FINISHED_RESULT = eINSTANCE.getExecutionConfiguration_TaskFinishedResult();
 
 		/**
+		 * The meta object literal for the '<em><b>Expected Execution</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXECUTION_CONFIGURATION__EXPECTED_EXECUTION = eINSTANCE.getExecutionConfiguration_ExpectedExecution();
+
+		/**
 		 * The meta object literal for the '{@link ShipyardExecConfig.impl.SequenceFinishedResultImpl <em>Sequence Finished Result</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -673,6 +760,24 @@ public interface ShipyardExecConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TASK_FINISHED_RESULT__FAILED_TASKS = eINSTANCE.getTaskFinishedResult_FailedTasks();
+
+		/**
+		 * The meta object literal for the '{@link ShipyardExecConfig.impl.ExpectedExecutionImpl <em>Expected Execution</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ShipyardExecConfig.impl.ExpectedExecutionImpl
+		 * @see ShipyardExecConfig.impl.ShipyardExecConfigPackageImpl#getExpectedExecution()
+		 * @generated
+		 */
+		EClass EXPECTED_EXECUTION = eINSTANCE.getExpectedExecution();
+
+		/**
+		 * The meta object literal for the '<em><b>Expected Tasks</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPECTED_EXECUTION__EXPECTED_TASKS = eINSTANCE.getExpectedExecution_ExpectedTasks();
 
 	}
 

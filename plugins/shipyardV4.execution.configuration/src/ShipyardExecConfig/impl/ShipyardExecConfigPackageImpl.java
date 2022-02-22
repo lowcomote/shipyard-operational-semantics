@@ -3,6 +3,7 @@
 package ShipyardExecConfig.impl;
 
 import ShipyardExecConfig.ExecutionConfiguration;
+import ShipyardExecConfig.ExpectedExecution;
 import ShipyardExecConfig.NamedElement;
 import ShipyardExecConfig.SequenceFinishedResult;
 import ShipyardExecConfig.ShipyardExecConfigFactory;
@@ -62,6 +63,13 @@ public class ShipyardExecConfigPackageImpl extends EPackageImpl implements Shipy
 	 * @generated
 	 */
 	private EClass taskFinishedResultEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass expectedExecutionEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -214,6 +222,15 @@ public class ShipyardExecConfigPackageImpl extends EPackageImpl implements Shipy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getExecutionConfiguration_ExpectedExecution() {
+		return (EReference)executionConfigurationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSequenceFinishedResult() {
 		return sequenceFinishedResultEClass;
 	}
@@ -286,6 +303,24 @@ public class ShipyardExecConfigPackageImpl extends EPackageImpl implements Shipy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getExpectedExecution() {
+		return expectedExecutionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExpectedExecution_ExpectedTasks() {
+		return (EReference)expectedExecutionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ShipyardExecConfigFactory getShipyardExecConfigFactory() {
 		return (ShipyardExecConfigFactory)getEFactoryInstance();
 	}
@@ -320,6 +355,7 @@ public class ShipyardExecConfigPackageImpl extends EPackageImpl implements Shipy
 		createEReference(executionConfigurationEClass, EXECUTION_CONFIGURATION__INITIAL_SEQUENCE);
 		createEReference(executionConfigurationEClass, EXECUTION_CONFIGURATION__SEQUENCE_FINISHED_RESULT);
 		createEReference(executionConfigurationEClass, EXECUTION_CONFIGURATION__TASK_FINISHED_RESULT);
+		createEReference(executionConfigurationEClass, EXECUTION_CONFIGURATION__EXPECTED_EXECUTION);
 
 		sequenceFinishedResultEClass = createEClass(SEQUENCE_FINISHED_RESULT);
 		createEReference(sequenceFinishedResultEClass, SEQUENCE_FINISHED_RESULT__PASSED_SEQUENCES);
@@ -330,6 +366,9 @@ public class ShipyardExecConfigPackageImpl extends EPackageImpl implements Shipy
 		createEReference(taskFinishedResultEClass, TASK_FINISHED_RESULT__PASSED_TASKS);
 		createEReference(taskFinishedResultEClass, TASK_FINISHED_RESULT__WARNING_TASKS);
 		createEReference(taskFinishedResultEClass, TASK_FINISHED_RESULT__FAILED_TASKS);
+
+		expectedExecutionEClass = createEClass(EXPECTED_EXECUTION);
+		createEReference(expectedExecutionEClass, EXPECTED_EXECUTION__EXPECTED_TASKS);
 	}
 
 	/**
@@ -378,6 +417,7 @@ public class ShipyardExecConfigPackageImpl extends EPackageImpl implements Shipy
 		initEReference(getExecutionConfiguration_InitialSequence(), theShipyardV4Package.getSequence(), null, "initialSequence", null, 0, 1, ExecutionConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExecutionConfiguration_SequenceFinishedResult(), this.getSequenceFinishedResult(), null, "sequenceFinishedResult", null, 0, 1, ExecutionConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExecutionConfiguration_TaskFinishedResult(), this.getTaskFinishedResult(), null, "taskFinishedResult", null, 0, 1, ExecutionConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutionConfiguration_ExpectedExecution(), this.getExpectedExecution(), null, "expectedExecution", null, 0, 1, ExecutionConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sequenceFinishedResultEClass, SequenceFinishedResult.class, "SequenceFinishedResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSequenceFinishedResult_PassedSequences(), theShipyardV4Package.getSequence(), null, "passedSequences", null, 0, -1, SequenceFinishedResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -388,6 +428,9 @@ public class ShipyardExecConfigPackageImpl extends EPackageImpl implements Shipy
 		initEReference(getTaskFinishedResult_PassedTasks(), theShipyardV4Package.getTask(), null, "passedTasks", null, 0, -1, TaskFinishedResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskFinishedResult_WarningTasks(), theShipyardV4Package.getTask(), null, "warningTasks", null, 0, -1, TaskFinishedResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskFinishedResult_FailedTasks(), theShipyardV4Package.getTask(), null, "failedTasks", null, 0, -1, TaskFinishedResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(expectedExecutionEClass, ExpectedExecution.class, "ExpectedExecution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExpectedExecution_ExpectedTasks(), theShipyardV4Package.getTask(), null, "expectedTasks", null, 0, -1, ExpectedExecution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

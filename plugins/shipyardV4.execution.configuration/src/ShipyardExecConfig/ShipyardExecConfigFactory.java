@@ -58,6 +58,15 @@ public interface ShipyardExecConfigFactory extends EFactory {
 	TaskFinishedResult createTaskFinishedResult();
 
 	/**
+	 * Returns a new object of class '<em>Expected Execution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Expected Execution</em>'.
+	 * @generated
+	 */
+	ExpectedExecution createExpectedExecution();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

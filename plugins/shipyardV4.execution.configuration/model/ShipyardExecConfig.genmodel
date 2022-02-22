@@ -18,6 +18,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//ExecutionConfiguration/initialSequence"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//ExecutionConfiguration/sequenceFinishedResult"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//ExecutionConfiguration/taskFinishedResult"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//ExecutionConfiguration/expectedExecution"/>
     </genClasses>
     <genClasses ecoreClass="ShipyardExecConfig.ecore#//SequenceFinishedResult">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//SequenceFinishedResult/passedSequences"/>
@@ -28,6 +29,9 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//TaskFinishedResult/passedTasks"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//TaskFinishedResult/warningTasks"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//TaskFinishedResult/failedTasks"/>
+    </genClasses>
+    <genClasses ecoreClass="ShipyardExecConfig.ecore#//ExpectedExecution">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//ExpectedExecution/expectedTasks"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

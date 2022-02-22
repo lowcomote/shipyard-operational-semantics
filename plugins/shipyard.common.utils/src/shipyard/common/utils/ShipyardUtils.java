@@ -140,6 +140,13 @@ public class ShipyardUtils {
 		return taskName.getName();
 	}
 	
+	public static Task getTaskWithName(Sequence sequence, String name) {
+		return getTasks(sequence).stream().
+			filter(task -> name.equals(getTaskName(task)))
+			.findFirst()
+			.orElseThrow(() -> new IllegalArgumentException("Expected task with name: "+name));
+	}
+	
 	//Get next task
 	public static Task getNextTask(Task task) {
 		SequenceTasksItems sequenceTaskItems = (SequenceTasksItems) task.eContainer();
@@ -268,6 +275,8 @@ public class ShipyardUtils {
 		   return (Sequence) trigger.eContainer().eContainer().eContainer();
 	}
 	
+	
+	
 	public static Sequence getFiringSequence(ShipyardV4Root shipyardV4Root, Trigger trigger) {
 		var triggerEvent = trigger.getTrigger()
 						.stream()
@@ -375,6 +384,17 @@ public class ShipyardUtils {
 		return sequencePathName;
 	}
 	
+	public static String  getTaskPathName(Task task) {
+		Sequence sequence = getSequenceByTask(task);
+		String sequencePathName = getSequencePathName(sequence);
+		String taskName = getTaskName(task);
+		return sequencePathName+"."+taskName;
+	}
+	
+	
+	public static Sequence getSequenceByTask(Task task) {
+		   return (Sequence) task.eContainer().eContainer().eContainer();
+	}
 	
 	public static String getFinishedSequenceEvent(Sequence sequence) {
 		   return getSequencePathName(sequence)+"."+"finished";
