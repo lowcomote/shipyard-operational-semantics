@@ -72,6 +72,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import ShipyardExecConfig.ShipyardExecutionSuite
 import ShipyardExecConfig.ExecutionConfiguration
 import shipyard.common.utils.ShipyardExecutionConfigurationUtils
+import java.util.Iterator
 
 //import static extension shipyardv4.aspects.MetadataNameAspect.*
 //import static extension shipyardv4.aspects.SelectorMatchAspect.*
@@ -213,27 +214,41 @@ class SequenceAspect {
 	def void step() {
 		println("Step Sequence: " + _self.toString);
 		var ShipyardV4Root shipyardV4Root = EcoreUtil.getRootContainer(_self) as ShipyardV4Root;
-		var continue = true;
+		
 		/**
 		 * Execute all tasks in the sequence
-		 * TODO use https://stackoverflow.com/questions/39727226/how-to-break-foreach-loop-in-xtend
+		 * Once a task failed, all the following ones inside the sequence will be skipped
 		 */
-		for(Task task: ShipyardUtils.getTasks(_self)){
-			/**
-			 * Once a task failed, all the following ones inside the sequence will be skipped
-			 */
-			if(continue){
-			    shipyardV4Root.currentTask=task;
-			    task.fireTask;
-			    if(ShipyardOperationalSemanticsUtils.RESULT_FAILED.equals(task.result)){
-			    	_self.result=ShipyardOperationalSemanticsUtils.RESULT_FAILED;
-			    	continue=false;
-			    }else if (ShipyardOperationalSemanticsUtils.RESULT_WARNING.equals(task.result)) {
-			    		_self.result=ShipyardOperationalSemanticsUtils.RESULT_WARNING;
-			    }
-			    
+		val Collection<Task> tasks = ShipyardUtils.getTasks(_self);
+		val Iterator<Task> taskIterator =tasks.iterator;
+		var continue = true;
+		while (taskIterator.hasNext && continue) {
+			var Task task = taskIterator.next;
+			shipyardV4Root.currentTask=task;
+			task.fireTask;	
+			if(ShipyardOperationalSemanticsUtils.RESULT_FAILED.equals(task.result)){
+		    	_self.result=ShipyardOperationalSemanticsUtils.RESULT_FAILED;
+		    	continue=false;
+		    }else if (ShipyardOperationalSemanticsUtils.RESULT_WARNING.equals(task.result)) {
+		    	_self.result=ShipyardOperationalSemanticsUtils.RESULT_WARNING;
 		    }
-		}
+		}	
+			
+
+		
+//		for(Task task: ShipyardUtils.getTasks(_self)){
+//			if(continue){
+//			    shipyardV4Root.currentTask=task;
+//			    task.fireTask;
+//			    if(ShipyardOperationalSemanticsUtils.RESULT_FAILED.equals(task.result)){
+//			    	_self.result=ShipyardOperationalSemanticsUtils.RESULT_FAILED;
+//			    	continue=false;
+//			    }else if (ShipyardOperationalSemanticsUtils.RESULT_WARNING.equals(task.result)) {
+//			    		_self.result=ShipyardOperationalSemanticsUtils.RESULT_WARNING;
+//			    }
+//			    
+//		    }
+//		}
 
 		/**
 	     * Check executed Sequence result
