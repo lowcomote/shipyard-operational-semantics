@@ -262,7 +262,7 @@ class SequenceAspect {
 			}else if(_self.result === null){// we skip the passedSequence as deprecated 
 					_self.result=ShipyardOperationalSemanticsUtils.RESULT_PASS
 			}
-		}else{ // case No execution environment on input
+		}else if (_self.result===null){ // case No execution environment on input
 			_self.result=ShipyardOperationalSemanticsUtils.RESULT_PASS;
 		}
 		
