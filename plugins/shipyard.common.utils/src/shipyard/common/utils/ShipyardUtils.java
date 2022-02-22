@@ -275,6 +275,8 @@ public class ShipyardUtils {
 		   return (Sequence) trigger.eContainer().eContainer().eContainer();
 	}
 	
+	
+	
 	public static Sequence getFiringSequence(ShipyardV4Root shipyardV4Root, Trigger trigger) {
 		var triggerEvent = trigger.getTrigger()
 						.stream()
@@ -382,6 +384,17 @@ public class ShipyardUtils {
 		return sequencePathName;
 	}
 	
+	public static String  getTaskPathName(Task task) {
+		Sequence sequence = getSequenceByTask(task);
+		String sequencePathName = getSequencePathName(sequence);
+		String taskName = getTaskName(task);
+		return sequencePathName+"."+taskName;
+	}
+	
+	
+	public static Sequence getSequenceByTask(Task task) {
+		   return (Sequence) task.eContainer().eContainer().eContainer();
+	}
 	
 	public static String getFinishedSequenceEvent(Sequence sequence) {
 		   return getSequencePathName(sequence)+"."+"finished";
