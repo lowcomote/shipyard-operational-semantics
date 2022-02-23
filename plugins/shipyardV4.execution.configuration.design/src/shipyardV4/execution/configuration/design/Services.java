@@ -55,6 +55,14 @@ public class Services {
     	}
     }
     
+    public SequenceFinishedResult isNotWarningSequencesEmpty(SequenceFinishedResult sequenceFinishedResult) {
+    	if (null == sequenceFinishedResult.getWarningSequences() || sequenceFinishedResult.getWarningSequences().isEmpty()) {
+    		return null;
+    	}else{
+    		return sequenceFinishedResult;
+    	}
+    }
+    
     public TaskFinishedResult isNotFailedTasksEmpty(TaskFinishedResult taskFinishedResult) {
     	if (null == taskFinishedResult.getFailedTasks() || taskFinishedResult.getFailedTasks().isEmpty()) {
     		return null;

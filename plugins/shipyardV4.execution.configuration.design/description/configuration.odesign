@@ -29,6 +29,21 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
+            <subContainerMappings name="SequenceWarningContainer" semanticCandidatesExpression="service:isNotWarningSequencesEmpty()" domainClass="ShipyardExecConfig::SequenceFinishedResult">
+              <subNodeMappings name="Warning Sequence" semanticCandidatesExpression="aql:self.warningSequences" domainClass="shipyardV4::Sequence">
+                <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getSequencePathName()" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="Warning Sequences">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              </style>
+            </subContainerMappings>
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="Sequence Result">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
