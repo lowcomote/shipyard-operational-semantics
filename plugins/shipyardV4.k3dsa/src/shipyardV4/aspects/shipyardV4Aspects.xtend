@@ -233,7 +233,7 @@ class SequenceAspect {
 		    	_self.result=ShipyardOperationalSemanticsUtils.RESULT_WARNING;
 		    }
 		}	
-			
+		shipyardV4Root.currentTask=null;// To quit the cursor from the last task of the sequence		
 
 		
 //		for(Task task: ShipyardUtils.getTasks(_self)){
