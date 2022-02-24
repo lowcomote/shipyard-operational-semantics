@@ -331,7 +331,6 @@ public interface ShipyardExecConfigPackage extends EPackage {
 	 */
 	int TASK_FINISHED_RESULT_OPERATION_COUNT = 0;
 
-
 	/**
 	 * The meta object id for the '{@link ShipyardExecConfig.impl.ExpectedExecutionImpl <em>Expected Execution</em>}' class.
 	 * <!-- begin-user-doc -->
