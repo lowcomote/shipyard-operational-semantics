@@ -96,7 +96,7 @@ public class Services {
    public String getTriggerLabel(Trigger trigger) {
 	   var selector = ShipyardUtils.getSelectorMatchPatternProperties0ByTrigger(trigger);
 	   if (selector != null)
-		   return selector.getKey()+"="+selector.getPatternProperties0();
+		   return selector.getKey()+":"+selector.getPatternProperties0();
 	   return null;
    }
    
