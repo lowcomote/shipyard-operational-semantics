@@ -19,7 +19,7 @@ import shipyardV4.Task;
 public class Services {
     
 	
-	private final static String INITIAL_SEQUENCE = "Init Seq: ";
+	private final static String INITIAL_SEQUENCE = "Sequence: ";
     /**
     * See http://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.sirius.doc%2Fdoc%2Findex.html&cp=24 for documentation on how to write service methods.
     */
