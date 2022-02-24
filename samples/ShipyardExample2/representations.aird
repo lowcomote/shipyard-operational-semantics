@@ -5,7 +5,7 @@
     <semanticResources>example2.shipyardexecconfig</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_VLkc4JCUEeyO173CJAfvLw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_XEj-0JCUEeyO173CJAfvLw" name="example2ShipyardV4Diag" repPath="#_XEiJoJCUEeyO173CJAfvLw" changeId="16e6bbb7-938e-4345-8e24-728159ad87f9">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_XEj-0JCUEeyO173CJAfvLw" name="example2ShipyardV4Diag" repPath="#_XEiJoJCUEeyO173CJAfvLw" changeId="a956a542-4267-403d-a9ee-df98d9e32ac5">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']"/>
         <target xmi:type="shipyardV4:ShipyardV4Root" href="example2.shipyardV4#/"/>
       </ownedRepresentationDescriptors>
@@ -571,7 +571,7 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_XFcvoJCUEeyO173CJAfvLw" type="4001" element="_XE7yQpCUEeyO173CJAfvLw" source="_XFH_hJCUEeyO173CJAfvLw" target="_XFHYgJCUEeyO173CJAfvLw">
           <children xmi:type="notation:Node" xmi:id="_XFcvpJCUEeyO173CJAfvLw" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XFcvpZCUEeyO173CJAfvLw" x="-7" y="-7"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XFcvpZCUEeyO173CJAfvLw" x="-48" y="-38" width="136" height="28"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_XFcvppCUEeyO173CJAfvLw" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XFcvp5CUEeyO173CJAfvLw" x="8" y="6"/>
@@ -651,7 +651,7 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_XFgaEpCUEeyO173CJAfvLw" type="4001" element="_XE8ZVJCUEeyO173CJAfvLw" source="_XFKbypCUEeyO173CJAfvLw" target="_XFKbypCUEeyO173CJAfvLw">
           <children xmi:type="notation:Node" xmi:id="_XFhBEJCUEeyO173CJAfvLw" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XFhBEZCUEeyO173CJAfvLw" y="-10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XFhBEZCUEeyO173CJAfvLw" x="-3" y="133" width="196" height="28"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_XFhBEpCUEeyO173CJAfvLw" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XFhBE5CUEeyO173CJAfvLw" y="10"/>
@@ -1131,16 +1131,16 @@
       <semanticElements xmi:type="shipyardV4:Trigger" href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.1/@items/@Stage.1/@sequences.0/@items/@Sequence.1/@triggeredOn.0/@items"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XE7LMZCUEeyO173CJAfvLw" sourceArrow="InputArrow" targetArrow="NoDecoration" size="4" strokeColor="209,209,209">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE7LMpCUEeyO173CJAfvLw" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE7LMpCUEeyO173CJAfvLw" labelSize="12" showIcon="false" labelColor="255,255,255"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XE7yQpCUEeyO173CJAfvLw" sourceNode="_XEyoUZCUEeyO173CJAfvLw" targetNode="_XEyBRpCUEeyO173CJAfvLw">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XE7yQpCUEeyO173CJAfvLw" name="result=fail" sourceNode="_XEyoUZCUEeyO173CJAfvLw" targetNode="_XEyBRpCUEeyO173CJAfvLw">
       <target xmi:type="shipyardV4:Trigger" href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.1/@items/@Stage.1/@sequences.1/@items/@Sequence.1/@triggeredOn.0/@items"/>
       <semanticElements xmi:type="shipyardV4:Trigger" href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.1/@items/@Stage.1/@sequences.1/@items/@Sequence.1/@triggeredOn.0/@items"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XE7yQ5CUEeyO173CJAfvLw" sourceArrow="InputArrow" targetArrow="NoDecoration" size="4" strokeColor="209,209,209">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE7yRJCUEeyO173CJAfvLw" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE7yRJCUEeyO173CJAfvLw" labelSize="12" showIcon="false" labelColor="255,255,255"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']"/>
     </ownedDiagramElements>
@@ -1149,7 +1149,7 @@
       <semanticElements xmi:type="shipyardV4:Trigger" href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.1/@items/@Stage.1/@sequences.2/@items/@Sequence.1/@triggeredOn.0/@items"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XE7ySJCUEeyO173CJAfvLw" sourceArrow="InputArrow" targetArrow="NoDecoration" size="4" strokeColor="209,209,209">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE7ySZCUEeyO173CJAfvLw" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE7ySZCUEeyO173CJAfvLw" labelSize="12" showIcon="false" labelColor="255,255,255"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']"/>
     </ownedDiagramElements>
@@ -1158,16 +1158,16 @@
       <semanticElements xmi:type="shipyardV4:Trigger" href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.0/@items/@Sequence.1/@triggeredOn.0/@items"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XE7yTZCUEeyO173CJAfvLw" sourceArrow="InputArrow" targetArrow="NoDecoration" size="4" strokeColor="209,209,209">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE7yTpCUEeyO173CJAfvLw" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE7yTpCUEeyO173CJAfvLw" labelSize="12" showIcon="false" labelColor="255,255,255"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XE7yUZCUEeyO173CJAfvLw" sourceNode="_XE1rpJCUEeyO173CJAfvLw" targetNode="_XE1roZCUEeyO173CJAfvLw">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XE7yUZCUEeyO173CJAfvLw" name="result=fail" sourceNode="_XE1rpJCUEeyO173CJAfvLw" targetNode="_XE1roZCUEeyO173CJAfvLw">
       <target xmi:type="shipyardV4:Trigger" href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.1/@items/@Sequence.1/@triggeredOn.0/@items"/>
       <semanticElements xmi:type="shipyardV4:Trigger" href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.1/@items/@Sequence.1/@triggeredOn.0/@items"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XE7yUpCUEeyO173CJAfvLw" sourceArrow="InputArrow" targetArrow="NoDecoration" size="4" strokeColor="209,209,209">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE7yU5CUEeyO173CJAfvLw" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE7yU5CUEeyO173CJAfvLw" labelSize="12" showIcon="false" labelColor="255,255,255"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']"/>
     </ownedDiagramElements>
@@ -1176,16 +1176,16 @@
       <semanticElements xmi:type="shipyardV4:Trigger" href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.2/@items/@Sequence.1/@triggeredOn.0/@items"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XE8ZUJCUEeyO173CJAfvLw" sourceArrow="InputArrow" targetArrow="NoDecoration" size="4" strokeColor="209,209,209">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE8ZUZCUEeyO173CJAfvLw" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE8ZUZCUEeyO173CJAfvLw" labelSize="12" showIcon="false" labelColor="255,255,255"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XE8ZVJCUEeyO173CJAfvLw" sourceNode="_XE2SspCUEeyO173CJAfvLw" targetNode="_XE2SspCUEeyO173CJAfvLw">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XE8ZVJCUEeyO173CJAfvLw" name="evaluation.result=fail" sourceNode="_XE2SspCUEeyO173CJAfvLw" targetNode="_XE2SspCUEeyO173CJAfvLw">
       <target xmi:type="shipyardV4:Trigger" href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.3/@items/@Sequence.1/@triggeredOn.0/@items"/>
       <semanticElements xmi:type="shipyardV4:Trigger" href="example2.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.3/@items/@Sequence.1/@triggeredOn.0/@items"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XE8ZVZCUEeyO173CJAfvLw" sourceArrow="InputArrow" targetArrow="NoDecoration" size="4" strokeColor="209,209,209">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE8ZVpCUEeyO173CJAfvLw" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XE8ZVpCUEeyO173CJAfvLw" labelSize="12" showIcon="false" labelColor="255,255,255"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/shipyardV4.design/description/shipyardV4.odesign#//@ownedViewpoints[name='ShipyardViewpoint']/@ownedRepresentations[name='ShipyardV4Diag']/@defaultLayer/@edgeMappings[name='Trigger']"/>
     </ownedDiagramElements>
