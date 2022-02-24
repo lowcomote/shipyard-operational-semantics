@@ -40,6 +40,7 @@ public class ExpectedExecutionImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected EList<Task> expectedTasks;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

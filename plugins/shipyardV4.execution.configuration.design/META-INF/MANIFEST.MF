@@ -10,8 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  org.eclipse.sirius,
  org.eclipse.sirius.common.acceleo.aql,
- shipyardV4.execution.configuration;bundle-version="0.1.0",
- shipyard.common.utils;bundle-version="1.0.0"
+ shipyard.common.utils;bundle-version="1.0.0",
+ shipyardV4.execution.configuration;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
