@@ -7,7 +7,7 @@
       <defaultLayer name="Default">
         <containerMappings name="ExecutionConfigurationContainer" semanticCandidatesExpression="feature:executionConfigurations" domainClass="ShipyardExecConfig::ExecutionConfiguration">
           <subNodeMappings name="InitialSequence" semanticCandidatesExpression="aql:self.initialSequence" domainClass="shipyardV4::Sequence">
-            <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="service:getInitialSequencePathName()" iconPath="/shipyardV4.execution.configuration.design/icons/start.png" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="service:getInitialSequencePathName()" iconPath="/shipyardV4.execution.configuration.design/icons/start-icon-4.jpg" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -28,10 +28,10 @@
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="SequenceWarningContainer" semanticCandidatesExpression="service:isNotWarningSequencesEmpty()" domainClass="ShipyardExecConfig::SequenceFinishedResult">
+            <subContainerMappings name="SequenceWarningContainer" semanticCandidatesExpression="service:isNotWarningSequencesEmpty()" domainClass="ShipyardExecConfig::SequenceFinishedResult" childrenPresentation="List">
               <subNodeMappings name="Warning Sequence" semanticCandidatesExpression="aql:self.warningSequences" domainClass="shipyardV4::Sequence">
                 <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getSequencePathName()" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -39,14 +39,15 @@
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
                 </style>
               </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="Warning Sequences">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="Warning" iconPath="/shipyardV4.design/icons/warning.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
               </style>
             </subContainerMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Sequence Result">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="Sequence Events" iconPath="/shipyardV4.execution.configuration.design/icons/sequence-48.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -55,7 +56,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="TaskFinishedResultContainer" semanticCandidatesExpression="aql:self.taskFinishedResult" domainClass="ShipyardExecConfig::TaskFinishedResult">
-            <subContainerMappings name="TasksFailedContainer" semanticCandidatesExpression="service:isNotFailedTasksEmpty()" domainClass="ShipyardExecConfig::TaskFinishedResult">
+            <subContainerMappings name="TasksFailedContainer" semanticCandidatesExpression="service:isNotFailedTasksEmpty()" domainClass="ShipyardExecConfig::TaskFinishedResult" childrenPresentation="List">
               <subNodeMappings name="Failed Task" semanticCandidatesExpression="aql:self.failedTasks" domainClass="shipyardV4::Task">
                 <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getTaskPathName()" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -63,14 +64,15 @@
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
                 </style>
               </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Tasks failed">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="Failed" iconPath="/shipyardV4.design/icons/abort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="TasksWarningContainer" semanticCandidatesExpression="service:isNotWarningTasksEmpty()" domainClass="ShipyardExecConfig::TaskFinishedResult">
+            <subContainerMappings name="TasksWarningContainer" semanticCandidatesExpression="service:isNotWarningTasksEmpty()" domainClass="ShipyardExecConfig::TaskFinishedResult" childrenPresentation="List">
               <subNodeMappings name="Warning Tasks" semanticCandidatesExpression="aql:self.warningTasks" domainClass="shipyardV4::Task">
                 <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getTaskPathName()" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -78,18 +80,20 @@
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
                 </style>
               </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Tasks Warning">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="Warning" iconPath="/shipyardV4.design/icons/warning.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
               </style>
             </subContainerMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Task Result">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="Task Events" iconPath="/shipyardV4.execution.configuration.design/icons/task-48.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             </style>
           </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="aql:'Scenario: '.concat(self.name)">
