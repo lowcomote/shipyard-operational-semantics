@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shipconf:ShipyardExecutionSuite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:shipconf="http://jku.bise.at/shipyardV4/ShipyardExecConfig" name="Triggers On Tasks">
+  <shipyardV4Root href="example4.shipyardV4#/"/>
+  <executionConfigurations name="Deployment Failed">
+    <initialSequence href="example4.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.0/@items/@Stage.1/@sequences.0/@items"/>
+    <taskFinishedResult>
+      <failedTasks href="example4.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.0/@items/@Sequence.2/@tasks.0/@items"/>
+    </taskFinishedResult>
+  </executionConfigurations>
+  <executionConfigurations name="Default"/>
+  <executionConfigurations name="Release Failed">
+    <initialSequence href="example4.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.0/@items/@Stage.1/@sequences.0/@items"/>
+    <taskFinishedResult>
+      <failedTasks href="example4.shipyardV4#//@shipyardV4Root/@Shipyard.3/@spec/@ShipyardSpec.0/@stages.2/@items/@Stage.1/@sequences.0/@items/@Sequence.2/@tasks.1/@items"/>
+    </taskFinishedResult>
+  </executionConfigurations>
+</shipconf:ShipyardExecutionSuite>

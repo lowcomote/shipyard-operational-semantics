@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/shipyardV4.execution.configuration/src-gen" modelPluginID="shipyardV4.execution.configuration"
+    modelName="ShipyardExecConfig" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    usedGenPackages="../../shipyardV4/model/shipyardV4Opt.genmodel#//shipyardV4 ../../jsonmetaschemaMM/model/jsonMetaschemaMM.genmodel#//jsonMetaschemaMM"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>ShipyardExecConfig.ecore</foreignModel>
+  <genPackages prefix="ShipyardExecConfig" disposableProviderFactory="true" ecorePackage="ShipyardExecConfig.ecore#/">
+    <genClasses ecoreClass="ShipyardExecConfig.ecore#//ShipyardExecutionSuite">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//ShipyardExecutionSuite/shipyardV4Root"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//ShipyardExecutionSuite/executionConfigurations"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ShipyardExecConfig.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ShipyardExecConfig.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ShipyardExecConfig.ecore#//ExecutionConfiguration">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//ExecutionConfiguration/initialSequence"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//ExecutionConfiguration/sequenceFinishedResult"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//ExecutionConfiguration/taskFinishedResult"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//ExecutionConfiguration/expectedExecution"/>
+    </genClasses>
+    <genClasses ecoreClass="ShipyardExecConfig.ecore#//SequenceFinishedResult">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//SequenceFinishedResult/passedSequences"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//SequenceFinishedResult/warningSequences"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//SequenceFinishedResult/failedSequence"/>
+    </genClasses>
+    <genClasses ecoreClass="ShipyardExecConfig.ecore#//TaskFinishedResult">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//TaskFinishedResult/passedTasks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//TaskFinishedResult/warningTasks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//TaskFinishedResult/failedTasks"/>
+    </genClasses>
+    <genClasses ecoreClass="ShipyardExecConfig.ecore#//ExpectedExecution">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShipyardExecConfig.ecore#//ExpectedExecution/expectedTasks"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

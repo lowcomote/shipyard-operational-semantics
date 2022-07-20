@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ShipyardExecConfig" nsURI="http://jku.bise.at/shipyardV4/ShipyardExecConfig"
+    nsPrefix="shipconf">
+  <eClassifiers xsi:type="ecore:EClass" name="ShipyardExecutionSuite" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shipyardV4Root" eType="ecore:EClass ../../shipyardV4/model/shipyardV4Opt.ecore#//ShipyardV4Root"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executionConfigurations"
+        upperBound="-1" eType="#//ExecutionConfiguration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionConfiguration" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialSequence" eType="ecore:EClass ../../shipyardV4/model/shipyardV4Opt.ecore#//Sequence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceFinishedResult"
+        eType="#//SequenceFinishedResult" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="taskFinishedResult" eType="#//TaskFinishedResult"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expectedExecution" eType="#//ExpectedExecution"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceFinishedResult">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="passedSequences" upperBound="-1"
+        eType="ecore:EClass ../../shipyardV4/model/shipyardV4Opt.ecore#//Sequence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="warningSequences" upperBound="-1"
+        eType="ecore:EClass ../../shipyardV4/model/shipyardV4Opt.ecore#//Sequence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="failedSequence" upperBound="-1"
+        eType="ecore:EClass ../../shipyardV4/model/shipyardV4Opt.ecore#//Sequence"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskFinishedResult">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="passedTasks" upperBound="-1"
+        eType="ecore:EClass ../../shipyardV4/model/shipyardV4Opt.ecore#//Task"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="warningTasks" upperBound="-1"
+        eType="ecore:EClass ../../shipyardV4/model/shipyardV4Opt.ecore#//Task"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="failedTasks" upperBound="-1"
+        eType="ecore:EClass ../../shipyardV4/model/shipyardV4Opt.ecore#//Task"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpectedExecution">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expectedTasks" upperBound="-1"
+        eType="ecore:EClass ../../shipyardV4/model/shipyardV4Opt.ecore#//Task"/>
+  </eClassifiers>
+</ecore:EPackage>
